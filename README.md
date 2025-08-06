@@ -157,16 +157,12 @@ Update contact details in:
 - `src/components/ContactSection.vue`
 - `src/App.vue` (footer section)
 
-## 📞 Support
+## 📞 Dev Support
 
-For questions or support, please contact:
+For development questions or technical support, please contact:
 
-- Email: hello@ecofriendlydrycleaner.com
-- Phone: (555) 123-4567
-
-## 📄 License
-
-This project is private and proprietary to EcoFresh Dry Cleaner.
+- **Developer**: Tanuj Siripurapu
+- **Email**: tanujsiripurapu@gmail.com
 
 ---
 
