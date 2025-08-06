@@ -752,32 +752,174 @@ const downloadApp = (platform) => {
 }
 
 @media (max-width: 768px) {
+  .mobile-app {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
   .app-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .section-title {
     font-size: 2rem;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .app-features {
+    gap: 1rem;
+  }
+
+  .feature-item {
+    gap: 0.75rem;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .feature-icon svg {
+    font-size: 1.2rem;
+  }
+
+  .feature-content h3 {
+    font-size: 1rem;
+  }
+
+  .feature-content p {
+    font-size: 0.9rem;
   }
 
   .app-actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .download-buttons {
-    flex-direction: row;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .download-btn {
+    min-width: auto;
+    width: 100%;
+    padding: 0.875rem 1rem;
+  }
+
+  .btn-content {
     justify-content: center;
   }
 
   .phone-mockup {
-    width: 250px;
-    height: 500px;
+    width: 200px;
+    height: 400px;
+    margin: 0 auto;
   }
 
   .app-stats {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-app {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .app-features {
+    gap: 0.75rem;
+  }
+
+  .feature-item {
+    gap: 0.5rem;
+  }
+
+  .feature-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .feature-icon svg {
+    font-size: 1rem;
+  }
+
+  .feature-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .feature-content p {
+    font-size: 0.85rem;
+  }
+
+  .download-buttons {
+    max-width: 280px;
+  }
+
+  .download-btn {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .store-label {
+    font-size: 0.75rem;
+  }
+
+  .store-name {
+    font-size: 0.9rem;
+  }
+
+  .phone-mockup {
+    width: 180px;
+    height: 360px;
+  }
+
+  .app-stats {
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1.25rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
   }
 }
 </style>

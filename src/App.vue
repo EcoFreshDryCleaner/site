@@ -7,6 +7,7 @@ import TestimonialsSection from './components/TestimonialsSection.vue'
 import PromotionsSection from './components/PromotionsSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import MobileAppSection from './components/MobileAppSection.vue'
+import PromoModal from './components/PromoModal.vue'
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId)
@@ -33,6 +34,8 @@ const scrollToSection = (sectionId) => {
       <ContactSection />
       <MobileAppSection />
     </main>
+
+    <PromoModal @scrollToSection="scrollToSection" />
 
     <footer class="footer">
       <div class="container">
@@ -79,10 +82,6 @@ const scrollToSection = (sectionId) => {
 
         <div class="footer-bottom">
           <p>&copy; 2025 EcoFresh Dry Cleaner. All rights reserved.</p>
-          <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>
