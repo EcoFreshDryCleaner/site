@@ -29,6 +29,7 @@ import {
   faCalendarAlt,
   faPlus,
   faMinus,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faFacebook,
@@ -64,6 +65,7 @@ library.add(
   faCalendarAlt,
   faPlus,
   faMinus,
+  faTimes,
   faFacebook,
   faInstagram,
   faTwitter,

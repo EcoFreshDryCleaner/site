@@ -4,10 +4,11 @@
       <div class="section-header">
         <h2 class="section-title">What Our Customers Say</h2>
         <p class="section-subtitle">
-          Don't just take our word for it. Here's what our satisfied customers have to say about our service.
+          Don't just take our word for it. Here's what our satisfied customers have to say about our
+          service.
         </p>
       </div>
-      
+
       <div class="testimonials-grid">
         <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
           <div class="testimonial-header">
@@ -18,7 +19,12 @@
               <div class="customer-details">
                 <h4 class="customer-name">{{ testimonial.name }}</h4>
                 <div class="customer-rating">
-                  <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= testimonial.rating }">
+                  <span
+                    v-for="star in 5"
+                    :key="star"
+                    class="star"
+                    :class="{ filled: star <= testimonial.rating }"
+                  >
                     ★
                   </span>
                 </div>
@@ -26,18 +32,18 @@
             </div>
             <div class="quote-icon">"</div>
           </div>
-          
+
           <div class="testimonial-content">
             <p>{{ testimonial.comment }}</p>
           </div>
-          
+
           <div class="testimonial-footer">
             <span class="service-type">{{ testimonial.service }}</span>
             <span class="date">{{ testimonial.date }}</span>
           </div>
         </div>
       </div>
-      
+
       <div class="testimonials-stats">
         <div class="stat-item">
           <div class="stat-number">4.9</div>
@@ -71,50 +77,56 @@ const testimonials = ref([
     id: 1,
     name: 'Sarah Johnson',
     rating: 5,
-    comment: 'Amazing service! They picked up my clothes and delivered them back perfectly cleaned the next day. The eco-friendly approach gives me peace of mind.',
+    comment:
+      'Amazing service! They picked up my clothes and delivered them back perfectly cleaned the next day. The eco-friendly approach gives me peace of mind.',
     service: 'Premium Care',
-    date: '2 days ago'
+    date: '2 days ago',
   },
   {
     id: 2,
     name: 'Michael Chen',
     rating: 5,
-    comment: 'Professional, reliable, and environmentally conscious. My suits have never looked better. Highly recommend their luxury service for business attire.',
+    comment:
+      'Professional, reliable, and environmentally conscious. My suits have never looked better. Highly recommend their luxury service for business attire.',
     service: 'Luxury Service',
-    date: '1 week ago'
+    date: '1 week ago',
   },
   {
     id: 3,
     name: 'Emily Rodriguez',
     rating: 5,
-    comment: 'The convenience of free pickup and delivery is unbeatable. Great prices and excellent quality. My go-to dry cleaner for all my clothes.',
+    comment:
+      'The convenience of free pickup and delivery is unbeatable. Great prices and excellent quality. My go-to dry cleaner for all my clothes.',
     service: 'Basic Clean',
-    date: '3 days ago'
+    date: '3 days ago',
   },
   {
     id: 4,
     name: 'David Thompson',
     rating: 5,
-    comment: 'Outstanding customer service and attention to detail. They handled my delicate vintage pieces with care. Will definitely use them again.',
+    comment:
+      'Outstanding customer service and attention to detail. They handled my delicate vintage pieces with care. Will definitely use them again.',
     service: 'Luxury Service',
-    date: '5 days ago'
+    date: '5 days ago',
   },
   {
     id: 5,
     name: 'Lisa Wang',
     rating: 5,
-    comment: 'Fast, reliable, and eco-friendly. What more could you ask for? The mobile app makes scheduling so easy. Love this service!',
+    comment:
+      'Fast, reliable, and eco-friendly. What more could you ask for? The mobile app makes scheduling so easy. Love this service!',
     service: 'Premium Care',
-    date: '1 day ago'
+    date: '1 day ago',
   },
   {
     id: 6,
     name: 'Robert Davis',
     rating: 5,
-    comment: 'Been using their service for months now. Consistent quality and great prices. The eco-friendly approach is a huge plus for me.',
+    comment:
+      'Been using their service for months now. Consistent quality and great prices. The eco-friendly approach is a huge plus for me.',
     service: 'Basic Clean',
-    date: '4 days ago'
-  }
+    date: '4 days ago',
+  },
 ])
 </script>
 
@@ -166,7 +178,9 @@ const testimonials = ref([
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
 }
 
@@ -298,20 +312,20 @@ const testimonials = ref([
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .testimonials-stats {
     grid-template-columns: 1fr;
   }
-  
+
   .testimonial-header {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .quote-icon {
     align-self: flex-end;
   }

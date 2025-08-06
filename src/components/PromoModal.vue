@@ -45,7 +45,7 @@ const config = ref({
     'New customers get 20% off their first dry cleaning order. Use code WELCOME20 at checkout.',
   image: 'https://picsum.photos/400/300?random=1',
   buttonText: 'Get Started',
-  buttonLink: '#contact',
+  buttonLink: '#mobile-app',
   closeText: 'Maybe Later',
   backgroundColor: '#667eea',
   textColor: '#ffffff',
