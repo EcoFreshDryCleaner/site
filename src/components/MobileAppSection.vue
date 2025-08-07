@@ -4,10 +4,11 @@
       <div class="app-content">
         <div class="app-info">
           <div class="section-header">
-            <h2 class="section-title">Download Our Mobile App</h2>
+            <h2 class="section-title">Our Mobile App is Coming Soon!</h2>
             <p class="section-subtitle">
-              Schedule pickups and drop-offs with ease. Track your orders in real-time and manage
-              your dry cleaning from anywhere.
+              We're working hard to bring you a mobile app that will make scheduling pickups and
+              drop-offs effortless. Track your orders in real-time and manage your dry cleaning from
+              anywhere.
             </p>
           </div>
 
@@ -55,25 +56,28 @@
 
           <div class="app-actions">
             <div class="download-buttons">
-              <button class="download-btn app-store" @click="downloadApp('ios')">
+              <button class="download-btn app-store coming-soon" @click="notifyComingSoon('ios')">
                 <div class="btn-content">
                   <span class="store-icon">
                     <FontAwesomeIcon :icon="['fab', 'apple']" />
                   </span>
                   <div class="store-info">
-                    <span class="store-label">Download on the</span>
+                    <span class="store-label">Coming Soon on</span>
                     <span class="store-name">App Store</span>
                   </div>
                 </div>
               </button>
 
-              <button class="download-btn google-play" @click="downloadApp('android')">
+              <button
+                class="download-btn google-play coming-soon"
+                @click="notifyComingSoon('android')"
+              >
                 <div class="btn-content">
                   <span class="store-icon">
                     <FontAwesomeIcon :icon="['fab', 'google-play']" />
                   </span>
                   <div class="store-info">
-                    <span class="store-label">Get it on</span>
+                    <span class="store-label">Coming Soon on</span>
                     <span class="store-name">Google Play</span>
                   </div>
                 </div>
@@ -193,16 +197,16 @@
 
       <div class="app-stats">
         <div class="stat-item">
-          <div class="stat-number">50k+</div>
-          <div class="stat-label">App Downloads</div>
+          <div class="stat-number">Coming</div>
+          <div class="stat-label">Mobile App</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">4.8</div>
-          <div class="stat-label">App Store Rating</div>
+          <div class="stat-number">Soon</div>
+          <div class="stat-label">Stay Tuned</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Customer Satisfaction</div>
+          <div class="stat-number">2025</div>
+          <div class="stat-label">Launch Year</div>
         </div>
       </div>
     </div>
@@ -210,12 +214,9 @@
 </template>
 
 <script setup>
-const downloadApp = (platform) => {
-  if (platform === 'ios') {
-    window.open('https://apps.apple.com', '_blank')
-  } else if (platform === 'android') {
-    window.open('https://play.google.com', '_blank')
-  }
+const notifyComingSoon = (platform) => {
+  const platformName = platform === 'ios' ? 'App Store' : 'Google Play'
+  alert(`Our mobile app will be available on ${platformName} soon! Stay tuned for updates.`)
 }
 </script>
 
@@ -349,6 +350,32 @@ const downloadApp = (platform) => {
 .download-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+.download-btn.coming-soon {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.download-btn.coming-soon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.download-btn.coming-soon::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ffd700;
+  color: #1a202c;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  transform: rotate(15deg);
 }
 
 .btn-content {
