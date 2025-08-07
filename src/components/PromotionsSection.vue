@@ -62,7 +62,7 @@
         <div class="cta-content">
           <h3>New Customer Special</h3>
           <p>First-time customers get 50% off their first order of 5+ items!</p>
-          <button class="btn btn-secondary" @click="scrollToSection('contact')">
+          <button class="btn btn-secondary" @click="scrollToSection('mobile-app')">
             Start Your First Order
           </button>
         </div>
@@ -134,6 +134,7 @@ const emit = defineEmits(['scrollToSection'])
 const claimOffer = (promotion) => {
   console.log('Claiming offer:', promotion.title)
   // Handle offer claiming logic
+  scrollToSection('mobile-app')
 }
 
 const scrollToSection = (sectionId) => {
@@ -321,6 +322,9 @@ const scrollToSection = (sectionId) => {
 .expiry-info {
   font-size: 0.9rem;
   color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .expiry-label {

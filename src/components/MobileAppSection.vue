@@ -851,8 +851,8 @@ const notifyComingSoon = (platform) => {
   }
 
   .phone-mockup {
-    width: 200px;
-    height: 400px;
+    width: 280px;
+    height: 560px;
     margin: 0 auto;
   }
 
@@ -929,8 +929,8 @@ const notifyComingSoon = (platform) => {
   }
 
   .phone-mockup {
-    width: 180px;
-    height: 360px;
+    width: 240px;
+    height: 480px;
   }
 
   .app-stats {
