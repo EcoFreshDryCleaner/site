@@ -3,25 +3,10 @@
     <div class="container">
       <div class="section-header">
         <h2>Our Service Area</h2>
-        <p>Serving Baltimore and the surrounding Maryland area</p>
+        <p>Three locations serving Charlotte, North Carolina</p>
       </div>
       <div class="map-container">
         <div id="map" ref="mapRef"></div>
-        <div class="service-areas">
-          <h3>Areas We Serve</h3>
-          <ul>
-            <li>Baltimore</li>
-            <li>Annapolis</li>
-            <li>Salisbury</li>
-            <li>Towson</li>
-            <li>Columbia</li>
-            <li>Rockville</li>
-            <li>Frederick</li>
-            <li>Hagerstown</li>
-            <li>Gaithersburg</li>
-            <li>Elkton</li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -34,69 +19,51 @@ const mapRef = ref(null)
 let map = null
 
 const initMap = () => {
-  // Define city locations with exact coordinates
-  const cities = [
-    { name: 'Baltimore', lat: 39.2904, lng: -76.6122 },
-    { name: 'Annapolis', lat: 38.9784, lng: -76.4922 },
-    { name: 'Salisbury', lat: 38.3607, lng: -75.5994 },
-    { name: 'Towson', lat: 39.4015, lng: -76.6019 },
-    { name: 'Columbia', lat: 39.2037, lng: -76.8611 },
-    { name: 'Rockville', lat: 39.084, lng: -77.1528 },
-    { name: 'Frederick', lat: 39.4142, lng: -77.4105 },
-    { name: 'Hagerstown', lat: 39.6418, lng: -77.72 },
-    { name: 'Gaithersburg', lat: 39.1434, lng: -77.2014 },
-    { name: 'Elkton', lat: 39.6068, lng: -75.8333 },
+  // Define Charlotte locations with exact coordinates
+  const locations = [
+    { name: 'Charlotte - Uptown', lat: 35.2271, lng: -80.8431 },
+    { name: 'Charlotte - South End', lat: 35.2071, lng: -80.8581 },
+    { name: 'Charlotte - University Area', lat: 35.3071, lng: -80.7431 },
   ]
 
-  // Define service area boundaries tracing around the cities with natural curves
+  // Define service area boundaries with smooth, continuous curves around Charlotte
   const serviceAreaBoundaries = [
-    // Start from northwest (Hagerstown area)
-    { lat: 39.75, lng: -77.8 }, // Northwest start
-    { lat: 39.7, lng: -77.6 }, // Curve towards Frederick
-    { lat: 39.5, lng: -77.5 }, // Around Frederick
-    { lat: 39.3, lng: -77.3 }, // Curve towards Rockville
-    { lat: 39.2, lng: -77.2 }, // Around Rockville
-    { lat: 39.1, lng: -77.1 }, // Curve towards Gaithersburg
-    { lat: 39.0, lng: -77.0 }, // Around Gaithersburg
-    { lat: 38.9, lng: -76.9 }, // Curve towards Columbia
-    { lat: 38.8, lng: -76.8 }, // Around Columbia
-    { lat: 38.7, lng: -76.7 }, // Curve towards Baltimore
-    { lat: 38.6, lng: -76.6 }, // Around Baltimore
-    { lat: 38.5, lng: -76.5 }, // Curve towards Towson
-    { lat: 38.4, lng: -76.4 }, // Around Towson
-    { lat: 38.3, lng: -76.3 }, // Curve towards Annapolis
-    { lat: 38.2, lng: -76.2 }, // Around Annapolis
-    { lat: 38.1, lng: -76.1 }, // Curve towards Eastern Shore
-    { lat: 38.0, lng: -76.0 }, // Around Eastern Shore
-    { lat: 37.9, lng: -75.9 }, // Curve towards Salisbury
-    { lat: 37.8, lng: -75.8 }, // Around Salisbury
-    { lat: 37.7, lng: -75.7 }, // Curve towards Elkton
-    { lat: 37.8, lng: -75.6 }, // Around Elkton
-    { lat: 37.9, lng: -75.5 }, // Curve back towards Baltimore
-    { lat: 38.0, lng: -75.4 }, // Around Baltimore area
-    { lat: 38.1, lng: -75.3 }, // Curve towards Frederick
-    { lat: 38.2, lng: -75.2 }, // Around Frederick area
-    { lat: 38.3, lng: -75.1 }, // Curve towards Hagerstown
-    { lat: 38.4, lng: -75.0 }, // Around Hagerstown area
-    { lat: 38.5, lng: -75.1 }, // Curve back to northwest
-    { lat: 38.6, lng: -75.2 }, // Around northwest
-    { lat: 38.7, lng: -75.3 }, // Curve towards start
-    { lat: 38.8, lng: -75.4 }, // Around start area
-    { lat: 38.9, lng: -75.5 }, // Curve back to northwest
-    { lat: 39.0, lng: -75.6 }, // Around northwest
-    { lat: 39.1, lng: -75.7 }, // Curve towards start
-    { lat: 39.2, lng: -75.8 }, // Around start area
-    { lat: 39.3, lng: -75.9 }, // Curve back to northwest
-    { lat: 39.4, lng: -76.0 }, // Around northwest
-    { lat: 39.5, lng: -76.1 }, // Curve towards start
-    { lat: 39.6, lng: -76.2 }, // Around start area
-    { lat: 39.7, lng: -76.3 }, // Curve back to northwest
-    { lat: 39.75, lng: -77.8 }, // Back to start
+    // Start from northwest and create smooth, continuous curves
+    { lat: 35.33, lng: -80.95 }, // North boundary start
+    { lat: 35.33, lng: -80.85 }, // North
+    { lat: 35.33, lng: -80.75 }, // Northeast
+    { lat: 35.33, lng: -80.65 }, // East
+    { lat: 35.33, lng: -80.55 }, // Southeast
+    { lat: 35.33, lng: -80.50 }, // East boundary
+
+    // Smooth curve down to southeast - no sharp angles
+    { lat: 35.30, lng: -80.48 }, // Southeast extension
+    { lat: 35.26, lng: -80.45 }, // Southeast curve
+    { lat: 35.23, lng: -80.42 }, // Southeast curve
+    { lat: 35.20, lng: -80.45 }, // Southeast curve
+    { lat: 35.18, lng: -80.50 }, // South boundary
+
+    // Smooth curve to southwest - continuous flow
+    { lat: 35.16, lng: -80.55 }, // Southwest curve
+    { lat: 35.13, lng: -80.65 }, // Southwest curve
+    { lat: 35.10, lng: -80.75 }, // Southwest curve
+    { lat: 35.08, lng: -80.85 }, // Southwest extension
+    { lat: 35.10, lng: -80.90 }, // Southwest curve
+    { lat: 35.13, lng: -80.92 }, // Southwest curve
+    { lat: 35.16, lng: -80.95 }, // Southwest curve
+    { lat: 35.18, lng: -80.95 }, // West boundary
+
+    // Smooth curve back to northwest - no sharp turns
+    { lat: 35.20, lng: -80.97 }, // Northwest curve
+    { lat: 35.23, lng: -80.98 }, // Northwest curve
+    { lat: 35.26, lng: -80.98 }, // Northwest curve
+    { lat: 35.30, lng: -80.97 }, // Northwest curve
+    { lat: 35.33, lng: -80.96 }, // Northwest curve
   ]
 
   map = new google.maps.Map(mapRef.value, {
-    center: { lat: 39.2904, lng: -76.6122 }, // Centered on Baltimore
-    zoom: 8,
+    center: { lat: 35.2271, lng: -80.8431 }, // Centered on Charlotte
+    zoom: 10,
     styles: [
       {
         featureType: 'all',
@@ -127,13 +94,13 @@ const initMap = () => {
     map: map,
   })
 
-  // Add markers and labels for each city
-  cities.forEach((city) => {
+  // Add markers and labels for each location
+  locations.forEach((location) => {
     // Create marker
     const marker = new google.maps.Marker({
-      position: { lat: city.lat, lng: city.lng },
+      position: { lat: location.lat, lng: location.lng },
       map: map,
-      title: city.name,
+      title: location.name,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
@@ -144,9 +111,9 @@ const initMap = () => {
       },
     })
 
-    // Create info window for the city name
+    // Create info window for the location name
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div style="color: #667eea; font-weight: 600; padding: 5px;">${city.name}</div>`,
+      content: `<div style="color: #667eea; font-weight: 600; padding: 5px;">${location.name}</div>`,
       pixelOffset: new google.maps.Size(0, -5),
       disableAutoPan: true,
       closeButton: false,
@@ -226,12 +193,12 @@ onMounted(() => {
 
 .map-container {
   display: flex;
-  gap: 4rem;
-  align-items: center;
+  justify-content: center;
 }
 
 #map {
-  flex: 1;
+  width: 100%;
+  max-width: 800px;
   height: 500px;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -240,48 +207,9 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.service-areas {
-  width: 300px;
-  padding: 2.5rem;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
 
-.service-areas h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a202c;
-  margin-bottom: 1.5rem;
-}
-
-.service-areas ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.service-areas li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e2e8f0;
-  color: #4a5568;
-  font-size: 1rem;
-}
-
-.service-areas li:last-child {
-  border-bottom: none;
-}
 
 @media (max-width: 768px) {
-  .map-container {
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .service-areas {
-    width: 100%;
-  }
-
   #map {
     height: 400px;
   }

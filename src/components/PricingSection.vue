@@ -2,32 +2,32 @@
   <section id="pricing" class="pricing">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Transparent Pricing</h2>
+        <h2 class="section-title">Our Services</h2>
         <p class="section-subtitle">
-          Simple, upfront pricing with no hidden fees. Choose the service that fits your needs.
+          Professional dry cleaning and laundry services with free pickup and delivery
         </p>
       </div>
 
       <div class="pricing-grid">
         <div
           class="pricing-card"
-          :class="{ featured: plan.featured }"
-          v-for="plan in pricingPlans"
-          :key="plan.name"
+          :class="{ featured: service.featured }"
+          v-for="service in services"
+          :key="service.name"
         >
           <div class="card-header">
-            <h3 class="plan-name">{{ plan.name }}</h3>
-            <div class="plan-price">
+            <h3 class="plan-name">{{ service.name }}</h3>
+            <div class="plan-price" v-if="service.price">
               <span class="currency">$</span>
-              <span class="amount">{{ plan.price }}</span>
+              <span class="amount">{{ service.price }}</span>
               <span class="period">/item</span>
             </div>
-            <p class="plan-description">{{ plan.description }}</p>
+            <p class="plan-description">{{ service.description }}</p>
           </div>
 
           <div class="card-features">
             <ul class="features-list">
-              <li v-for="feature in plan.features" :key="feature" class="feature-item">
+              <li v-for="feature in service.features" :key="feature" class="feature-item">
                 <span class="check-icon">✓</span>
                 {{ feature }}
               </li>
@@ -35,18 +35,19 @@
           </div>
 
           <div class="card-footer">
-            <button class="btn btn-primary" @click="selectPlan(plan)">
-              {{ plan.featured ? 'Get Started' : 'Choose Plan' }}
+            <button class="btn btn-primary" @click="selectService(service)">
+              {{ 'Choose Service' }}
             </button>
           </div>
 
-          <div v-if="plan.featured" class="featured-badge">Most Popular</div>
+          <div v-if="service.featured" class="featured-badge">Most Popular</div>
         </div>
       </div>
 
       <div class="pricing-note">
-        <p>* All prices include free pickup and delivery within 10 miles</p>
+        <p>* All services include free pickup and delivery within 10 miles</p>
         <p>* Bulk discounts available for orders over 20 items</p>
+        <p>* Contact us for custom pricing on special items</p>
       </div>
     </div>
   </section>
@@ -55,56 +56,132 @@
 <script setup>
 import { ref } from 'vue'
 
-const pricingPlans = ref([
+const services = ref([
   {
-    name: 'Basic Clean',
-    price: '8.99',
-    description: 'Perfect for everyday garments',
+    name: 'Free Pickup and Delivery',
+    description: 'Convenient service to your door',
     features: [
-      'Standard dry cleaning',
-      'Free pickup & delivery',
-      '24-hour turnaround',
-      'Eco-friendly solvents',
-      'Basic stain treatment',
+      'Free pickup from your home or office',
+      'Free delivery back to you',
+      'Flexible scheduling',
+      'Service within 10 miles',
+      'Text notifications',
     ],
     featured: false,
   },
   {
-    name: 'Premium Care',
-    price: '12.99',
-    description: 'Our most popular service',
+    name: 'Professional Dry Cleaning',
+    description: 'Expert care for your finest garments',
     features: [
-      'Premium dry cleaning',
-      'Free pickup & delivery',
-      'Same-day service available',
       'Eco-friendly solvents',
-      'Advanced stain treatment',
+      'Professional pressing',
+      'Stain treatment',
       'Fabric protection',
-      'Press & finish included',
+      'Quality inspection',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Laundry',
+    description: 'Fresh and clean everyday clothes',
+    features: [
+      'Gentle washing',
+      'Fabric softener options',
+      'Stain removal',
+      'Proper folding',
+      'Quick turnaround',
     ],
     featured: true,
   },
   {
-    name: 'Luxury Service',
-    price: '18.99',
-    description: 'For delicate and luxury items',
+    name: 'Wash Dry and Fold',
+    description: 'Complete laundry service',
     features: [
-      'Hand cleaning process',
-      'Free pickup & delivery',
-      'Same-day service available',
-      'Eco-friendly solvents',
-      'Expert stain removal',
-      'Premium fabric protection',
+      'Washing and drying',
+      'Professional folding',
+      'Separated by type',
+      'Ready to wear',
+      'Bulk pricing available',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Press Only',
+    description: 'Perfect pressing for your clothes',
+    features: [
       'Professional pressing',
-      'Quality inspection',
+      'Crisp finishes',
+      'No cleaning needed',
+      'Quick service',
+      'Affordable pricing',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Alterations and Repairs',
+    description: 'Expert tailoring services',
+    features: [
+      'Hemming and tapering',
+      'Button replacement',
+      'Zipper repairs',
+      'Seam mending',
+      'Custom alterations',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Shoe Repair and Shine',
+    description: 'Restore your favorite footwear',
+    features: [
+      'Professional shoe shining',
+      'Sole and heel repair',
+      'Leather conditioning',
+      'Color restoration',
+      'Waterproofing',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Comforters, Blankets and Household Items',
+    description: 'Care for your home textiles',
+    features: [
+      'Large item cleaning',
+      'Comforter restoration',
+      'Blanket freshening',
+      'Curtain cleaning',
+      'Bedding care',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Leather and Suede',
+    description: 'Specialized care for leather goods',
+    features: [
+      'Leather cleaning',
+      'Suede restoration',
+      'Color touch-up',
+      'Conditioning treatment',
+      'Waterproofing',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Wedding Gown Cleaning and Preservation',
+    description: 'Preserve your special memories',
+    features: [
+      'Expert wedding gown cleaning',
+      'Stain removal',
+      'Professional preservation',
+      'Acid-free packaging',
+      'Lifetime protection',
     ],
     featured: false,
   },
 ])
 
-const selectPlan = (plan) => {
-  // Emit event or handle plan selection
-  console.log('Selected plan:', plan.name)
+const selectService = (service) => {
+  // Emit event or handle service selection
+  console.log('Selected service:', service.name)
 }
 </script>
 

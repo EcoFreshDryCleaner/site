@@ -15,23 +15,21 @@
               <FontAwesomeIcon :icon="['fas', 'leaf']" />
             </div>
             <div class="item-content">
-              <h3>Eco-Friendly Solvents</h3>
+              <h3>Eco-Friendly Solutions</h3>
               <p>
-                We use only the safest, most environmentally friendly cleaning solvents that are
-                gentle on your clothes and the planet.
+                At EcoFresh Drycleaners, with 20 plus years of service we believe fresh clothes shouldn't cost the earth. Our eco-friendly cleaning uses gentle, biodegradable solutions and energy-smart technology to keep your garments—and our planet—looking their best.
               </p>
             </div>
           </div>
 
           <div class="about-item">
             <div class="item-icon">
-              <FontAwesomeIcon :icon="['fas', 'recycle']" />
+              <FontAwesomeIcon :icon="['fas', 'heart']" />
             </div>
             <div class="item-content">
-              <h3>Sustainable Practices</h3>
+              <h3>Care & Precision</h3>
               <p>
-                Our entire process is designed to minimize waste and reduce our carbon footprint
-                while delivering exceptional results.
+                Whether it's your favorite shirt or your most treasured suit, we treat every piece with care, precision, and a whole lot of love for the environment. Every detail—down to the final press—is executed with precision, ensuring your wardrobe remains as timeless as your style.
               </p>
             </div>
           </div>
@@ -43,7 +41,7 @@
             <div class="item-content">
               <h3>Professional Care</h3>
               <p>
-                With over 15 years of experience, our team ensures your garments receive the highest
+                With over 20 years of experience, our team ensures your garments receive the highest
                 quality care and attention.
               </p>
             </div>
@@ -65,12 +63,12 @@
 
         <div class="about-stats">
           <div class="stat-card">
-            <div class="stat-number">15+</div>
+            <div class="stat-number">20+</div>
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">10k+</div>
-            <div class="stat-label">Happy Customers</div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">Locations</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">100%</div>
@@ -130,7 +128,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: center;
 }
 
 .about-text {
