@@ -163,7 +163,7 @@ onMounted(async () => {
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .close-btn:hover {
@@ -197,13 +197,13 @@ onMounted(async () => {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #1a202c;
+  color: var(--text-primary);
 }
 
 .promo-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #4a5568;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -233,25 +233,25 @@ onMounted(async () => {
 }
 
 .promo-btn.primary {
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .promo-btn.primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 .promo-btn.secondary {
   background: transparent;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
 }
 
 .promo-btn.secondary:hover {
-  background: #3b82f6;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-white);
   transform: translateY(-2px);
 }
 

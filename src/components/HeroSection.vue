@@ -59,7 +59,7 @@ const scrollToSection = (sectionId) => {
 <style scoped>
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   display: flex;
   align-items: center;
   padding: 2rem 0;
@@ -91,7 +91,7 @@ const scrollToSection = (sectionId) => {
 }
 
 .hero-text {
-  color: white;
+  color: var(--text-white);
 }
 
 .hero-title {
@@ -103,7 +103,7 @@ const scrollToSection = (sectionId) => {
 }
 
 .highlight {
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -138,8 +138,8 @@ const scrollToSection = (sectionId) => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
-  color: #3b82f6;
+  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
+  color: var(--primary-blue);
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -150,13 +150,13 @@ const scrollToSection = (sectionId) => {
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--text-white);
+  border: 2px solid var(--text-white);
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #3b82f6;
+  background: var(--text-white);
+  color: var(--primary-blue);
   transform: translateY(-2px);
 }
 
@@ -181,9 +181,9 @@ const scrollToSection = (sectionId) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--transparent-white);
   border-radius: 8px;
-  color: white;
+  color: var(--text-white);
 }
 
 .feature-icon svg {

@@ -68,12 +68,12 @@ const initMap = () => {
       {
         featureType: 'all',
         elementType: 'geometry',
-        stylers: [{ color: '#f8fafc' }],
+        stylers: [{ color: 'var(--bg-secondary)' }],
       },
       {
         featureType: 'water',
         elementType: 'geometry',
-        stylers: [{ color: '#e2e8f0' }],
+        stylers: [{ color: 'var(--border-medium)' }],
       },
       {
         featureType: 'poi',
@@ -86,10 +86,10 @@ const initMap = () => {
   // Create a polygon for the service area
   const serviceAreaPolygon = new google.maps.Polygon({
     paths: serviceAreaBoundaries,
-    strokeColor: '#3b82f6',
+    strokeColor: 'var(--primary-blue)',
     strokeOpacity: 0.8,
     strokeWeight: 3,
-    fillColor: '#3b82f6',
+    fillColor: 'var(--primary-blue)',
     fillOpacity: 0.1,
     map: map,
   })
@@ -104,16 +104,16 @@ const initMap = () => {
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
-        fillColor: '#3b82f6',
+        fillColor: 'var(--primary-blue)',
         fillOpacity: 1,
-        strokeColor: '#ffffff',
+        strokeColor: 'var(--text-white)',
         strokeWeight: 2,
       },
     })
 
     // Create info window for the location name
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div style="color: #3b82f6; font-weight: 600; padding: 5px;">${location.name}</div>`,
+      content: `<div style="color: var(--primary-blue); font-weight: 600; padding: 5px;">${location.name}</div>`,
       pixelOffset: new google.maps.Size(0, -5),
       disableAutoPan: true,
       closeButton: false,
@@ -158,7 +158,7 @@ onMounted(() => {
 <style scoped>
 .service-area-section {
   padding: 6rem 0;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .container {
@@ -175,9 +175,9 @@ onMounted(() => {
 .section-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -185,7 +185,7 @@ onMounted(() => {
 
 .section-header p {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -201,8 +201,8 @@ onMounted(() => {
   max-width: 800px;
   height: 500px;
   border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  background-color: #f8fafc;
+  box-shadow: 0 4px 6px var(--transparent-black);
+  background-color: var(--bg-secondary);
   position: relative;
   overflow: hidden;
 }

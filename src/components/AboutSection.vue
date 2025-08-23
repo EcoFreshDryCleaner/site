@@ -97,7 +97,7 @@
 <style scoped>
 .about {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--bg-secondary);
 }
 
 .container {
@@ -114,9 +114,9 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -124,7 +124,7 @@
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -147,9 +147,9 @@
   display: flex;
   gap: 1.5rem;
   padding: 2rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--transparent-black);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -157,7 +157,7 @@
 
 .about-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 
 .item-icon {
@@ -168,9 +168,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 12px;
-  color: white;
+  color: var(--text-white);
 }
 
 .item-icon svg {
@@ -180,12 +180,12 @@
 .item-content h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .item-content p {
-  color: #64748b;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
@@ -197,11 +197,11 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--transparent-black);
   transition: transform 0.3s ease;
 }
 
@@ -212,13 +212,13 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: var(--primary-blue);
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 500;
 }
 

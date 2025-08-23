@@ -94,15 +94,15 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--overlay-light);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-light);
   transition: all 0.3s ease;
 }
 
 .navigation.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: var(--overlay-light);
+  box-shadow: 0 2px 20px var(--shadow-light);
 }
 
 .nav-container {
@@ -125,7 +125,7 @@ onUnmounted(() => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -133,7 +133,7 @@ onUnmounted(() => {
 
 .brand-tagline {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -145,7 +145,7 @@ onUnmounted(() => {
 
 .nav-link {
   text-decoration: none;
-  color: #4a5568;
+  color: var(--text-secondary);
   font-weight: 500;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -154,11 +154,11 @@ onUnmounted(() => {
 }
 
 .nav-link:hover {
-  color: #3b82f6;
+  color: var(--primary-blue);
 }
 
 .nav-link.active {
-  color: #3b82f6;
+  color: var(--primary-blue);
 }
 
 .nav-link::after {
@@ -168,7 +168,7 @@ onUnmounted(() => {
   left: 50%;
   right: 50%;
   height: 2px;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 1px;
   transition: all 0.3s ease;
   opacity: 0;
@@ -206,14 +206,14 @@ onUnmounted(() => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 .menu-toggle {
@@ -229,7 +229,7 @@ onUnmounted(() => {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background: #4a5568;
+  background: var(--text-secondary);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -252,12 +252,12 @@ onUnmounted(() => {
     top: 70px;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--overlay-light);
     backdrop-filter: blur(10px);
     flex-direction: column;
     gap: 0;
     padding: 2rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-light);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
@@ -274,7 +274,7 @@ onUnmounted(() => {
     padding: 1rem 2rem;
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--transparent-black);
   }
 
   .nav-link:last-child {

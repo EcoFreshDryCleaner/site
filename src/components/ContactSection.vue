@@ -134,7 +134,7 @@ const openMap = () => {
 <style scoped>
 .contact {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: var(--bg-secondary);
 }
 
 .container {
@@ -151,9 +151,9 @@ const openMap = () => {
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -161,7 +161,7 @@ const openMap = () => {
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -184,9 +184,9 @@ const openMap = () => {
   display: flex;
   gap: 1.5rem;
   padding: 2rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--transparent-black);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -194,7 +194,7 @@ const openMap = () => {
 
 .info-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 
 .info-icon {
@@ -205,9 +205,9 @@ const openMap = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 12px;
-  color: white;
+  color: var(--text-white);
 }
 
 .info-icon svg {
@@ -217,27 +217,27 @@ const openMap = () => {
 .info-content h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
 
 .info-content p {
-  color: #4a5568;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0 0 0.5rem 0;
 }
 
 .info-note {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-style: italic;
 }
 
 .contact-form {
-  background: white;
+  background: var(--bg-primary);
   padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--transparent-black);
 }
 
 .form {
@@ -254,7 +254,7 @@ const openMap = () => {
 
 .form-group label {
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-primary);
   font-size: 0.95rem;
 }
 
@@ -262,19 +262,19 @@ const openMap = () => {
 .form-group select,
 .form-group textarea {
   padding: 1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-medium);
   border-radius: 12px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--shadow-primary);
 }
 
 .form-group textarea {
@@ -294,7 +294,7 @@ const openMap = () => {
   gap: 0.75rem;
   cursor: pointer;
   font-size: 0.9rem;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .checkbox-label input[type='checkbox'] {
@@ -304,15 +304,15 @@ const openMap = () => {
 .checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-medium);
   border-radius: 4px;
   position: relative;
   transition: all 0.3s ease;
 }
 
 .checkbox-label input[type='checkbox']:checked + .checkmark {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
 }
 
 .checkbox-label input[type='checkbox']:checked + .checkmark::after {
@@ -321,7 +321,7 @@ const openMap = () => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: var(--text-white);
   font-size: 0.8rem;
   font-weight: bold;
 }
@@ -340,14 +340,14 @@ const openMap = () => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 .btn-primary:disabled {
@@ -357,13 +357,13 @@ const openMap = () => {
 
 .btn-secondary {
   background: transparent;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
 }
 
 .btn-secondary:hover {
-  background: #3b82f6;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-white);
   transform: translateY(-2px);
 }
 

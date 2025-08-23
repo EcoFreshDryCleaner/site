@@ -172,9 +172,9 @@ onMounted(() => {
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -182,7 +182,7 @@ onMounted(() => {
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #64748b;
+  color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -197,8 +197,8 @@ onMounted(() => {
 .loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid #f3f4f6;
-  border-top: 4px solid #3b82f6;
+  border: 4px solid var(--bg-secondary);
+  border-top: 4px solid var(--primary-blue);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
@@ -214,7 +214,7 @@ onMounted(() => {
 }
 
 .loading-state p {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 1.1rem;
 }
 
@@ -222,7 +222,7 @@ onMounted(() => {
 .error-state {
   text-align: center;
   padding: 4rem 0;
-  color: #ef4444;
+  color: var(--error);
 }
 
 .error-state p {
@@ -234,7 +234,7 @@ onMounted(() => {
 .empty-state {
   text-align: center;
   padding: 4rem 0;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .empty-state p {
@@ -249,10 +249,10 @@ onMounted(() => {
 }
 
 .promotion-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--transparent-black);
   border: 2px solid transparent;
   transition: all 0.3s ease;
   position: relative;
@@ -261,13 +261,13 @@ onMounted(() => {
 
 .promotion-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px var(--shadow-light);
 }
 
 .promotion-card.featured {
-  border-color: #3b82f6;
+  border-color: var(--primary-blue);
   transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 20px 40px var(--shadow-primary);
 }
 
 .promotion-card.featured:hover {
@@ -278,8 +278,8 @@ onMounted(() => {
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--text-white);
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
   font-weight: 600;
@@ -300,15 +300,15 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 12px;
-  color: white;
+  color: var(--text-white);
 }
 
 .promotion-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-primary);
 }
 
 .promotion-content {
@@ -316,7 +316,7 @@ onMounted(() => {
 }
 
 .promotion-description {
-  color: #64748b;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -329,7 +329,7 @@ onMounted(() => {
 }
 
 .original-price {
-  color: #a0aec0;
+  color: var(--text-light);
   text-decoration: line-through;
   font-size: 1.1rem;
 }
@@ -337,12 +337,12 @@ onMounted(() => {
 .discount-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #48bb78;
+  color: var(--accent-green);
 }
 
 .discount-percentage {
-  background: #48bb78;
-  color: white;
+  background: var(--accent-green);
+  color: var(--text-white);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -364,12 +364,12 @@ onMounted(() => {
   align-items: center;
   gap: 0.75rem;
   padding: 0.25rem 0;
-  color: #4a5568;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .check-icon {
-  color: #48bb78;
+  color: var(--accent-green);
   font-weight: bold;
   font-size: 1rem;
 }
@@ -384,7 +384,7 @@ onMounted(() => {
 
 .expiry-info {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -395,7 +395,7 @@ onMounted(() => {
 }
 
 .expiry-date {
-  color: #e53e3e;
+  color: var(--error);
   font-weight: 600;
 }
 
@@ -419,38 +419,38 @@ onMounted(() => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 .btn-secondary {
-  background: white;
-  color: #3b82f6;
-  border: 2px solid white;
+  background: var(--bg-primary);
+  color: var(--primary-blue);
+  border: 2px solid var(--bg-primary);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
 }
 
 .btn-secondary:hover {
-  background: #f8fafc;
-  color: #3b82f6;
+  background: var(--bg-secondary);
+  color: var(--primary-blue);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
 .promotions-cta {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 20px;
   padding: 3rem;
   text-align: center;
-  color: white;
+  color: var(--text-white);
 }
 
 .cta-content h3 {

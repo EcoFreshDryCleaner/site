@@ -100,7 +100,7 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
-  color: #1a202c;
+  color: var(--text-primary);
   overflow-x: hidden;
 }
 
@@ -125,8 +125,8 @@ html {
 
 /* Footer styles */
 .footer {
-  background: #1a202c;
-  color: white;
+  background: var(--bg-dark);
+  color: var(--text-white);
   padding: 4rem 0 2rem;
 }
 
@@ -147,14 +147,14 @@ html {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .footer-description {
-  color: #a0aec0;
+  color: var(--text-light);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -168,7 +168,7 @@ html {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -183,7 +183,7 @@ html {
 }
 
 .social-link:hover {
-  background: #3b82f6;
+  background: var(--primary-blue);
   transform: translateY(-2px);
 }
 
@@ -191,7 +191,7 @@ html {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #e2e8f0;
+  color: var(--border-medium);
 }
 
 .footer-links {
@@ -202,17 +202,17 @@ html {
 }
 
 .footer-links a {
-  color: #a0aec0;
+  color: var(--text-light);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #3b82f6;
+  color: var(--primary-blue);
 }
 
 .contact-info p {
-  color: #a0aec0;
+  color: var(--text-light);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -225,7 +225,7 @@ html {
 }
 
 .footer-bottom {
-  border-top: 1px solid #2d3748;
+  border-top: 1px solid var(--border-dark);
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
@@ -235,7 +235,7 @@ html {
 }
 
 .footer-bottom p {
-  color: #a0aec0;
+  color: var(--text-light);
   font-size: 0.9rem;
 }
 
@@ -245,14 +245,14 @@ html {
 }
 
 .footer-legal a {
-  color: #a0aec0;
+  color: var(--text-light);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .footer-legal a:hover {
-  color: #3b82f6;
+  color: var(--primary-blue);
 }
 
 /* Responsive design */
@@ -287,25 +287,25 @@ html {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
 }
 
 .btn-secondary:hover {
-  background: #3b82f6;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-white);
   transform: translateY(-2px);
 }
 
@@ -331,15 +331,15 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--gradient-hero);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  background: var(--gradient-secondary);
 }
 </style>

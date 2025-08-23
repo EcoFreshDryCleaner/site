@@ -107,7 +107,6 @@
                       <span>9:41</span>
                       <div class="status-icons">
                         <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
-                        <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
                         <span><FontAwesomeIcon :icon="['fas', 'battery-full']" /></span>
                       </div>
                     </div>
@@ -153,7 +152,6 @@
                     <div class="status-bar">
                       <span>9:41</span>
                       <div class="status-icons">
-                        <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
                         <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
                         <span><FontAwesomeIcon :icon="['fas', 'battery-full']" /></span>
                       </div>
@@ -223,8 +221,8 @@ const notifyComingSoon = (platform) => {
 <style scoped>
 .mobile-app {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
+  background: var(--gradient-hero);
+  color: var(--text-white);
   position: relative;
   overflow: hidden;
 }
@@ -270,7 +268,7 @@ const notifyComingSoon = (platform) => {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -302,7 +300,7 @@ const notifyComingSoon = (platform) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--transparent-white);
   border-radius: 12px;
   backdrop-filter: blur(10px);
 }
@@ -369,8 +367,8 @@ const notifyComingSoon = (platform) => {
   position: absolute;
   top: -8px;
   right: -8px;
-  background: #ffd700;
-  color: #1a202c;
+  background: var(--accent-yellow);
+  color: var(--text-primary);
   font-size: 0.7rem;
   font-weight: 600;
   padding: 2px 8px;
@@ -403,13 +401,13 @@ const notifyComingSoon = (platform) => {
 .store-label {
   font-size: 0.8rem;
   opacity: 0.8;
-  color: white;
+  color: var(--text-white);
 }
 
 .store-name {
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-white);
 }
 
 .qr-section {
@@ -423,14 +421,14 @@ const notifyComingSoon = (platform) => {
 .qr-placeholder {
   width: 100px;
   height: 100px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--transparent-white);
 }
 
 .qr-icon {
@@ -463,16 +461,16 @@ const notifyComingSoon = (platform) => {
   position: relative;
   width: 300px;
   height: 600px;
-  background: #1a202c;
+  background: var(--bg-dark);
   border-radius: 30px;
   padding: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px var(--overlay-dark);
 }
 
 .phone-screen {
   width: 100%;
   height: 100%;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 25px;
   overflow: hidden;
   position: relative;
@@ -490,8 +488,8 @@ const notifyComingSoon = (platform) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: white;
-  color: #1a202c;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   animation: screenSlide 6s infinite;
 }
 
@@ -517,8 +515,8 @@ const notifyComingSoon = (platform) => {
 }
 
 .screen-header {
-  background: #3b82f6;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-white);
   padding: 0.5rem 1rem;
 }
 
@@ -585,8 +583,8 @@ const notifyComingSoon = (platform) => {
 }
 
 .action-btn {
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   padding: 0.75rem;
   text-align: center;
@@ -596,7 +594,7 @@ const notifyComingSoon = (platform) => {
 }
 
 .action-btn:hover {
-  background: #edf2f7;
+  background: var(--bg-secondary);
 }
 
 .action-icon {
@@ -616,8 +614,8 @@ const notifyComingSoon = (platform) => {
 }
 
 .status-card {
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   padding: 0.75rem;
 }
@@ -635,14 +633,14 @@ const notifyComingSoon = (platform) => {
 }
 
 .status-text {
-  color: #3b82f6;
+  color: var(--primary-blue);
   font-weight: 600;
 }
 
 .progress-bar {
   width: 100%;
   height: 4px;
-  background: #e2e8f0;
+  background: var(--border-medium);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -650,7 +648,7 @@ const notifyComingSoon = (platform) => {
 .progress-fill {
   width: 60%;
   height: 100%;
-  background: #3b82f6;
+  background: var(--primary-blue);
   border-radius: 2px;
   animation: progress 3s infinite;
 }
@@ -682,12 +680,12 @@ const notifyComingSoon = (platform) => {
 .form-field label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .date-picker {
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   padding: 0.75rem;
   font-size: 0.9rem;
@@ -701,8 +699,8 @@ const notifyComingSoon = (platform) => {
 
 .service-option {
   flex: 1;
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   padding: 0.5rem;
   text-align: center;
@@ -712,9 +710,9 @@ const notifyComingSoon = (platform) => {
 }
 
 .service-option.selected {
-  background: #3b82f6;
-  color: white;
-  border-color: #3b82f6;
+  background: var(--primary-blue);
+  color: var(--text-white);
+  border-color: var(--primary-blue);
 }
 
 .item-counter {
@@ -722,8 +720,8 @@ const notifyComingSoon = (platform) => {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   padding: 0.75rem;
 }
@@ -731,8 +729,8 @@ const notifyComingSoon = (platform) => {
 .counter-btn {
   width: 30px;
   height: 30px;
-  background: #3b82f6;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -756,18 +754,18 @@ const notifyComingSoon = (platform) => {
 }
 
 .stat-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--transparent-white);
   padding: 2rem;
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--transparent-white);
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -1,0 +1,61 @@
+:root {
+  /* Primary Colors */
+  --primary-blue: #3b82f6;
+  --primary-blue-dark: #1d4ed8;
+  --primary-blue-light: #60a5fa;
+
+  /* Secondary Colors */
+  --secondary-purple: #5a67d8;
+  --secondary-purple-dark: #6b46c1;
+
+  /* Neutral Colors */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-light: #a0aec0;
+  --text-white: #ffffff;
+
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --bg-dark: #1a202c;
+  --bg-dark-secondary: #2d3748;
+
+  /* Border Colors */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-medium: #e2e8f0;
+  --border-dark: #2d3748;
+
+  /* Accent Colors */
+  --accent-green: #10b981;
+  --accent-yellow: #f59e0b;
+  --accent-red: #ef4444;
+
+  /* Gradient Colors */
+  --gradient-primary: linear-gradient(45deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--secondary-purple) 0%,
+    var(--secondary-purple-dark) 100%
+  );
+
+  /* Shadow Colors */
+  --shadow-primary: rgba(59, 130, 246, 0.3);
+  --shadow-primary-hover: rgba(59, 130, 246, 0.4);
+  --shadow-light: rgba(0, 0, 0, 0.1);
+
+  /* Overlay Colors */
+  --overlay-light: rgba(255, 255, 255, 0.95);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: var(--primary-blue);
+
+  /* Transparent Colors */
+  --transparent-white: rgba(255, 255, 255, 0.1);
+  --transparent-black: rgba(0, 0, 0, 0.05);
+}
