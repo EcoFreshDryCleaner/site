@@ -138,7 +138,7 @@ site/
 
 The project uses a consistent color scheme defined in CSS variables. Main colors:
 
-- Primary: `#667eea` to `#764ba2` (gradient)
+- Primary: `#3b82f6` to `#1d4ed8` (gradient)
 - Text: `#1a202c`
 - Secondary text: `#64748b`
 

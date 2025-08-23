@@ -59,7 +59,7 @@ const scrollToSection = (sectionId) => {
 <style scoped>
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   padding: 2rem 0;
@@ -139,7 +139,7 @@ const scrollToSection = (sectionId) => {
 
 .btn-primary {
   background: linear-gradient(45deg, #ffd700, #ffed4e);
-  color: #333;
+  color: #3b82f6;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -156,7 +156,7 @@ const scrollToSection = (sectionId) => {
 
 .btn-secondary:hover {
   background: white;
-  color: #667eea;
+  color: #3b82f6;
   transform: translateY(-2px);
 }
 

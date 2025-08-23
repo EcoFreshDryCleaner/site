@@ -207,7 +207,7 @@ const selectService = (service) => {
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -247,9 +247,9 @@ const selectService = (service) => {
 }
 
 .pricing-card.featured {
-  border-color: #667eea;
+  border-color: #3b82f6;
   transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
 }
 
 .pricing-card.featured:hover {
@@ -274,14 +274,14 @@ const selectService = (service) => {
 
 .currency {
   font-size: 1.5rem;
-  color: #667eea;
+  color: #3b82f6;
   font-weight: 600;
 }
 
 .amount {
   font-size: 3rem;
   font-weight: 700;
-  color: #667eea;
+  color: #3b82f6;
   line-height: 1;
 }
 
@@ -338,21 +338,21 @@ const selectService = (service) => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .featured-badge {
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
   color: white;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;

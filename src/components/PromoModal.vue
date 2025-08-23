@@ -1,27 +1,36 @@
 <template>
   <Transition name="modal">
-    <div v-if="isVisible" class="promo-modal-overlay" @click="handleOverlayClick">
+    <div v-if="isVisible && modalPromotion" class="promo-modal-overlay" @click="handleOverlayClick">
       <div class="promo-modal" @click.stop>
-        <button v-if="config.dismissible" class="close-btn" @click="closeModal">
+        <button
+          v-if="modalPromotion.modalConfig?.dismissible !== false"
+          class="close-btn"
+          @click="closeModal"
+        >
           <FontAwesomeIcon :icon="['fas', 'times']" />
         </button>
 
         <div class="promo-content">
-          <div class="promo-image">
-            <img :src="config.image" :alt="config.title" />
+          <div class="promo-image" v-if="modalPromotion.modalConfig?.image">
+            <img :src="modalPromotion.modalConfig.image" :alt="modalPromotion.title" />
           </div>
 
           <div class="promo-text">
-            <h2 class="promo-title">{{ config.title }}</h2>
-            <h3 class="promo-subtitle">{{ config.subtitle }}</h3>
-            <p class="promo-description">{{ config.description }}</p>
+            <h2 class="promo-title">{{ modalPromotion.title }}</h2>
+            <p class="promo-description">{{ modalPromotion.description }}</p>
 
             <div class="promo-actions">
-              <button class="promo-btn primary" @click="handlePrimaryAction">
-                {{ config.buttonText }}
+              <button class="promo-btn primary" @click="handlePrimaryAction" :disabled="loading">
+                {{
+                  loading ? 'Loading...' : modalPromotion.modalConfig?.buttonText || 'Claim Offer'
+                }}
               </button>
-              <button v-if="config.dismissible" class="promo-btn secondary" @click="closeModal">
-                {{ config.closeText }}
+              <button
+                v-if="modalPromotion.modalConfig?.dismissible !== false"
+                class="promo-btn secondary"
+                @click="closeModal"
+              >
+                {{ modalPromotion.modalConfig?.closeText || 'Maybe Later' }}
               </button>
             </div>
           </div>
@@ -34,47 +43,37 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { getModalPromotion } from '../services/firestoreService'
 
 const isVisible = ref(false)
-const config = ref({
-  enabled: true,
-  delay: 2000,
-  title: 'Special Offer!',
-  subtitle: 'Get 20% off your first order',
-  description:
-    'New customers get 20% off their first dry cleaning order. Use code WELCOME20 at checkout.',
-  image: 'https://picsum.photos/400/300?random=1',
-  buttonText: 'Get Started',
-  buttonLink: '#mobile-app',
-  closeText: 'Maybe Later',
-  backgroundColor: '#667eea',
-  textColor: '#ffffff',
-  showOnMobile: true,
-  dismissible: true,
-  showOnce: true,
-})
+const loading = ref(false)
+const modalPromotion = ref(null)
 
 const emit = defineEmits(['scrollToSection'])
 
-const loadConfig = async () => {
+const loadModalPromotion = async () => {
   try {
-    const response = await fetch('/site/promo-config.json')
-    const data = await response.json()
-    config.value = { ...config.value, ...data }
+    loading.value = true
+    const promotion = await getModalPromotion()
+    modalPromotion.value = promotion
   } catch (error) {
-    console.warn('Could not load promo config, using defaults:', error)
+    console.warn('Could not load modal promotion from Firestore:', error)
+    modalPromotion.value = null
+  } finally {
+    loading.value = false
   }
 }
 
 const shouldShowModal = () => {
-  if (!config.value.enabled) return false
+  if (!modalPromotion.value || !modalPromotion.value.active) return false
 
   // Check if we should show on mobile
-  if (!config.value.showOnMobile && window.innerWidth < 768) return false
+  if (modalPromotion.value.modalConfig?.showOnMobile === false && window.innerWidth < 768)
+    return false
 
   // Check if already shown once
-  if (config.value.showOnce) {
-    const hasShown = localStorage.getItem('promo-shown')
+  if (modalPromotion.value.modalConfig?.showOnce) {
+    const hasShown = localStorage.getItem(`promo-shown-${modalPromotion.value.id}`)
     if (hasShown) return false
   }
 
@@ -84,8 +83,8 @@ const shouldShowModal = () => {
 const showModal = () => {
   if (shouldShowModal()) {
     isVisible.value = true
-    if (config.value.showOnce) {
-      localStorage.setItem('promo-shown', 'true')
+    if (modalPromotion.value.modalConfig?.showOnce) {
+      localStorage.setItem(`promo-shown-${modalPromotion.value.id}`, 'true')
     }
   }
 }
@@ -95,26 +94,30 @@ const closeModal = () => {
 }
 
 const handleOverlayClick = () => {
-  if (config.value.dismissible) {
+  if (modalPromotion.value.modalConfig?.dismissible !== false) {
     closeModal()
   }
 }
 
 const handlePrimaryAction = () => {
-  if (config.value.buttonLink.startsWith('#')) {
-    const sectionId = config.value.buttonLink.substring(1)
+  if (
+    modalPromotion.value.modalConfig?.buttonLink &&
+    modalPromotion.value.modalConfig.buttonLink.startsWith('#')
+  ) {
+    const sectionId = modalPromotion.value.modalConfig.buttonLink.substring(1)
     emit('scrollToSection', sectionId)
-  } else {
-    window.open(config.value.buttonLink, '_blank')
+  } else if (modalPromotion.value.modalConfig?.buttonLink) {
+    window.open(modalPromotion.value.modalConfig.buttonLink, '_blank')
   }
   closeModal()
 }
 
 onMounted(async () => {
-  await loadConfig()
+  await loadModalPromotion()
 
   if (shouldShowModal()) {
-    setTimeout(showModal, config.value.delay)
+    const delay = modalPromotion.value?.modalConfig?.delay || 3000
+    setTimeout(showModal, delay)
   }
 })
 </script>
@@ -197,13 +200,6 @@ onMounted(async () => {
   color: #1a202c;
 }
 
-.promo-subtitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #667eea;
-}
-
 .promo-description {
   font-size: 1rem;
   line-height: 1.6;
@@ -230,25 +226,31 @@ onMounted(async () => {
   text-align: center;
 }
 
-.promo-btn.primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+.promo-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
-.promo-btn.primary:hover {
+.promo-btn.primary {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.promo-btn.primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .promo-btn.secondary {
   background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
 }
 
 .promo-btn.secondary:hover {
-  background: #667eea;
+  background: #3b82f6;
   color: white;
   transform: translateY(-2px);
 }
@@ -284,10 +286,6 @@ onMounted(async () => {
     font-size: 1.5rem;
   }
 
-  .promo-subtitle {
-    font-size: 1.1rem;
-  }
-
   .promo-description {
     font-size: 0.95rem;
   }
@@ -309,10 +307,6 @@ onMounted(async () => {
 
   .promo-title {
     font-size: 1.25rem;
-  }
-
-  .promo-subtitle {
-    font-size: 1rem;
   }
 
   .promo-description {

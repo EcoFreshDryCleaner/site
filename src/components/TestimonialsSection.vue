@@ -152,7 +152,7 @@ const testimonials = ref([
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -205,7 +205,7 @@ const testimonials = ref([
 .customer-avatar {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -233,12 +233,12 @@ const testimonials = ref([
 }
 
 .star.filled {
-  color: #fbbf24;
+  color: #3b82f6;
 }
 
 .quote-icon {
   font-size: 3rem;
-  color: #667eea;
+  color: #3b82f6;
   opacity: 0.3;
   line-height: 1;
   margin-top: -0.5rem;
@@ -287,7 +287,7 @@ const testimonials = ref([
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: #3b82f6;
   margin-bottom: 0.5rem;
 }
 

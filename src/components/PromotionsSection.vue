@@ -8,7 +8,20 @@
         </p>
       </div>
 
-      <div class="promotions-grid">
+      <!-- Loading State -->
+      <div v-if="loading" class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading promotions...</p>
+      </div>
+
+      <!-- Error State -->
+      <div v-else-if="error" class="error-state">
+        <p>Unable to load promotions. Please try again later.</p>
+        <button class="btn btn-primary" @click="loadPromotions">Retry</button>
+      </div>
+
+      <!-- Promotions Grid -->
+      <div v-else-if="promotions.length > 0" class="promotions-grid">
         <div
           class="promotion-card"
           v-for="promotion in promotions"
@@ -26,18 +39,23 @@
 
           <div class="promotion-content">
             <p class="promotion-description">{{ promotion.description }}</p>
-            <div class="promotion-offer">
+            <div class="promotion-offer" v-if="promotion.originalPrice || promotion.discountPrice">
               <span class="original-price" v-if="promotion.originalPrice"
                 >${{ promotion.originalPrice }}</span
               >
-              <span class="discount-price">${{ promotion.discountPrice }}</span>
+              <span class="discount-price" v-if="promotion.discountPrice"
+                >${{ promotion.discountPrice }}</span
+              >
               <span class="discount-percentage" v-if="promotion.discountPercentage"
                 >{{ promotion.discountPercentage }} OFF</span
               >
             </div>
           </div>
 
-          <div class="promotion-features" v-if="promotion.features">
+          <div
+            class="promotion-features"
+            v-if="promotion.features && promotion.features.length > 0"
+          >
             <ul class="features-list">
               <li v-for="feature in promotion.features" :key="feature" class="feature-item">
                 <span class="check-icon">✓</span>
@@ -51,11 +69,22 @@
               <span class="expiry-label">Expires:</span>
               <span class="expiry-date">{{ promotion.expiryDate }}</span>
             </div>
-            <button class="btn btn-primary" @click="claimOffer(promotion)">
-              {{ promotion.featured ? 'Claim Now' : 'Get Offer' }}
+            <button class="btn btn-primary" @click="claimOffer(promotion)" :disabled="claiming">
+              {{
+                claiming
+                  ? 'Claiming...'
+                  : promotion.featured
+                    ? 'Claim Now'
+                    : promotion.modalConfig?.buttonText || 'Get Offer'
+              }}
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Empty State -->
+      <div v-else class="empty-state">
+        <p>No active promotions at the moment. Check back soon for new offers!</p>
       </div>
 
       <div class="promotions-cta">
@@ -72,74 +101,55 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { getPromotions, trackPromotionClaim } from '../services/firestoreService'
 
-const promotions = ref([
-  {
-    id: 1,
-    title: 'Bulk Order Discount',
-    description: 'Save big when you order 10+ items. Perfect for families and businesses.',
-    icon: '📦',
-    originalPrice: '129.90',
-    discountPrice: '99.90',
-    discountPercentage: '23%',
-    features: [
-      'Minimum 10 items',
-      'Free pickup & delivery',
-      'Same-day service available',
-      'Premium care included',
-    ],
-    expiryDate: 'Dec 31, 2024',
-    featured: true,
-    badge: 'Most Popular',
-  },
-  {
-    id: 2,
-    title: 'Student Discount',
-    description: 'Special pricing for students with valid ID. Keep your professional attire fresh.',
-    icon: '🎓',
-    originalPrice: '12.99',
-    discountPrice: '9.99',
-    discountPercentage: '23%',
-    features: [
-      'Valid student ID required',
-      'All service levels included',
-      'Free pickup & delivery',
-      '24-hour turnaround',
-    ],
-    expiryDate: 'Ongoing',
-    featured: false,
-  },
-  {
-    id: 3,
-    title: 'Weekend Special',
-    description: 'Drop off on Friday, get your clothes back by Monday morning.',
-    icon: '📅',
-    originalPrice: '15.99',
-    discountPrice: '12.99',
-    discountPercentage: '19%',
-    features: [
-      'Friday drop-off only',
-      'Monday delivery guaranteed',
-      'Premium care included',
-      'Perfect for weekend prep',
-    ],
-    expiryDate: 'Every Friday',
-    featured: false,
-  },
-])
+const promotions = ref([])
+const loading = ref(true)
+const error = ref(false)
+const claiming = ref(false)
 
 const emit = defineEmits(['scrollToSection'])
 
-const claimOffer = (promotion) => {
-  console.log('Claiming offer:', promotion.title)
-  // Handle offer claiming logic
-  scrollToSection('mobile-app')
+const loadPromotions = async () => {
+  try {
+    loading.value = true
+    error.value = false
+    const data = await getPromotions()
+    promotions.value = data
+  } catch (err) {
+    console.error('Error loading promotions:', err)
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+const claimOffer = async (promotion) => {
+  try {
+    claiming.value = true
+    console.log('Claiming offer:', promotion.title)
+
+    // Track the claim in Firestore
+    await trackPromotionClaim(promotion.id)
+
+    // Handle offer claiming logic
+    scrollToSection('mobile-app')
+  } catch (err) {
+    console.error('Error claiming offer:', err)
+    // You could show a toast notification here
+  } finally {
+    claiming.value = false
+  }
 }
 
 const scrollToSection = (sectionId) => {
   emit('scrollToSection', sectionId)
 }
+
+onMounted(() => {
+  loadPromotions()
+})
 </script>
 
 <style scoped>
@@ -164,7 +174,7 @@ const scrollToSection = (sectionId) => {
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -176,6 +186,59 @@ const scrollToSection = (sectionId) => {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f4f6;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 4rem 0;
+  color: #ef4444;
+}
+
+.error-state p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 0;
+  color: #64748b;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
 }
 
 .promotions-grid {
@@ -202,9 +265,9 @@ const scrollToSection = (sectionId) => {
 }
 
 .promotion-card.featured {
-  border-color: #667eea;
+  border-color: #3b82f6;
   transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
 }
 
 .promotion-card.featured:hover {
@@ -215,7 +278,7 @@ const scrollToSection = (sectionId) => {
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
   color: white;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
@@ -237,7 +300,7 @@ const scrollToSection = (sectionId) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border-radius: 12px;
   color: white;
 }
@@ -349,20 +412,26 @@ const scrollToSection = (sectionId) => {
   text-align: center;
 }
 
-.btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
-.btn-primary:hover {
+.btn-primary {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {
   background: white;
-  color: #667eea;
+  color: #3b82f6;
   border: 2px solid white;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   padding: 1rem 2.5rem;
@@ -371,13 +440,13 @@ const scrollToSection = (sectionId) => {
 
 .btn-secondary:hover {
   background: #f8fafc;
-  color: #667eea;
+  color: #3b82f6;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
 .promotions-cta {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border-radius: 20px;
   padding: 3rem;
   text-align: center;

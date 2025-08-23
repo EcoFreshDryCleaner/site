@@ -17,7 +17,10 @@
             <div class="item-content">
               <h3>Eco-Friendly Solutions</h3>
               <p>
-                At EcoFresh Drycleaners, with 20 plus years of service we believe fresh clothes shouldn't cost the earth. Our eco-friendly cleaning uses gentle, biodegradable solutions and energy-smart technology to keep your garments—and our planet—looking their best.
+                At EcoFresh Drycleaners, with 20 plus years of service we believe fresh clothes
+                shouldn't cost the earth. Our eco-friendly cleaning uses gentle, biodegradable
+                solutions and energy-smart technology to keep your garments—and our planet—looking
+                their best.
               </p>
             </div>
           </div>
@@ -29,7 +32,10 @@
             <div class="item-content">
               <h3>Care & Precision</h3>
               <p>
-                Whether it's your favorite shirt or your most treasured suit, we treat every piece with care, precision, and a whole lot of love for the environment. Every detail—down to the final press—is executed with precision, ensuring your wardrobe remains as timeless as your style.
+                Whether it's your favorite shirt or your most treasured suit, we treat every piece
+                with care, precision, and a whole lot of love for the environment. Every detail—down
+                to the final press—is executed with precision, ensuring your wardrobe remains as
+                timeless as your style.
               </p>
             </div>
           </div>
@@ -110,7 +116,7 @@
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -162,7 +168,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border-radius: 12px;
   color: white;
 }
@@ -206,7 +212,7 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: #3b82f6;
   margin-bottom: 0.5rem;
 }
 

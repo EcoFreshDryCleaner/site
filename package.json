@@ -12,7 +12,10 @@
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "seed:promotions": "node scripts/seed-promotions.js",
+    "seed:promotions:clear": "node scripts/seed-promotions.js --clear",
+    "seed:promotions:help": "node scripts/seed-promotions.js --help"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
@@ -20,6 +23,7 @@
     "@fortawesome/free-regular-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/vue-fontawesome": "^3.1.1",
+    "firebase": "^12.1.0",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },

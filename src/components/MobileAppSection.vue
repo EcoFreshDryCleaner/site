@@ -223,7 +223,7 @@ const notifyComingSoon = (platform) => {
 <style scoped>
 .mobile-app {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -517,7 +517,7 @@ const notifyComingSoon = (platform) => {
 }
 
 .screen-header {
-  background: #667eea;
+  background: #3b82f6;
   color: white;
   padding: 0.5rem 1rem;
 }
@@ -635,7 +635,7 @@ const notifyComingSoon = (platform) => {
 }
 
 .status-text {
-  color: #667eea;
+  color: #3b82f6;
   font-weight: 600;
 }
 
@@ -650,7 +650,7 @@ const notifyComingSoon = (platform) => {
 .progress-fill {
   width: 60%;
   height: 100%;
-  background: #667eea;
+  background: #3b82f6;
   border-radius: 2px;
   animation: progress 3s infinite;
 }
@@ -712,9 +712,9 @@ const notifyComingSoon = (platform) => {
 }
 
 .service-option.selected {
-  background: #667eea;
+  background: #3b82f6;
   color: white;
-  border-color: #667eea;
+  border-color: #3b82f6;
 }
 
 .item-counter {
@@ -731,7 +731,7 @@ const notifyComingSoon = (platform) => {
 .counter-btn {
   width: 30px;
   height: 30px;
-  background: #667eea;
+  background: #3b82f6;
   color: white;
   border-radius: 50%;
   display: flex;

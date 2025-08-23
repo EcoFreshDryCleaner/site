@@ -125,7 +125,7 @@ onUnmounted(() => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -154,11 +154,11 @@ onUnmounted(() => {
 }
 
 .nav-link:hover {
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .nav-link.active {
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .nav-link::after {
@@ -168,7 +168,7 @@ onUnmounted(() => {
   left: 50%;
   right: 50%;
   height: 2px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border-radius: 1px;
   transition: all 0.3s ease;
   opacity: 0;
@@ -206,14 +206,14 @@ onUnmounted(() => {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .menu-toggle {

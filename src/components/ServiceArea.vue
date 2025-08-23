@@ -34,30 +34,30 @@ const initMap = () => {
     { lat: 35.33, lng: -80.75 }, // Northeast
     { lat: 35.33, lng: -80.65 }, // East
     { lat: 35.33, lng: -80.55 }, // Southeast
-    { lat: 35.33, lng: -80.50 }, // East boundary
+    { lat: 35.33, lng: -80.5 }, // East boundary
 
     // Smooth curve down to southeast - no sharp angles
-    { lat: 35.30, lng: -80.48 }, // Southeast extension
+    { lat: 35.3, lng: -80.48 }, // Southeast extension
     { lat: 35.26, lng: -80.45 }, // Southeast curve
     { lat: 35.23, lng: -80.42 }, // Southeast curve
-    { lat: 35.20, lng: -80.45 }, // Southeast curve
-    { lat: 35.18, lng: -80.50 }, // South boundary
+    { lat: 35.2, lng: -80.45 }, // Southeast curve
+    { lat: 35.18, lng: -80.5 }, // South boundary
 
     // Smooth curve to southwest - continuous flow
     { lat: 35.16, lng: -80.55 }, // Southwest curve
     { lat: 35.13, lng: -80.65 }, // Southwest curve
-    { lat: 35.10, lng: -80.75 }, // Southwest curve
+    { lat: 35.1, lng: -80.75 }, // Southwest curve
     { lat: 35.08, lng: -80.85 }, // Southwest extension
-    { lat: 35.10, lng: -80.90 }, // Southwest curve
+    { lat: 35.1, lng: -80.9 }, // Southwest curve
     { lat: 35.13, lng: -80.92 }, // Southwest curve
     { lat: 35.16, lng: -80.95 }, // Southwest curve
     { lat: 35.18, lng: -80.95 }, // West boundary
 
     // Smooth curve back to northwest - no sharp turns
-    { lat: 35.20, lng: -80.97 }, // Northwest curve
+    { lat: 35.2, lng: -80.97 }, // Northwest curve
     { lat: 35.23, lng: -80.98 }, // Northwest curve
     { lat: 35.26, lng: -80.98 }, // Northwest curve
-    { lat: 35.30, lng: -80.97 }, // Northwest curve
+    { lat: 35.3, lng: -80.97 }, // Northwest curve
     { lat: 35.33, lng: -80.96 }, // Northwest curve
   ]
 
@@ -86,10 +86,10 @@ const initMap = () => {
   // Create a polygon for the service area
   const serviceAreaPolygon = new google.maps.Polygon({
     paths: serviceAreaBoundaries,
-    strokeColor: '#667eea',
+    strokeColor: '#3b82f6',
     strokeOpacity: 0.8,
     strokeWeight: 3,
-    fillColor: '#667eea',
+    fillColor: '#3b82f6',
     fillOpacity: 0.1,
     map: map,
   })
@@ -104,7 +104,7 @@ const initMap = () => {
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
-        fillColor: '#667eea',
+        fillColor: '#3b82f6',
         fillOpacity: 1,
         strokeColor: '#ffffff',
         strokeWeight: 2,
@@ -113,7 +113,7 @@ const initMap = () => {
 
     // Create info window for the location name
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div style="color: #667eea; font-weight: 600; padding: 5px;">${location.name}</div>`,
+      content: `<div style="color: #3b82f6; font-weight: 600; padding: 5px;">${location.name}</div>`,
       pixelOffset: new google.maps.Size(0, -5),
       disableAutoPan: true,
       closeButton: false,
@@ -177,7 +177,7 @@ onMounted(() => {
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -206,8 +206,6 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
 }
-
-
 
 @media (max-width: 768px) {
   #map {
