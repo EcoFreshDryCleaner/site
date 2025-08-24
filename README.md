@@ -53,14 +53,6 @@ A modern, sleek, one-page Vue.js website for EcoFresh Dry Cleaner - an eco-frien
    npm install
    ```
 
-3. **Set up environment variables**
-
-   Create a `.env` file in the root directory and add your Google Maps API key:
-
-   ```
-   VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
-   ```
-
 ### Development
 
 ```bash
@@ -95,7 +87,7 @@ This command will:
 
 1. Build the project for production
 2. Deploy the `dist` folder to the `gh-pages` branch
-3. Make your site available at `https://yourusername.github.io/your-repo-name`
+3. Make your site available at `https://ecofreshdrycleaner.github.io/site`
 
 ### Manual Deployment
 
@@ -162,7 +154,7 @@ Update contact details in:
 For development questions or technical support, please contact:
 
 - **Developer**: Tanuj Siripurapu
-- **Email**: tanujsiripurapu@gmail.com
+- **Email**: dev@tanuj.xyz
 
 ---
 
