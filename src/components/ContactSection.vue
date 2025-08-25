@@ -56,7 +56,13 @@
         </div>
 
         <div class="contact-form">
-          <form action="https://formspree.io/f/manblwdz" method="POST" class="form">
+          <form
+            action="https://formkeep.com/f/6563620d882d"
+            accept-charset="UTF-8"
+            enctype="multipart/form-data"
+            class="form"
+            method="POST"
+          >
             <div class="form-group">
               <label for="name">Full Name *</label>
               <input
