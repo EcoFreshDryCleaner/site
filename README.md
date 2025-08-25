@@ -1,21 +1,42 @@
 # EcoFresh Dry Cleaner
 
-A modern, sleek, one-page Vue.js website for EcoFresh Dry Cleaner - an eco-friendly dry cleaning service. Built with Vue 3, Vite, and Font Awesome icons.
+A modern, responsive Vue.js website for EcoFresh Dry Cleaner - an eco-friendly dry cleaning service with free pickup and delivery. Built with Vue 3, Vite, and Firebase integration.
+
+## 🏢 About EcoFresh Dry Cleaner
+
+EcoFresh Dry Cleaner is a forward-thinking dry cleaning service committed to environmental sustainability and exceptional customer service. Our mission is to provide professional dry cleaning solutions while minimizing our ecological footprint.
+
+### What We Do
+
+- **Eco-Friendly Cleaning**: Use of environmentally safe cleaning solutions
+- **Free Pickup & Delivery**: Convenient service covering Maryland areas
+- **Professional Care**: Expert handling of delicate fabrics and garments
+- **Mobile App**: Easy scheduling and order management through our app
+
+### Why Choose Us
+
+- **Sustainability First**: Green cleaning practices that protect the environment
+- **Customer Convenience**: Free pickup and delivery service
+- **Quality Assurance**: Professional-grade cleaning with attention to detail
+- **Technology Driven**: Modern app-based ordering and tracking system
+
+This website serves as our digital storefront, showcasing our services, pricing, and commitment to eco-friendly practices while providing an easy way for customers to learn about our offerings and get in touch.
 
 ## 🌟 Features
 
 - **Modern Design**: Clean, professional interface with gradient backgrounds and smooth animations
-- **Responsive Layout**: Fully responsive design that works on all devices
+- **Responsive Layout**: Fully responsive design optimized for all devices
 - **Interactive Navigation**: Smooth scrolling navigation with active section highlighting
-- **Service Area Map**: Interactive Google Maps integration showing service coverage in Maryland
-- **Contact Form**: Formspree integration for easy customer inquiries
+- **Service Area Map**: Interactive Google Maps integration showing Maryland service coverage
+- **Contact Form**: Formspree integration for customer inquiries
 - **Mobile App Section**: Download links for iOS and Android apps
+- **Dynamic Promotions**: Firebase-powered promotional content management
 - **Font Awesome Icons**: Professional iconography throughout the site
 
-## 📱 Sections
+## 📱 Website Sections
 
 1. **Hero Section** - Main landing area with call-to-action
-2. **Promotions Section** - Current offers and deals
+2. **Promotions Section** - Dynamic offers and deals from Firebase
 3. **About Section** - Company information and eco-friendly practices
 4. **Pricing Section** - Service tiers and pricing
 5. **Testimonials Section** - Customer reviews and feedback
@@ -24,87 +45,54 @@ A modern, sleek, one-page Vue.js website for EcoFresh Dry Cleaner - an eco-frien
 
 ## 🛠️ Tech Stack
 
-- **Vue 3** - Progressive JavaScript framework
-- **Vite** - Fast build tool and dev server
-- **Font Awesome** - Professional icon library
-- **Google Maps API** - Interactive service area mapping
-- **Formspree** - Contact form handling
-- **CSS3** - Modern styling with gradients and animations
+- **Frontend**: Vue 3.5.18 with Composition API
+- **Build Tool**: Vite 7.0.6
+- **Styling**: CSS3 with custom properties and gradients
+- **Icons**: Font Awesome 7.0.0
+- **Backend**: Firebase 12.1.0 (Firestore)
+- **Maps**: Google Maps API integration
+- **Forms**: Formspree for contact handling
+- **Deployment**: GitHub Pages with gh-pages
 
-## 🚀 Getting Started
+## 🚀 Development
 
 ### Prerequisites
 
 - Node.js (^20.19.0 or >=22.12.0)
 - npm or yarn
 
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd site
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-### Development
+### Available Scripts
 
 ```bash
-# Start development server
-npm run dev
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Lint and fix code
+npm run format       # Format code with Prettier
+npm run deploy       # Deploy to GitHub Pages
 
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Lint and fix code
-npm run lint
-
-# Format code
-npm run format
+# Firebase data management
+npm run seed:promotions           # Seed promotions data
+npm run seed:promotions:clear     # Clear promotions data
+npm run seed:promotions:help      # Show seeding options
 ```
 
-## 🌐 Deployment
+### 🌐 Deployment
 
-### GitHub Pages
-
-This project is configured for easy deployment to GitHub Pages:
+### GitHub Pages (Recommended)
 
 ```bash
-# Deploy to GitHub Pages
 npm run deploy
 ```
 
-This command will:
-
-1. Build the project for production
-2. Deploy the `dist` folder to the `gh-pages` branch
-3. Make your site available at `https://ecofreshdrycleaner.github.io/site`
-
-### Manual Deployment
-
-1. **Build the project**
-
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy the `dist` folder** to your preferred hosting service
+This automatically builds and deploys to `https://ecofreshdrycleaner.github.io/site`
 
 ## 📁 Project Structure
 
 ```
 site/
 ├── src/
-│   ├── components/
+│   ├── components/           # Vue components
 │   │   ├── HeroSection.vue
 │   │   ├── AboutSection.vue
 │   │   ├── PricingSection.vue
@@ -113,48 +101,71 @@ site/
 │   │   ├── ContactSection.vue
 │   │   ├── MobileAppSection.vue
 │   │   ├── Navigation.vue
-│   │   └── ServiceArea.vue
-│   ├── router/
+│   │   ├── ServiceArea.vue
+│   │   └── PromoModal.vue
+│   ├── firebase/            # Firebase configuration
+│   │   └── config.js
+│   ├── services/            # Business logic
+│   │   └── firestoreService.js
+│   ├── router/              # Vue Router setup
 │   │   └── index.js
-│   ├── App.vue
-│   └── main.js
-├── public/
-├── index.html
-├── package.json
-└── README.md
+│   ├── styles/              # Global styles
+│   │   └── colors.css
+│   ├── App.vue              # Main app component
+│   └── main.js              # App entry point
+├── scripts/                  # Utility scripts
+│   ├── seed-promotions.js
+│   └── seed-script.md
+├── public/                   # Static assets
+└── package.json
 ```
 
-## 🎨 Customization
+## 🔧 Development
 
-### Colors and Styling
+### Code Quality
 
-The project uses a consistent color scheme defined in CSS variables. Main colors:
+- **ESLint**: Code linting with Vue-specific rules
+- **Prettier**: Code formatting
+- **Vue DevTools**: Development debugging
+
+### Firebase Integration
+
+The project uses Firebase Firestore for dynamic content:
+
+- **Promotions Management**: Dynamic promotional content
+- **Real-time Updates**: Live content updates
+- **Data Seeding**: Utility scripts for initial data setup
+
+### Customization
+
+#### Colors and Styling
+
+CSS variables in `src/styles/colors.css` control the theme:
 
 - Primary: `#3b82f6` to `#1d4ed8` (gradient)
 - Text: `#1a202c`
-- Secondary text: `#64748b`
+- Secondary: `#64748b`
 
-### Service Area
+#### Service Area
 
-Update the service area in `src/components/ServiceArea.vue`:
+Update `src/components/ServiceArea.vue`:
 
-- Modify the `cities` array with your service locations
-- Adjust the `serviceAreaBoundaries` for your coverage area
-- Update the map center and zoom level
+- Modify `cities` array for service locations
+- Adjust `serviceAreaBoundaries` for coverage area
+- Update map center and zoom level
 
-### Contact Information
+#### Contact Information
 
 Update contact details in:
 
 - `src/components/ContactSection.vue`
 - `src/App.vue` (footer section)
 
-## 📞 Dev Support
+## 📞 Support
 
-For development questions or technical support, please contact:
-
+- **Business Inquiries**: hello@ecofriendlydrycleaner.com
+- **Technical Support**: dev@tanuj.xyz
 - **Developer**: Tanuj Siripurapu
-- **Email**: dev@tanuj.xyz
 
 ---
 
