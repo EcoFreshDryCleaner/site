@@ -28,7 +28,7 @@ This website serves as our digital storefront, showcasing our services, pricing,
 - **Responsive Layout**: Fully responsive design optimized for all devices
 - **Interactive Navigation**: Smooth scrolling navigation with active section highlighting
 - **Service Area Map**: Interactive Google Maps integration showing Maryland service coverage
-- **Contact Form**: Formspree integration for customer inquiries
+- **Contact Form**: Formkeep integration for customer inquiries
 - **Mobile App Section**: Download links for iOS and Android apps
 - **Dynamic Promotions**: Firebase-powered promotional content management
 - **Font Awesome Icons**: Professional iconography throughout the site
@@ -51,7 +51,7 @@ This website serves as our digital storefront, showcasing our services, pricing,
 - **Icons**: Font Awesome 7.0.0
 - **Backend**: Firebase 12.1.0 (Firestore)
 - **Maps**: Google Maps API integration
-- **Forms**: Formspree for contact handling
+- **Forms**: Formkeep for contact handling
 - **Deployment**: GitHub Pages with gh-pages
 
 ## 🚀 Development
