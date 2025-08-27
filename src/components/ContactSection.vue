@@ -12,34 +12,78 @@
         <div class="contact-info">
           <div class="info-card">
             <div class="info-icon">
-              <FontAwesomeIcon :icon="['fas', 'phone']" />
-            </div>
-            <div class="info-content">
-              <h3>Call Us</h3>
-              <p>(555) 123-4567</p>
-              <span class="info-note">Mon-Fri: 8AM-6PM, Sat: 9AM-4PM</span>
-            </div>
-          </div>
-
-          <div class="info-card">
-            <div class="info-icon">
               <FontAwesomeIcon :icon="['fas', 'envelope']" />
             </div>
             <div class="info-content">
               <h3>Email Us</h3>
-              <p>hello@ecofriendlydrycleaner.com</p>
-              <span class="info-note">We respond within 2 hours</span>
+              <p>hello@ecofreshdrycleaner.com</p>
             </div>
           </div>
 
           <div class="info-card">
-            <div class="info-icon">
-              <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
-            </div>
             <div class="info-content">
-              <h3>Visit Us</h3>
-              <p>123 Green Street<br />Eco City, EC 12345</p>
-              <span class="info-note">Free parking available</span>
+              <div class="locations-header">
+                <div class="info-icon">
+                  <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
+                </div>
+                <h3>Our Locations</h3>
+              </div>
+              <div class="locations-list">
+                <div class="location-item">
+                  <div class="location-header">
+                    <div class="location-title">
+                      <strong>Mathews</strong>
+                      <span class="location-subtitle">Location</span>
+                    </div>
+                  </div>
+                  <div class="location-details">
+                    <div class="address">
+                      <FontAwesomeIcon :icon="['fas', 'home']" />
+                      <span>1115 A Mathews Mint Hill Rd<br />Mathews, NC 28105</span>
+                    </div>
+                    <div class="phone">
+                      <FontAwesomeIcon :icon="['fas', 'phone']" />
+                      <span>(794) 847-5992</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="location-item">
+                  <div class="location-header">
+                    <div class="location-title">
+                      <strong>Mallard Creek</strong>
+                      <span class="location-subtitle">Location</span>
+                    </div>
+                  </div>
+                  <div class="location-details">
+                    <div class="address">
+                      <FontAwesomeIcon :icon="['fas', 'home']" />
+                      <span>2712 W Mallard Creek Church Rd<br />Charlotte, NC 28262</span>
+                    </div>
+                    <div class="phone">
+                      <FontAwesomeIcon :icon="['fas', 'phone']" />
+                      <span>(704) 717-8180</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="location-item">
+                  <div class="location-header">
+                    <div class="location-title">
+                      <strong>Piedmont Row</strong>
+                      <span class="location-subtitle">Location</span>
+                    </div>
+                  </div>
+                  <div class="location-details">
+                    <div class="address">
+                      <FontAwesomeIcon :icon="['fas', 'home']" />
+                      <span>4625 Piedmont Row Dr #145A<br />Charlotte, NC 28210</span>
+                    </div>
+                    <div class="phone">
+                      <FontAwesomeIcon :icon="['fas', 'phone']" />
+                      <span>(704) 554-1788</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -49,7 +93,7 @@
             </div>
             <div class="info-content">
               <h3>Service Area</h3>
-              <p>10-mile radius from our location</p>
+              <p>Charlotte, NC & surrounding areas</p>
               <span class="info-note">Free pickup & delivery included</span>
             </div>
           </div>
@@ -108,14 +152,6 @@
                 rows="4"
                 placeholder="Tell us about your dry cleaning needs..."
               ></textarea>
-            </div>
-
-            <div class="form-group checkbox-group">
-              <label class="checkbox-label">
-                <input type="checkbox" name="newsletter" value="yes" />
-                <span class="checkmark"></span>
-                Subscribe to our newsletter for special offers
-              </label>
             </div>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
@@ -220,11 +256,31 @@ const openMap = () => {
   font-size: 2rem;
 }
 
+.locations-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.locations-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
 .info-content h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0;
 }
 
 .info-content p {
@@ -237,6 +293,108 @@ const openMap = () => {
   font-size: 0.9rem;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.locations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.location-item {
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-light);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.location-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.location-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px var(--shadow-light);
+  border-color: var(--primary-blue);
+}
+
+.location-item:hover::before {
+  transform: scaleX(1);
+}
+
+.location-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.location-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.location-title strong {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.location-subtitle {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.address,
+.phone {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.address:hover,
+.phone:hover {
+  background: var(--border-light);
+}
+
+.address svg,
+.phone svg {
+  color: var(--primary-blue);
+  font-size: 1rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  width: 16px;
+}
+
+.address span,
+.phone span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .contact-form {
@@ -288,50 +446,6 @@ const openMap = () => {
   min-height: 100px;
 }
 
-.checkbox-group {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.checkbox-label input[type='checkbox'] {
-  display: none;
-}
-
-.checkmark {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--border-medium);
-  border-radius: 4px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.checkbox-label input[type='checkbox']:checked + .checkmark {
-  background: var(--primary-blue);
-  border-color: var(--primary-blue);
-}
-
-.checkbox-label input[type='checkbox']:checked + .checkmark::after {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--text-white);
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
 .btn {
   padding: 1rem 2rem;
   border: none;
@@ -374,6 +488,14 @@ const openMap = () => {
 }
 
 @media (max-width: 768px) {
+  .contact {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
   .contact-content {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -383,21 +505,86 @@ const openMap = () => {
     font-size: 2rem;
   }
 
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
   .info-card {
     flex-direction: column;
     text-align: center;
+    padding: 1.5rem;
   }
 
   .info-icon {
     align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  .locations-header {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .locations-list {
+    gap: 1.25rem;
+  }
+
+  .location-item {
+    padding: 1.25rem;
+  }
+
+  .location-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .location-details {
+    gap: 1.25rem;
+  }
+
+  .address,
+  .phone {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .address svg,
+  .phone svg {
+    align-self: center;
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+
+  .address span,
+  .phone span {
+    font-size: 1rem;
   }
 
   .contact-form {
     padding: 2rem;
   }
 
-  .map-placeholder {
-    padding: 2rem;
+  .form {
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    gap: 0.75rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
   }
 }
 </style>

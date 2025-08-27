@@ -3,7 +3,7 @@
     <div class="container">
       <div class="section-header">
         <h2>Our Service Area</h2>
-        <p>Three locations serving Charlotte, North Carolina</p>
+        <p>Three convenient locations serving Charlotte, North Carolina</p>
       </div>
       <div class="map-container">
         <div id="map" ref="mapRef"></div>
@@ -19,50 +19,55 @@ const mapRef = ref(null)
 let map = null
 
 const initMap = () => {
-  // Define Charlotte locations with exact coordinates
+  // Define EcoFresh locations with exact coordinates
   const locations = [
-    { name: 'Charlotte - Uptown', lat: 35.2271, lng: -80.8431 },
-    { name: 'Charlotte - South End', lat: 35.2071, lng: -80.8581 },
-    { name: 'Charlotte - University Area', lat: 35.3071, lng: -80.7431 },
+    {
+      name: 'EcoFresh - Mathews',
+      lat: 35.0168,
+      lng: -80.7236,
+      address: '1115 A Mathews Mint Hill Rd, Mathews, NC 28105',
+      phone: '(794) 847-5992',
+    },
+    {
+      name: 'EcoFresh - Mallard Creek',
+      lat: 35.3071,
+      lng: -80.7431,
+      address: '2712 W Mallard Creek Church Rd, Charlotte, NC 28262',
+      phone: '(704) 717-8180',
+    },
+    {
+      name: 'EcoFresh - Piedmont Row',
+      lat: 35.1271,
+      lng: -80.8431,
+      address: '4625 Piedmont Row Dr #145A, Charlotte, NC 28210',
+      phone: '(704) 554-1788',
+    },
   ]
 
-  // Define service area boundaries with smooth, continuous curves around Charlotte
-  const serviceAreaBoundaries = [
-    // Start from northwest and create smooth, continuous curves
-    { lat: 35.33, lng: -80.95 }, // North boundary start
-    { lat: 35.33, lng: -80.85 }, // North
-    { lat: 35.33, lng: -80.75 }, // Northeast
-    { lat: 35.33, lng: -80.65 }, // East
-    { lat: 35.33, lng: -80.55 }, // Southeast
-    { lat: 35.33, lng: -80.5 }, // East boundary
+  // Calculate center point between all three locations
+  const centerLat = (35.0168 + 35.3071 + 35.1271) / 3
+  const centerLng = (-80.7236 + -80.7431 + -80.8431) / 3
 
-    // Smooth curve down to southeast - no sharp angles
-    { lat: 35.3, lng: -80.48 }, // Southeast extension
-    { lat: 35.26, lng: -80.45 }, // Southeast curve
-    { lat: 35.23, lng: -80.42 }, // Southeast curve
-    { lat: 35.2, lng: -80.45 }, // Southeast curve
-    { lat: 35.18, lng: -80.5 }, // South boundary
+  // Create a circle with 20-mile radius (approximately 0.29 degrees)
+  const radiusInDegrees = 20 / 69 // 1 degree ≈ 69 miles
+  const circlePoints = []
+  const numPoints = 64 // Number of points to create smooth circle
 
-    // Smooth curve to southwest - continuous flow
-    { lat: 35.16, lng: -80.55 }, // Southwest curve
-    { lat: 35.13, lng: -80.65 }, // Southwest curve
-    { lat: 35.1, lng: -80.75 }, // Southwest curve
-    { lat: 35.08, lng: -80.85 }, // Southwest extension
-    { lat: 35.1, lng: -80.9 }, // Southwest curve
-    { lat: 35.13, lng: -80.92 }, // Southwest curve
-    { lat: 35.16, lng: -80.95 }, // Southwest curve
-    { lat: 35.18, lng: -80.95 }, // West boundary
+  for (let i = 0; i < numPoints; i++) {
+    const angle = (i / numPoints) * 2 * Math.PI
+    const lat = centerLat + radiusInDegrees * Math.cos(angle)
+    const lng =
+      centerLng + (radiusInDegrees * Math.sin(angle)) / Math.cos((centerLat * Math.PI) / 180)
+    circlePoints.push({ lat, lng })
+  }
 
-    // Smooth curve back to northwest - no sharp turns
-    { lat: 35.2, lng: -80.97 }, // Northwest curve
-    { lat: 35.23, lng: -80.98 }, // Northwest curve
-    { lat: 35.26, lng: -80.98 }, // Northwest curve
-    { lat: 35.3, lng: -80.97 }, // Northwest curve
-    { lat: 35.33, lng: -80.96 }, // Northwest curve
-  ]
+  // Close the circle
+  circlePoints.push(circlePoints[0])
+
+  const serviceAreaBoundaries = circlePoints
 
   map = new google.maps.Map(mapRef.value, {
-    center: { lat: 35.2271, lng: -80.8431 }, // Centered on Charlotte
+    center: { lat: centerLat, lng: centerLng }, // Centered on calculated center point
     zoom: 10,
     styles: [
       {
@@ -111,9 +116,15 @@ const initMap = () => {
       },
     })
 
-    // Create info window for the location name
+    // Create info window for the location details
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div style="color: var(--primary-blue); font-weight: 600; padding: 5px;">${location.name}</div>`,
+      content: `
+        <div style="padding: 10px; max-width: 250px;">
+          <div style="color: var(--primary-blue); font-weight: 600; margin-bottom: 5px;">${location.name}</div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 3px;">${location.address}</div>
+          <div style="font-size: 12px; color: #666;">${location.phone}</div>
+        </div>
+      `,
       pixelOffset: new google.maps.Size(0, -5),
       disableAutoPan: true,
       closeButton: false,

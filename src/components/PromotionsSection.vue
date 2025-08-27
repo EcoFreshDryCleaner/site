@@ -86,16 +86,6 @@
       <div v-else class="empty-state">
         <p>No active promotions at the moment. Check back soon for new offers!</p>
       </div>
-
-      <div class="promotions-cta">
-        <div class="cta-content">
-          <h3>New Customer Special</h3>
-          <p>First-time customers get 50% off their first order of 5+ items!</p>
-          <button class="btn btn-secondary" @click="scrollToSection('mobile-app')">
-            Start Your First Order
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -445,26 +435,6 @@ onMounted(() => {
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
-.promotions-cta {
-  background: var(--gradient-hero);
-  border-radius: 20px;
-  padding: 3rem;
-  text-align: center;
-  color: var(--text-white);
-}
-
-.cta-content h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.cta-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
 @media (max-width: 768px) {
   .promotions-grid {
     grid-template-columns: 1fr;
@@ -487,14 +457,6 @@ onMounted(() => {
   .promotion-footer {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .promotions-cta {
-    padding: 2rem;
-  }
-
-  .cta-content h3 {
-    font-size: 1.5rem;
   }
 }
 </style>

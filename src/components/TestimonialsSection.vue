@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="testimonials-stats">
+      <!-- <div class="testimonials-stats">
         <div class="stat-item">
           <div class="stat-number">4.9</div>
           <div class="stat-label">Average Rating</div>
@@ -64,7 +64,7 @@
           <div class="stat-number">98%</div>
           <div class="stat-label">Satisfaction Rate</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -99,33 +99,6 @@ const testimonials = ref([
       'The convenience of free pickup and delivery is unbeatable. Great prices and excellent quality. My go-to dry cleaner for all my clothes.',
     service: 'Basic Clean',
     date: '3 days ago',
-  },
-  {
-    id: 4,
-    name: 'David Thompson',
-    rating: 5,
-    comment:
-      'Outstanding customer service and attention to detail. They handled my delicate vintage pieces with care. Will definitely use them again.',
-    service: 'Luxury Service',
-    date: '5 days ago',
-  },
-  {
-    id: 5,
-    name: 'Lisa Wang',
-    rating: 5,
-    comment:
-      'Fast, reliable, and eco-friendly. What more could you ask for? The mobile app makes scheduling so easy. Love this service!',
-    service: 'Premium Care',
-    date: '1 day ago',
-  },
-  {
-    id: 6,
-    name: 'Robert Davis',
-    rating: 5,
-    comment:
-      'Been using their service for months now. Consistent quality and great prices. The eco-friendly approach is a huge plus for me.',
-    service: 'Basic Clean',
-    date: '4 days ago',
   },
 ])
 </script>

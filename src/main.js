@@ -31,6 +31,7 @@ import {
   faPlus,
   faMinus,
   faTimes,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faFacebook,
@@ -73,6 +74,7 @@ library.add(
   faLinkedin,
   faApple,
   faGooglePlay,
+  faHeart,
 )
 
 const app = createApp(App)

@@ -20,12 +20,12 @@
             </div>
             <span>Eco-Friendly</span>
           </div>
-          <div class="feature">
+          <!-- <div class="feature">
             <div class="feature-icon">
               <FontAwesomeIcon :icon="['fas', 'bolt']" />
             </div>
             <span>Same Day Service</span>
-          </div>
+          </div> -->
           <div class="feature">
             <div class="feature-icon">
               <FontAwesomeIcon :icon="['fas', 'truck']" />
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="hero-image">
+      <!-- <div class="hero-image">
         <div class="image-placeholder">
           <div class="placeholder-content">
             <span class="placeholder-icon">
@@ -43,7 +43,7 @@
             <span>Professional Care</span>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

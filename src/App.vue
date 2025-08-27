@@ -70,12 +70,30 @@ const scrollToSection = (sectionId) => {
           <div class="footer-section">
             <h4 class="footer-heading">Contact Info</h4>
             <div class="contact-info">
-              <p><FontAwesomeIcon :icon="['fas', 'phone']" /> (555) 123-4567</p>
-              <p><FontAwesomeIcon :icon="['fas', 'envelope']" /> hello@ecofriendlydrycleaner.com</p>
-              <p>
-                <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" /> 123 Green Street, Eco City, EC
-                12345
-              </p>
+              <p><FontAwesomeIcon :icon="['fas', 'envelope']" /> hello@ecofreshdrycleaner.com</p>
+              <div class="footer-locations">
+                <div class="location-item">
+                  <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
+                  <div class="location-details">
+                    <strong>Mathews</strong>
+                    <span>1115 A Mathews Mint Hill Rd, Mathews, NC 28105</span>
+                  </div>
+                </div>
+                <div class="location-item">
+                  <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
+                  <div class="location-details">
+                    <strong>Mallard Creek</strong>
+                    <span>2712 W Mallard Creek Church Rd, Charlotte, NC 28262</span>
+                  </div>
+                </div>
+                <div class="location-item">
+                  <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
+                  <div class="location-details">
+                    <strong>Piedmont Row</strong>
+                    <span>4625 Piedmont Row Dr #145A, Charlotte, NC 28210</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -222,6 +240,52 @@ html {
 .contact-info p svg {
   font-size: 1rem;
   width: 16px;
+}
+
+.footer-locations {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.location-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.location-item svg {
+  color: var(--primary-blue);
+  font-size: 1rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.location-details strong {
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.location-details span {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  line-height: 1.3;
 }
 
 .footer-bottom {
