@@ -23,7 +23,6 @@ export const getPromotions = async () => {
     const q = query(
       collection(db, promotionsCollection),
       where('active', '==', true),
-      where('showModal', '==', false),
       orderBy('featured', 'desc'),
       orderBy('createdAt', 'desc'),
     )

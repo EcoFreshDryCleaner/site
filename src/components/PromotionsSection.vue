@@ -50,6 +50,10 @@
                 >{{ promotion.discountPercentage }} OFF</span
               >
             </div>
+            <div class="discount-code" v-if="promotion.discountCode">
+              <span class="code-label">Use Code:</span>
+              <span class="code-value">{{ promotion.discountCode }}</span>
+            </div>
           </div>
 
           <div
@@ -70,14 +74,25 @@
               <span class="expiry-date">{{ promotion.expiryDate }}</span>
             </div>
             <button class="btn btn-primary" @click="claimOffer(promotion)" :disabled="claiming">
-              {{
-                claiming
-                  ? 'Claiming...'
-                  : promotion.featured
-                    ? 'Claim Now'
-                    : promotion.modalConfig?.buttonText || 'Get Offer'
-              }}
+              {{ claiming ? 'Claiming...' : 'Claim Now' }}
             </button>
+          </div>
+
+          <!-- Terms and Conditions Collapsible Section -->
+          <div class="terms-section" v-if="promotion.terms">
+            <button
+              class="terms-toggle"
+              @click="toggleTerms(promotion.id)"
+              :class="{ expanded: expandedTerms.includes(promotion.id) }"
+            >
+              <span class="terms-label">Terms & Conditions</span>
+              <span class="toggle-icon">{{
+                expandedTerms.includes(promotion.id) ? '−' : '+'
+              }}</span>
+            </button>
+            <div class="terms-content" :class="{ expanded: expandedTerms.includes(promotion.id) }">
+              <p>{{ promotion.terms }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -98,6 +113,7 @@ const promotions = ref([])
 const loading = ref(true)
 const error = ref(false)
 const claiming = ref(false)
+const expandedTerms = ref([])
 
 const emit = defineEmits(['scrollToSection'])
 
@@ -106,7 +122,8 @@ const loadPromotions = async () => {
     loading.value = true
     error.value = false
     const data = await getPromotions()
-    promotions.value = data
+    // Filter to only show active promotions
+    promotions.value = data.filter((promotion) => promotion.active === true)
   } catch (err) {
     console.error('Error loading promotions:', err)
     error.value = true
@@ -130,6 +147,15 @@ const claimOffer = async (promotion) => {
     // You could show a toast notification here
   } finally {
     claiming.value = false
+  }
+}
+
+const toggleTerms = (promotionId) => {
+  const index = expandedTerms.value.indexOf(promotionId)
+  if (index > -1) {
+    expandedTerms.value.splice(index, 1)
+  } else {
+    expandedTerms.value.push(promotionId)
   }
 }
 
@@ -316,6 +342,7 @@ onMounted(() => {
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .original-price {
@@ -337,6 +364,29 @@ onMounted(() => {
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
+}
+
+.discount-code {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px dashed var(--border-medium);
+}
+
+.code-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.code-value {
+  font-size: 0.9rem;
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
 }
 
 .promotion-features {
@@ -370,6 +420,7 @@ onMounted(() => {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .expiry-info {
@@ -387,6 +438,69 @@ onMounted(() => {
 .expiry-date {
   color: var(--error);
   font-weight: 600;
+}
+
+/* Terms and Conditions Section */
+.terms-section {
+  border-top: 1px solid var(--border-light);
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.terms-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.terms-toggle:hover {
+  color: var(--primary-blue);
+}
+
+.terms-toggle.expanded {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.terms-label {
+  font-weight: 500;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.terms-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-top: 0;
+}
+
+.terms-content.expanded {
+  max-height: 200px;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-blue);
+}
+
+.terms-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .btn {
@@ -457,6 +571,12 @@ onMounted(() => {
   .promotion-footer {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .discount-code {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 }
 </style>
