@@ -21,6 +21,34 @@
         </p>
       </div>
 
+      <!-- Visual Gallery Section - Moved to top -->
+      <div class="visual-gallery">
+        <h3 class="gallery-title">Our Commitment to Excellence</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item large">
+            <img src="/ecofresh-image-5.png" alt="Professional dry cleaning facility" />
+            <div class="gallery-overlay">
+              <h4>Efficient Cleaning Process</h4>
+              <p>For faster, more efficient results</p>
+            </div>
+          </div>
+          <div class="gallery-item large">
+            <img src="/ecofresh-image-2.png" alt="Eco-friendly cleaning process" />
+            <div class="gallery-overlay">
+              <h4>Eco-Friendly Process</h4>
+              <p>Biodegradable solutions for a cleaner planet</p>
+            </div>
+          </div>
+          <div class="gallery-item large">
+            <img src="/ecofresh-image-4.png" alt="Quality garment care" />
+            <div class="gallery-overlay">
+              <h4>Quality Garment Care</h4>
+              <p>Expert attention to every detail</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="about-content">
         <div class="about-text">
           <div class="about-item">
@@ -70,7 +98,7 @@
         <div class="about-visual">
           <div class="about-image-container">
             <img
-              src="/ecofresh-image-2.png"
+              src="/ecofresh-image-6.png"
               alt="Eco-friendly dry cleaning process"
               class="about-main-image"
             />
@@ -471,6 +499,101 @@
   margin: 0;
 }
 
+/* Visual Gallery Section */
+.visual-gallery {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--bg-primary);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px var(--shadow-light);
+  border: 1px solid var(--border-eco);
+}
+
+.gallery-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item.large {
+  min-height: 350px;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.gallery-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .about-content {
     grid-template-columns: 1fr;
@@ -497,6 +620,15 @@
   .eco-features {
     grid-template-columns: 1fr;
   }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .gallery-item.large {
+    min-height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -515,6 +647,26 @@
 
   .item-icon svg {
     font-size: 1.5rem;
+  }
+
+  .gallery-grid {
+    gap: 1rem;
+  }
+
+  .gallery-item.large {
+    min-height: 250px;
+  }
+
+  .gallery-overlay {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .gallery-overlay h4 {
+    font-size: 1.2rem;
+  }
+
+  .gallery-overlay p {
+    font-size: 0.9rem;
   }
 }
 </style>

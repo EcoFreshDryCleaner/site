@@ -598,6 +598,36 @@ const notifyComingSoon = (platform) => {
   animation: screenSlide 6s infinite;
 }
 
+/* App Screenshot Styles */
+.app-screenshot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+.screenshot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .screen-2 {
   animation-delay: 3s;
 }

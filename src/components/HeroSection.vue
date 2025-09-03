@@ -28,9 +28,9 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" @click="scrollToSection('pricing')">
-            <FontAwesomeIcon :icon="['fas', 'star']" class="btn-icon" />
-            View Pricing
+          <button class="btn btn-primary" @click="scrollToSection('promotions')">
+            <FontAwesomeIcon :icon="['fas', 'gift']" class="btn-icon" />
+            View Promotions
           </button>
           <button class="btn btn-secondary" @click="scrollToSection('mobile-app')">
             <FontAwesomeIcon :icon="['fas', 'mobile-alt']" class="btn-icon" />
@@ -497,6 +497,10 @@ const scrollToSection = (sectionId) => {
 
   .floating-leaf,
   .floating-circle {
+    display: none;
+  }
+
+  .decorative-image {
     display: none;
   }
 }

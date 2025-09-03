@@ -680,6 +680,112 @@ const openMap = () => {
   transform: translateY(-2px);
 }
 
+/* Services Showcase Styles */
+.services-showcase {
+  background: var(--bg-primary);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  border: 1px solid var(--border-eco);
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.showcase-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--bg-eco-light);
+  border-radius: 16px;
+  border: 1px solid var(--border-eco);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-eco);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px var(--shadow-medium);
+  border-color: var(--eco-green-light);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-eco-lighter);
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.service-info h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.service-info p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.service-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--eco-green);
+  background: var(--bg-eco-lighter);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
   .contact {
     padding: 4rem 0;
@@ -784,6 +890,27 @@ const openMap = () => {
   .pattern-dot,
   .pattern-wave {
     display: none;
+  }
+
+  .services-showcase {
+    padding: 2rem 1.5rem;
+  }
+
+  .showcase-title {
+    font-size: 1.8rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-image {
+    height: 150px;
   }
 }
 </style>

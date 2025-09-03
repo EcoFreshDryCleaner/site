@@ -9,6 +9,7 @@ import ContactSection from './components/ContactSection.vue'
 import MobileAppSection from './components/MobileAppSection.vue'
 import PromoModal from './components/PromoModal.vue'
 import Footer from './components/Footer.vue'
+import Gallery from './components/Gallery.vue'
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId)
@@ -30,6 +31,7 @@ const scrollToSection = (sectionId) => {
       <HeroSection @scrollToSection="scrollToSection" />
       <PromotionsSection @scrollToSection="scrollToSection" />
       <AboutSection />
+      <!-- <Gallery /> -->
       <!-- <PricingSection /> -->
       <TestimonialsSection />
       <ContactSection />
