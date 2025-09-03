@@ -487,6 +487,7 @@ const openMap = () => {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  padding-right: 2rem;
 }
 
 .location-title strong {
@@ -724,6 +725,7 @@ const openMap = () => {
   .location-item {
     padding: 1.25rem;
     min-height: auto;
+    flex-direction: column;
   }
 
   .location-header {
