@@ -45,7 +45,7 @@ const menuItems = [
   { id: 'hero', label: 'Home', href: '#hero' },
   { id: 'promotions', label: 'Offers', href: '#promotions' },
   { id: 'about', label: 'About', href: '#about' },
-  { id: 'pricing', label: 'Pricing', href: '#pricing' },
+  // { id: 'pricing', label: 'Pricing', href: '#pricing' },
   { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
   { id: 'contact', label: 'Contact', href: '#contact' },
   { id: 'mobile-app', label: 'App', href: '#mobile-app' },

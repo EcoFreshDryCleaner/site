@@ -1,7 +1,26 @@
 <template>
   <section id="promotions" class="promotions">
+    <!-- Background Pattern -->
+    <div class="promotions-bg-pattern">
+      <div class="pattern-leaf leaf-1">
+        <FontAwesomeIcon :icon="['fas', 'leaf']" />
+      </div>
+      <div class="pattern-leaf leaf-2">
+        <FontAwesomeIcon :icon="['fas', 'leaf']" />
+      </div>
+      <div class="pattern-leaf leaf-3">
+        <FontAwesomeIcon :icon="['fas', 'leaf']" />
+      </div>
+      <div class="pattern-circle circle-1"></div>
+      <div class="pattern-circle circle-2"></div>
+    </div>
+
     <div class="container">
       <div class="section-header">
+        <div class="header-badge">
+          <FontAwesomeIcon :icon="['fas', 'gift']" class="badge-icon" />
+          <span>Limited Time Offers</span>
+        </div>
         <h2 class="section-title">Special Offers & Promotions</h2>
         <p class="section-subtitle">
           Take advantage of our limited-time offers and save on your dry cleaning needs
@@ -33,7 +52,9 @@
           </div>
 
           <div class="promotion-header">
-            <div class="promotion-icon">{{ promotion.icon }}</div>
+            <div class="promotion-icon">
+              <FontAwesomeIcon :icon="getIconArray(promotion.icon)" />
+            </div>
             <div class="promotion-title">{{ promotion.title }}</div>
           </div>
 
@@ -62,7 +83,9 @@
           >
             <ul class="features-list">
               <li v-for="feature in promotion.features" :key="feature" class="feature-item">
-                <span class="check-icon">✓</span>
+                <span class="check-icon">
+                  <FontAwesomeIcon :icon="['fas', 'check']" />
+                </span>
                 {{ feature }}
               </li>
             </ul>
@@ -99,6 +122,9 @@
 
       <!-- Empty State -->
       <div v-else class="empty-state">
+        <div class="empty-icon">
+          <FontAwesomeIcon :icon="['fas', 'gift']" />
+        </div>
         <p>No active promotions at the moment. Check back soon for new offers!</p>
       </div>
     </div>
@@ -116,6 +142,32 @@ const claiming = ref(false)
 const expandedTerms = ref([])
 
 const emit = defineEmits(['scrollToSection'])
+
+// Helper function to convert FontAwesome string to array format
+const getIconArray = (iconString) => {
+  if (!iconString) return ['fas', 'gift'] // Default icon
+
+  // Handle different formats: 'fa-solid fa-shirt', 'fas fa-shirt', 'fa-shirt'
+  if (iconString.startsWith('fa-solid ')) {
+    return ['fas', iconString.replace('fa-solid ', '')]
+  } else if (iconString.startsWith('fa-regular ')) {
+    return ['far', iconString.replace('fa-regular ', '')]
+  } else if (iconString.startsWith('fa-brands ')) {
+    return ['fab', iconString.replace('fa-brands ', '')]
+  } else if (iconString.startsWith('fas ')) {
+    return ['fas', iconString.replace('fas ', '')]
+  } else if (iconString.startsWith('far ')) {
+    return ['far', iconString.replace('far ', '')]
+  } else if (iconString.startsWith('fab ')) {
+    return ['fab', iconString.replace('fab ', '')]
+  } else if (iconString.startsWith('fa-')) {
+    // Default to solid if just 'fa-iconname'
+    return ['fas', iconString.replace('fa-', '')]
+  }
+
+  // Default fallback
+  return ['fas', 'gift']
+}
 
 const loadPromotions = async () => {
   try {
@@ -171,18 +223,123 @@ onMounted(() => {
 <style scoped>
 .promotions {
   padding: 6rem 0;
-  background: white;
+  background: var(--bg-eco-lighter);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.promotions-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.pattern-leaf {
+  position: absolute;
+  font-size: 2rem;
+  animation: float-leaf 8s ease-in-out infinite;
+  opacity: 0.1;
+  color: var(--eco-green);
+}
+
+.leaf-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.leaf-2 {
+  top: 25%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+.leaf-3 {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+.pattern-circle {
+  position: absolute;
+  border: 2px solid var(--pattern-medium);
+  border-radius: 50%;
+  animation: pulse-circle 6s ease-in-out infinite;
+}
+
+.circle-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  right: 25%;
+  animation-delay: 3s;
+}
+
+@keyframes float-leaf {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulse-circle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient-eco);
+  color: white;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px var(--shadow-eco);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
 }
 
 .section-title {
@@ -214,7 +371,7 @@ onMounted(() => {
   width: 50px;
   height: 50px;
   border: 4px solid var(--bg-secondary);
-  border-top: 4px solid var(--primary-blue);
+  border-top: 4px solid var(--eco-green);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
@@ -253,53 +410,78 @@ onMounted(() => {
   color: var(--text-muted);
 }
 
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  color: var(--eco-green);
+}
+
 .empty-state p {
   font-size: 1.1rem;
 }
 
 .promotions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
 }
 
 .promotion-card {
   background: var(--bg-primary);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 4px 6px var(--transparent-black);
-  border: 2px solid transparent;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  border: 2px solid var(--border-eco);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
+.promotion-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-eco);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 .promotion-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px var(--shadow-light);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+  border-color: var(--eco-green-light);
+}
+
+.promotion-card:hover::before {
+  opacity: 1;
 }
 
 .promotion-card.featured {
-  border-color: var(--primary-blue);
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px var(--shadow-primary);
+  border-color: var(--eco-green);
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px var(--shadow-eco);
 }
 
 .promotion-card.featured:hover {
-  transform: scale(1.05) translateY(-8px);
+  transform: scale(1.02) translateY(-8px);
 }
 
 .promotion-badge {
   position: absolute;
   top: 0;
   right: 0;
-  background: var(--gradient-primary);
+  background: var(--gradient-eco);
   color: var(--text-white);
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 0 20px 0 20px;
+  border-radius: 0 24px 0 24px;
+  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .promotion-header {
@@ -311,14 +493,19 @@ onMounted(() => {
 
 .promotion-icon {
   font-size: 2.5rem;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-hero);
-  border-radius: 12px;
-  color: var(--text-white);
+  background: var(--gradient-eco);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 15px var(--shadow-eco);
+}
+
+.promotion-icon svg {
+  font-size: 2rem;
 }
 
 .promotion-title {
@@ -354,37 +541,38 @@ onMounted(() => {
 .discount-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent-green);
+  color: var(--eco-green);
 }
 
 .discount-percentage {
-  background: var(--accent-green);
-  color: var(--text-white);
-  padding: 0.25rem 0.75rem;
+  background: var(--gradient-eco);
+  color: white;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .discount-code {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  border: 1px dashed var(--border-medium);
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-eco-light);
+  border-radius: 12px;
+  border: 2px dashed var(--eco-green-light);
 }
 
 .code-label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 .code-value {
-  font-size: 0.9rem;
-  color: var(--primary-blue);
+  font-size: 1rem;
+  color: var(--eco-green);
   font-weight: 600;
   font-family: 'Courier New', monospace;
 }
@@ -403,15 +591,26 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .check-icon {
-  color: var(--accent-green);
+  color: var(--eco-green);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-eco-light);
+  border-radius: 50%;
+}
+
+.check-icon svg {
+  font-size: 0.8rem;
 }
 
 .promotion-footer {
@@ -442,7 +641,7 @@ onMounted(() => {
 
 /* Terms and Conditions Section */
 .terms-section {
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-eco);
   margin-top: 1rem;
   padding-top: 1rem;
 }
@@ -454,19 +653,19 @@ onMounted(() => {
   align-items: center;
   background: none;
   border: none;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   cursor: pointer;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
 }
 
 .terms-toggle:hover {
-  color: var(--primary-blue);
+  color: var(--eco-green);
 }
 
 .terms-toggle.expanded {
-  color: var(--primary-blue);
+  color: var(--eco-green);
   font-weight: 600;
 }
 
@@ -490,15 +689,15 @@ onMounted(() => {
 .terms-content.expanded {
   max-height: 200px;
   margin-top: 0.75rem;
-  padding: 0.75rem;
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  border-left: 3px solid var(--primary-blue);
+  padding: 1rem;
+  background: var(--bg-eco-light);
+  border-radius: 12px;
+  border-left: 4px solid var(--eco-green);
 }
 
 .terms-content p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   color: var(--text-secondary);
 }
@@ -523,30 +722,30 @@ onMounted(() => {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
-  color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
+  background: var(--gradient-eco);
+  color: white;
+  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-primary-hover);
+  box-shadow: 0 6px 20px var(--shadow-eco);
 }
 
 .btn-secondary {
   background: var(--bg-primary);
-  color: var(--primary-blue);
-  border: 2px solid var(--bg-primary);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  color: var(--eco-green);
+  border: 2px solid var(--eco-green);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
 }
 
 .btn-secondary:hover {
-  background: var(--bg-secondary);
-  color: var(--primary-blue);
+  background: var(--eco-green);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-eco);
 }
 
 @media (max-width: 768px) {
@@ -577,6 +776,11 @@ onMounted(() => {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
+  }
+
+  .pattern-leaf,
+  .pattern-circle {
+    display: none;
   }
 }
 </style>

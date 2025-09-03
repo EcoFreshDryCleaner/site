@@ -1,7 +1,30 @@
 <template>
   <section id="testimonials" class="testimonials">
+    <!-- Background Pattern -->
+    <div class="testimonials-bg-pattern">
+      <div class="pattern-star star-1">
+        <FontAwesomeIcon :icon="['fas', 'star']" />
+      </div>
+      <div class="pattern-star star-2">
+        <FontAwesomeIcon :icon="['fas', 'star']" />
+      </div>
+      <div class="pattern-star star-3">
+        <FontAwesomeIcon :icon="['fas', 'star']" />
+      </div>
+      <div class="pattern-heart heart-1">
+        <FontAwesomeIcon :icon="['fas', 'heart']" />
+      </div>
+      <div class="pattern-heart heart-2">
+        <FontAwesomeIcon :icon="['fas', 'heart']" />
+      </div>
+    </div>
+
     <div class="container">
       <div class="section-header">
+        <div class="header-badge">
+          <FontAwesomeIcon :icon="['fas', 'comments']" class="badge-icon" />
+          <span>Customer Reviews</span>
+        </div>
         <h2 class="section-title">What Our Customers Say</h2>
         <p class="section-subtitle">
           Don't just take our word for it. Here's what our satisfied customers have to say about our
@@ -11,10 +34,21 @@
 
       <div class="testimonials-grid">
         <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
+          <div class="testimonial-badge">
+            <span class="badge-text">{{ testimonial.service }}</span>
+          </div>
+
           <div class="testimonial-header">
             <div class="customer-info">
               <div class="customer-avatar">
-                {{ testimonial.name.charAt(0) }}
+                <img
+                  :src="`https://picsum.photos/100/100?random=${testimonial.id + 10}`"
+                  :alt="testimonial.name"
+                  class="avatar-image"
+                />
+                <div class="avatar-overlay">
+                  {{ testimonial.name.charAt(0) }}
+                </div>
               </div>
               <div class="customer-details">
                 <h4 class="customer-name">{{ testimonial.name }}</h4>
@@ -30,7 +64,6 @@
                 </div>
               </div>
             </div>
-            <div class="quote-icon">"</div>
           </div>
 
           <div class="testimonial-content">
@@ -38,14 +71,21 @@
           </div>
 
           <div class="testimonial-footer">
-            <span class="service-type">{{ testimonial.service }}</span>
+            <div class="service-badge">
+              <FontAwesomeIcon :icon="['fas', 'user-tie']" class="service-icon" />
+              <span class="service-type">{{ testimonial.service }}</span>
+            </div>
             <span class="date">{{ testimonial.date }}</span>
           </div>
         </div>
       </div>
 
+      <!-- Customer Stats -->
       <!-- <div class="testimonials-stats">
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'star']" />
+          </div>
           <div class="stat-number">4.9</div>
           <div class="stat-label">Average Rating</div>
           <div class="stat-stars">
@@ -57,12 +97,25 @@
           </div>
         </div>
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'smile']" />
+          </div>
           <div class="stat-number">2,500+</div>
           <div class="stat-label">Happy Customers</div>
         </div>
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'percent']" />
+          </div>
           <div class="stat-number">98%</div>
           <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'leaf']" />
+          </div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Eco-Friendly</div>
         </div>
       </div> -->
     </div>
@@ -91,33 +144,126 @@ const testimonials = ref([
     service: 'Luxury Service',
     date: '1 week ago',
   },
-  {
-    id: 3,
-    name: 'Emily Rodriguez',
-    rating: 5,
-    comment:
-      'The convenience of free pickup and delivery is unbeatable. Great prices and excellent quality. My go-to dry cleaner for all my clothes.',
-    service: 'Basic Clean',
-    date: '3 days ago',
-  },
 ])
 </script>
 
 <style scoped>
 .testimonials {
   padding: 6rem 0;
-  background: var(--bg-secondary);
+  background: var(--bg-eco-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.testimonials-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.pattern-star {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: twinkle 4s ease-in-out infinite;
+  opacity: 0.1;
+  color: var(--eco-green);
+}
+
+.star-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.star-2 {
+  top: 30%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.star-3 {
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.pattern-heart {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: pulse-heart 6s ease-in-out infinite;
+  opacity: 0.1;
+  color: var(--eco-green);
+}
+
+.heart-1 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 0s;
+}
+
+.heart-2 {
+  bottom: 15%;
+  right: 30%;
+  animation-delay: 3s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-heart {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient-eco);
+  color: white;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px var(--shadow-eco);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
 }
 
 .section-title {
@@ -141,25 +287,59 @@ const testimonials = ref([
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
 }
 
 .testimonial-card {
   background: var(--bg-primary);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 4px 6px var(--transparent-black);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-eco);
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-eco);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px var(--shadow-light);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px var(--shadow-medium);
+  border-color: var(--eco-green-light);
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+}
+
+.testimonial-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gradient-eco);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px var(--shadow-eco);
+}
+
+.badge-text {
+  font-size: 0.8rem;
 }
 
 .testimonial-header {
@@ -176,16 +356,39 @@ const testimonials = ref([
 }
 
 .customer-avatar {
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-hero);
+  position: relative;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border-eco);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-eco);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
+  color: white;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.customer-avatar:hover .avatar-overlay {
+  opacity: 1;
 }
 
 .customer-name {
@@ -206,15 +409,19 @@ const testimonials = ref([
 }
 
 .star.filled {
-  color: var(--primary-blue);
+  color: var(--eco-green);
 }
 
 .quote-icon {
   font-size: 3rem;
-  color: var(--primary-blue);
+  color: var(--eco-green);
   opacity: 0.3;
   line-height: 1;
   margin-top: -0.5rem;
+}
+
+.quote-icon svg {
+  font-size: 2rem;
 }
 
 .testimonial-content {
@@ -226,6 +433,7 @@ const testimonials = ref([
   line-height: 1.6;
   margin: 0;
   font-style: italic;
+  font-size: 1rem;
 }
 
 .testimonial-footer {
@@ -236,16 +444,35 @@ const testimonials = ref([
   color: var(--text-muted);
 }
 
-.service-type {
-  background: var(--border-medium);
-  padding: 0.25rem 0.75rem;
+.service-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-eco-light);
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-weight: 500;
+  border: 1px solid var(--border-eco);
 }
 
+.service-icon {
+  font-size: 1rem;
+  color: var(--eco-green);
+}
+
+.service-type {
+  font-weight: 500;
+  color: var(--eco-green);
+}
+
+.date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Customer Stats */
 .testimonials-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   text-align: center;
 }
@@ -253,14 +480,47 @@ const testimonials = ref([
 .stat-item {
   background: var(--bg-primary);
   padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px var(--transparent-black);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-eco);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-eco);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px var(--shadow-medium);
+  border-color: var(--eco-green-light);
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: var(--eco-green);
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--eco-green);
   margin-bottom: 0.5rem;
 }
 
@@ -291,7 +551,7 @@ const testimonials = ref([
   }
 
   .testimonials-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .testimonial-header {
@@ -301,6 +561,30 @@ const testimonials = ref([
 
   .quote-icon {
     align-self: flex-end;
+  }
+
+  .pattern-star,
+  .pattern-heart {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+
+  .customer-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar-overlay {
+    font-size: 1.1rem;
   }
 }
 </style>

@@ -1,9 +1,32 @@
 <template>
   <section id="mobile-app" class="mobile-app">
+    <!-- Background Pattern -->
+    <div class="mobile-app-bg-pattern">
+      <div class="pattern-phone phone-1">
+        <FontAwesomeIcon :icon="['fas', 'mobile-alt']" />
+      </div>
+      <div class="pattern-phone phone-2">
+        <FontAwesomeIcon :icon="['fas', 'mobile-alt']" />
+      </div>
+      <div class="pattern-phone phone-3">
+        <FontAwesomeIcon :icon="['fas', 'mobile-alt']" />
+      </div>
+      <div class="pattern-app app-1">
+        <FontAwesomeIcon :icon="['fas', 'mobile']" />
+      </div>
+      <div class="pattern-app app-2">
+        <FontAwesomeIcon :icon="['fas', 'mobile']" />
+      </div>
+    </div>
+
     <div class="container">
       <div class="app-content">
         <div class="app-info">
           <div class="section-header">
+            <div class="header-badge">
+              <FontAwesomeIcon :icon="['fas', 'rocket']" class="badge-icon" />
+              <span>Coming Soon</span>
+            </div>
             <h2 class="section-title">Our Mobile App is Coming Soon!</h2>
             <p class="section-subtitle">
               We're working hard to bring you a mobile app that will make scheduling pickups and
@@ -15,7 +38,7 @@
           <div class="app-features">
             <div class="feature-item">
               <div class="feature-icon">
-                <FontAwesomeIcon :icon="['fas', 'mobile']" />
+                <FontAwesomeIcon :icon="['fas', 'calendar-alt']" />
               </div>
               <div class="feature-content">
                 <h3>Easy Scheduling</h3>
@@ -45,7 +68,7 @@
 
             <div class="feature-item">
               <div class="feature-icon">
-                <FontAwesomeIcon :icon="['fas', 'bullseye']" />
+                <FontAwesomeIcon :icon="['fas', 'clipboard-list']" />
               </div>
               <div class="feature-content">
                 <h3>Order History</h3>
@@ -58,9 +81,7 @@
             <div class="download-buttons">
               <button class="download-btn app-store coming-soon" @click="notifyComingSoon('ios')">
                 <div class="btn-content">
-                  <span class="store-icon">
-                    <FontAwesomeIcon :icon="['fab', 'apple']" />
-                  </span>
+                  <FontAwesomeIcon :icon="['fab', 'apple']" class="store-icon" />
                   <div class="store-info">
                     <span class="store-label">Coming Soon on</span>
                     <span class="store-name">App Store</span>
@@ -73,9 +94,7 @@
                 @click="notifyComingSoon('android')"
               >
                 <div class="btn-content">
-                  <span class="store-icon">
-                    <FontAwesomeIcon :icon="['fab', 'google-play']" />
-                  </span>
+                  <FontAwesomeIcon :icon="['fab', 'google-play']" class="store-icon" />
                   <div class="store-info">
                     <span class="store-label">Coming Soon on</span>
                     <span class="store-name">Google Play</span>
@@ -84,15 +103,9 @@
               </button>
             </div>
 
-            <!-- <div class="qr-section">
-              <div class="qr-code">
-                <div class="qr-placeholder">
-                  <span class="qr-icon">
-                    <FontAwesomeIcon :icon="['fas', 'qrcode']" />
-                  </span>
-                  <span class="qr-text">Scan to download</span>
-                </div>
-              </div>
+            <!-- <div class="notification-signup">
+              <FontAwesomeIcon :icon="['fas', 'bell']" class="signup-icon" />
+              <p>Get notified when the app launches!</p>
             </div> -->
           </div>
         </div>
@@ -106,29 +119,23 @@
                     <div class="status-bar">
                       <span>9:41</span>
                       <div class="status-icons">
-                        <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
-                        <span><FontAwesomeIcon :icon="['fas', 'battery-full']" /></span>
+                        <FontAwesomeIcon :icon="['fas', 'signal']" />
+                        <FontAwesomeIcon :icon="['fas', 'battery-full']" />
                       </div>
                     </div>
                   </div>
                   <div class="screen-content">
                     <div class="app-header">
                       <h3>EcoFresh</h3>
-                      <span class="user-avatar">
-                        <FontAwesomeIcon :icon="['fas', 'user']" />
-                      </span>
+                      <FontAwesomeIcon :icon="['fas', 'user']" class="user-avatar" />
                     </div>
                     <div class="quick-actions">
                       <div class="action-btn">
-                        <span class="action-icon">
-                          <FontAwesomeIcon :icon="['fas', 'box']" />
-                        </span>
+                        <FontAwesomeIcon :icon="['fas', 'box']" class="action-icon" />
                         <span>Schedule Pickup</span>
                       </div>
                       <div class="action-btn">
-                        <span class="action-icon">
-                          <FontAwesomeIcon :icon="['fas', 'clipboard-list']" />
-                        </span>
+                        <FontAwesomeIcon :icon="['fas', 'clipboard-list']" class="action-icon" />
                         <span>My Orders</span>
                       </div>
                     </div>
@@ -152,17 +159,15 @@
                     <div class="status-bar">
                       <span>9:41</span>
                       <div class="status-icons">
-                        <span><FontAwesomeIcon :icon="['fas', 'signal']" /></span>
-                        <span><FontAwesomeIcon :icon="['fas', 'battery-full']" /></span>
+                        <FontAwesomeIcon :icon="['fas', 'signal']" />
+                        <FontAwesomeIcon :icon="['fas', 'battery-full']" />
                       </div>
                     </div>
                   </div>
                   <div class="screen-content">
                     <div class="app-header">
                       <h3>Schedule Pickup</h3>
-                      <span class="back-btn">
-                        <FontAwesomeIcon :icon="['fas', 'arrow-left']" />
-                      </span>
+                      <FontAwesomeIcon :icon="['fas', 'arrow-left']" class="back-btn" />
                     </div>
                     <div class="schedule-form">
                       <div class="form-field">
@@ -189,20 +194,40 @@
                 </div>
               </div>
             </div>
+
+            <!-- Floating Elements -->
+            <div class="floating-element element-1">
+              <FontAwesomeIcon :icon="['fas', 'star']" />
+            </div>
+            <div class="floating-element element-2">
+              <FontAwesomeIcon :icon="['fas', 'rocket']" />
+            </div>
+            <div class="floating-element element-3">
+              <FontAwesomeIcon :icon="['fas', 'magic']" />
+            </div>
           </div>
         </div>
       </div>
 
       <div class="app-stats">
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'mobile-alt']" />
+          </div>
           <div class="stat-number">Coming</div>
           <div class="stat-label">Mobile App</div>
         </div>
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'clock']" />
+          </div>
           <div class="stat-number">Soon</div>
           <div class="stat-label">Stay Tuned</div>
         </div>
         <div class="stat-item">
+          <div class="stat-icon">
+            <FontAwesomeIcon :icon="['fas', 'bullseye']" />
+          </div>
           <div class="stat-number">2025</div>
           <div class="stat-label">Launch Year</div>
         </div>
@@ -227,15 +252,84 @@ const notifyComingSoon = (platform) => {
   overflow: hidden;
 }
 
-.mobile-app::before {
-  content: '';
+/* Background Pattern */
+.mobile-app-bg-pattern {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="app-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23app-grain)"/></svg>');
-  opacity: 0.3;
+  pointer-events: none;
+}
+
+.pattern-phone {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float-phone 8s ease-in-out infinite;
+  opacity: 0.1;
+  color: var(--eco-green);
+}
+
+.phone-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.phone-2 {
+  top: 25%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.phone-3 {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.pattern-app {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: float-app 6s ease-in-out infinite;
+  opacity: 0.1;
+  color: var(--eco-green);
+}
+
+.app-1 {
+  top: 60%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.app-2 {
+  bottom: 30%;
+  right: 25%;
+  animation-delay: 3s;
+}
+
+@keyframes float-phone {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes float-app {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
 }
 
 .container {
@@ -264,11 +358,30 @@ const notifyComingSoon = (platform) => {
   text-align: left;
 }
 
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+}
+
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
+  background: linear-gradient(45deg, var(--eco-mint), var(--eco-sage));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -276,7 +389,7 @@ const notifyComingSoon = (platform) => {
 
 .section-subtitle {
   font-size: 1.2rem;
-  opacity: 0.9;
+  opacity: 0.95;
   line-height: 1.6;
 }
 
@@ -290,19 +403,31 @@ const notifyComingSoon = (platform) => {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
 }
 
 .feature-icon {
   font-size: 2rem;
   flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--transparent-white);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+  background: var(--gradient-eco);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .feature-icon svg {
@@ -316,16 +441,16 @@ const notifyComingSoon = (platform) => {
 }
 
 .feature-content p {
-  opacity: 0.8;
+  opacity: 0.9;
   line-height: 1.5;
   margin: 0;
 }
 
 .app-actions {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .download-buttons {
@@ -337,17 +462,18 @@ const notifyComingSoon = (platform) => {
 .download-btn {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1rem 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .download-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .download-btn.coming-soon {
@@ -367,13 +493,14 @@ const notifyComingSoon = (platform) => {
   position: absolute;
   top: -8px;
   right: -8px;
-  background: var(--accent-yellow);
-  color: var(--text-primary);
+  background: var(--eco-mint);
+  color: var(--primary-blue-dark);
   font-size: 0.7rem;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 10px;
   transform: rotate(15deg);
+  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .btn-content {
@@ -383,11 +510,6 @@ const notifyComingSoon = (platform) => {
 }
 
 .store-icon {
-  font-size: 1.5rem;
-  color: white;
-}
-
-.store-icon svg {
   font-size: 1.5rem;
   color: white;
 }
@@ -410,51 +532,33 @@ const notifyComingSoon = (platform) => {
   color: var(--text-white);
 }
 
-.qr-section {
-  text-align: center;
-}
-
-.qr-code {
-  margin-bottom: 1rem;
-}
-
-.qr-placeholder {
-  width: 100px;
-  height: 100px;
-  background: var(--transparent-white);
-  border-radius: 12px;
+.notification-signup {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
   backdrop-filter: blur(10px);
-  border: 2px solid var(--transparent-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.qr-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.signup-icon {
+  font-size: 1.5rem;
+  color: var(--eco-green);
 }
 
-.qr-icon svg {
-  font-size: 2rem;
-}
-
-.qr-text {
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-
-.qr-note {
-  font-size: 0.9rem;
-  opacity: 0.7;
+.notification-signup p {
   margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 .app-preview {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .phone-mockup {
@@ -464,7 +568,8 @@ const notifyComingSoon = (platform) => {
   background: var(--bg-dark);
   border-radius: 30px;
   padding: 10px;
-  box-shadow: 0 20px 40px var(--overlay-dark);
+  box-shadow: 0 25px 50px var(--overlay-dark);
+  border: 2px solid var(--border-eco);
 }
 
 .phone-screen {
@@ -515,7 +620,7 @@ const notifyComingSoon = (platform) => {
 }
 
 .screen-header {
-  background: var(--primary-blue);
+  background: var(--eco-green);
   color: var(--text-white);
   padding: 0.5rem 1rem;
 }
@@ -556,23 +661,18 @@ const notifyComingSoon = (platform) => {
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
+  color: var(--eco-green);
 }
 
 .user-avatar {
   font-size: 1.5rem;
-}
-
-.user-avatar svg {
-  font-size: 1.5rem;
+  color: var(--eco-green);
 }
 
 .back-btn {
   font-size: 1.2rem;
   cursor: pointer;
-}
-
-.back-btn svg {
-  font-size: 1.2rem;
+  color: var(--eco-green);
 }
 
 .quick-actions {
@@ -583,28 +683,30 @@ const notifyComingSoon = (platform) => {
 }
 
 .action-btn {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
-  border-radius: 8px;
+  background: var(--bg-eco-light);
+  border: 1px solid var(--border-eco);
+  border-radius: 12px;
   padding: 0.75rem;
   text-align: center;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .action-btn:hover {
-  background: var(--bg-secondary);
+  background: var(--eco-green);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .action-icon {
-  display: block;
   font-size: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.action-icon svg {
-  font-size: 1.5rem;
+  color: var(--eco-green);
 }
 
 .order-status h4 {
@@ -614,9 +716,9 @@ const notifyComingSoon = (platform) => {
 }
 
 .status-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
-  border-radius: 8px;
+  background: var(--bg-eco-light);
+  border: 1px solid var(--border-eco);
+  border-radius: 12px;
   padding: 0.75rem;
 }
 
@@ -633,14 +735,14 @@ const notifyComingSoon = (platform) => {
 }
 
 .status-text {
-  color: var(--primary-blue);
+  color: var(--eco-green);
   font-weight: 600;
 }
 
 .progress-bar {
   width: 100%;
   height: 4px;
-  background: var(--border-medium);
+  background: var(--border-eco);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -648,7 +750,7 @@ const notifyComingSoon = (platform) => {
 .progress-fill {
   width: 60%;
   height: 100%;
-  background: var(--primary-blue);
+  background: var(--eco-green);
   border-radius: 2px;
   animation: progress 3s infinite;
 }
@@ -684,9 +786,9 @@ const notifyComingSoon = (platform) => {
 }
 
 .date-picker {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
-  border-radius: 8px;
+  background: var(--bg-eco-light);
+  border: 1px solid var(--border-eco);
+  border-radius: 12px;
   padding: 0.75rem;
   font-size: 0.9rem;
   text-align: center;
@@ -699,9 +801,9 @@ const notifyComingSoon = (platform) => {
 
 .service-option {
   flex: 1;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
-  border-radius: 8px;
+  background: var(--bg-eco-light);
+  border: 1px solid var(--border-eco);
+  border-radius: 12px;
   padding: 0.5rem;
   text-align: center;
   font-size: 0.8rem;
@@ -710,9 +812,9 @@ const notifyComingSoon = (platform) => {
 }
 
 .service-option.selected {
-  background: var(--primary-blue);
-  color: var(--text-white);
-  border-color: var(--primary-blue);
+  background: var(--eco-green);
+  color: white;
+  border-color: var(--eco-green);
 }
 
 .item-counter {
@@ -720,17 +822,17 @@ const notifyComingSoon = (platform) => {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-medium);
-  border-radius: 8px;
+  background: var(--bg-eco-light);
+  border: 1px solid var(--border-eco);
+  border-radius: 12px;
   padding: 0.75rem;
 }
 
 .counter-btn {
   width: 30px;
   height: 30px;
-  background: var(--primary-blue);
-  color: var(--text-white);
+  background: var(--eco-green);
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -746,26 +848,116 @@ const notifyComingSoon = (platform) => {
   text-align: center;
 }
 
+/* Floating Elements */
+.floating-element {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float-element 4s ease-in-out infinite;
+  opacity: 0.6;
+  color: var(--eco-green);
+}
+
+.element-1 {
+  top: 10%;
+  right: -20px;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  bottom: 20%;
+  left: -20px;
+  animation-delay: 2s;
+}
+
+.element-3 {
+  top: 50%;
+  right: -30px;
+  animation-delay: 1s;
+}
+
+@keyframes float-element {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+}
+
 .app-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   text-align: center;
 }
 
 .stat-item {
-  background: var(--transparent-white);
+  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 20px;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--transparent-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-eco);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--eco-green-light);
+}
+
+.stat-item:hover .stat-icon {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: var(--eco-green);
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: var(--eco-green);
+  background: rgba(255, 255, 255, 0.15);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-yellow));
+  background: linear-gradient(45deg, var(--eco-mint), var(--eco-sage));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -809,9 +1001,8 @@ const notifyComingSoon = (platform) => {
   }
 
   .feature-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
   }
 
   .feature-icon svg {
@@ -855,7 +1046,7 @@ const notifyComingSoon = (platform) => {
   }
 
   .app-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
@@ -869,6 +1060,15 @@ const notifyComingSoon = (platform) => {
 
   .stat-label {
     font-size: 0.9rem;
+  }
+
+  .floating-element {
+    display: none;
+  }
+
+  .pattern-phone,
+  .pattern-app {
+    display: none;
   }
 }
 
@@ -891,11 +1091,12 @@ const notifyComingSoon = (platform) => {
 
   .feature-item {
     gap: 0.5rem;
+    padding: 0.75rem;
   }
 
   .feature-icon {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
   }
 
   .feature-icon svg {
@@ -932,6 +1133,7 @@ const notifyComingSoon = (platform) => {
   }
 
   .app-stats {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 

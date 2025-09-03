@@ -6,76 +6,13 @@ import './styles/colors.css'
 // FontAwesome setup
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {
-  faLeaf,
-  faBolt,
-  faTruck,
-  faUserTie,
-  faRecycle,
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-  faMap,
-  faMobile,
-  faChartBar,
-  faCreditCard,
-  faBullseye,
-  faQrcode,
-  faSignal,
-  faBatteryFull,
-  faUser,
-  faBox,
-  faClipboardList,
-  faArrowLeft,
-  faCalendarAlt,
-  faPlus,
-  faMinus,
-  faTimes,
-  faHeart,
-} from '@fortawesome/free-solid-svg-icons'
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-  faLinkedin,
-  faApple,
-  faGooglePlay,
-} from '@fortawesome/free-brands-svg-icons'
 
-// Add icons to the library
-library.add(
-  faLeaf,
-  faBolt,
-  faTruck,
-  faUserTie,
-  faRecycle,
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-  faMap,
-  faMobile,
-  faChartBar,
-  faCreditCard,
-  faBullseye,
-  faQrcode,
-  faSignal,
-  faBatteryFull,
-  faUser,
-  faBox,
-  faClipboardList,
-  faArrowLeft,
-  faCalendarAlt,
-  faPlus,
-  faMinus,
-  faTimes,
-  faFacebook,
-  faInstagram,
-  faTwitter,
-  faLinkedin,
-  faApple,
-  faGooglePlay,
-  faHeart,
-)
+/* import all the icons in Free Solid, Free Regular, and Brands styles */
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, far, fab)
 
 const app = createApp(App)
 
