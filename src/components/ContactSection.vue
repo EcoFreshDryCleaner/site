@@ -819,6 +819,10 @@ const openMap = () => {
     margin-bottom: 1rem;
   }
 
+  .info-content {
+    text-align: center;
+  }
+
   .locations-header {
     justify-content: center;
     margin-bottom: 2rem;
@@ -840,6 +844,11 @@ const openMap = () => {
     margin-bottom: 1.5rem;
   }
 
+  .location-title {
+    padding-right: 0;
+    text-align: center;
+  }
+
   .location-details {
     gap: 1.25rem;
   }
@@ -848,6 +857,7 @@ const openMap = () => {
   .phone {
     flex-direction: column;
     text-align: center;
+    align-items: center;
     gap: 0.75rem;
     padding: 1rem;
   }
@@ -861,6 +871,7 @@ const openMap = () => {
   .address span,
   .phone span {
     font-size: 1rem;
+    text-align: center;
   }
 
   .contact-form {
@@ -885,6 +896,8 @@ const openMap = () => {
   .btn {
     padding: 1.25rem 2rem;
     font-size: 1.1rem;
+    justify-content: center;
+    width: 100%;
   }
 
   .pattern-dot,
