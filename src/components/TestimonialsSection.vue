@@ -35,7 +35,7 @@
       <div class="testimonials-grid">
         <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
           <div class="testimonial-badge">
-            <span class="badge-text">{{ testimonial.service }}</span>
+            <FontAwesomeIcon :icon="['fas', 'quote-right']" class="quote-icon" />
           </div>
 
           <div class="testimonial-header">
@@ -331,15 +331,19 @@ const testimonials = ref([
   right: 1rem;
   background: var(--gradient-eco);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
-.badge-text {
-  font-size: 0.8rem;
+.testimonial-badge .quote-icon {
+  font-size: 1.2rem;
+  color: white;
 }
 
 .testimonial-header {

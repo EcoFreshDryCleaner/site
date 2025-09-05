@@ -59,6 +59,10 @@
                       <FontAwesomeIcon :icon="['fas', 'phone']" class="detail-icon" />
                       <span>(794) 847-5992</span>
                     </div>
+                    <div class="hours">
+                      <FontAwesomeIcon :icon="['fas', 'clock']" class="detail-icon" />
+                      <span>Mon-Fri: 7:00 AM - 6:00 PM<br />Sat: 9:00 AM - 3:00 PM</span>
+                    </div>
                   </div>
                 </div>
                 <div class="location-item">
@@ -77,6 +81,10 @@
                       <FontAwesomeIcon :icon="['fas', 'phone']" class="detail-icon" />
                       <span>(704) 717-8180</span>
                     </div>
+                    <div class="hours">
+                      <FontAwesomeIcon :icon="['fas', 'clock']" class="detail-icon" />
+                      <span>Mon-Fri: 8:00 AM - 6:00 PM<br />Sat: 9:00 AM - 3:00 PM</span>
+                    </div>
                   </div>
                 </div>
                 <div class="location-item">
@@ -94,6 +102,10 @@
                     <div class="phone">
                       <FontAwesomeIcon :icon="['fas', 'phone']" class="detail-icon" />
                       <span>(704) 554-1788</span>
+                    </div>
+                    <div class="hours">
+                      <FontAwesomeIcon :icon="['fas', 'clock']" class="detail-icon" />
+                      <span>Mon-Fri: 8:00 AM - 6:00 PM<br />Sat: 9:00 AM - 3:00 PM</span>
                     </div>
                   </div>
                 </div>
@@ -511,7 +523,8 @@ const openMap = () => {
 }
 
 .address,
-.phone {
+.phone,
+.hours {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -523,7 +536,8 @@ const openMap = () => {
 }
 
 .address:hover,
-.phone:hover {
+.phone:hover,
+.hours:hover {
   background: var(--bg-eco-light);
   border-color: var(--eco-green-light);
   transform: translateX(5px);
@@ -539,7 +553,8 @@ const openMap = () => {
 }
 
 .address span,
-.phone span {
+.phone span,
+.hours span {
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
@@ -854,7 +869,8 @@ const openMap = () => {
   }
 
   .address,
-  .phone {
+  .phone,
+  .hours {
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -869,7 +885,8 @@ const openMap = () => {
   }
 
   .address span,
-  .phone span {
+  .phone span,
+  .hours span {
     font-size: 1rem;
     text-align: center;
   }

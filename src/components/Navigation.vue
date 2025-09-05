@@ -36,6 +36,10 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
@@ -45,7 +49,7 @@ const menuItems = [
   { id: 'hero', label: 'Home', href: '#hero' },
   { id: 'promotions', label: 'Offers', href: '#promotions' },
   { id: 'about', label: 'About', href: '#about' },
-  // { id: 'pricing', label: 'Pricing', href: '#pricing' },
+  { id: 'pricing', label: 'Services', href: '#pricing' },
   { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
   { id: 'contact', label: 'Contact', href: '#contact' },
   { id: 'mobile-app', label: 'App', href: '#mobile-app' },
@@ -54,7 +58,14 @@ const menuItems = [
 const emit = defineEmits(['scrollToSection'])
 
 const scrollToSection = (sectionId) => {
-  emit('scrollToSection', sectionId)
+  // Check if we're on the home page
+  if (route.name === 'home') {
+    // On home page, use existing scroll behavior
+    emit('scrollToSection', sectionId, 'navigation-click')
+  } else {
+    // On other pages, navigate to home with section hash
+    router.push({ name: 'home', hash: `#${sectionId}` })
+  }
   isMenuOpen.value = false
 }
 

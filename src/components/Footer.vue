@@ -43,6 +43,7 @@
           <div class="location-details">
             <strong>Mathews</strong>
             <span>1115 A Mathews Mint Hill Rd, Mathews, NC 28105</span>
+            <span class="hours">Mon-Fri: 7:00 AM - 6:00 PM | Sat: 9:00 AM - 3:00 PM</span>
           </div>
         </div>
         <div class="location-item">
@@ -50,6 +51,7 @@
           <div class="location-details">
             <strong>Mallard Creek</strong>
             <span>2712 W Mallard Creek Church Rd, Charlotte, NC 28262</span>
+            <span class="hours">Mon-Fri: 8:00 AM - 6:00 PM | Sat: 9:00 AM - 3:00 PM</span>
           </div>
         </div>
         <div class="location-item">
@@ -57,6 +59,7 @@
           <div class="location-details">
             <strong>Piedmont Row</strong>
             <span>4625 Piedmont Row Dr #145A, Charlotte, NC 28210</span>
+            <span class="hours">Mon-Fri: 8:00 AM - 6:00 PM | Sat: 9:00 AM - 3:00 PM</span>
           </div>
         </div>
       </div>
@@ -221,6 +224,13 @@
   color: var(--text-light);
   font-size: 0.8rem;
   line-height: 1.3;
+}
+
+.location-details .hours {
+  color: var(--primary-blue);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
 }
 
 .footer-bottom {

@@ -15,13 +15,11 @@
           v-for="service in services"
           :key="service.name"
         >
+          <div class="card-image">
+            <img :src="service.image" :alt="service.name" />
+          </div>
           <div class="card-header">
             <h3 class="plan-name">{{ service.name }}</h3>
-            <div class="plan-price" v-if="service.price">
-              <span class="currency">$</span>
-              <span class="amount">{{ service.price }}</span>
-              <span class="period">/item</span>
-            </div>
             <p class="plan-description">{{ service.description }}</p>
           </div>
 
@@ -36,7 +34,7 @@
 
           <div class="card-footer">
             <button class="btn btn-primary" @click="selectService(service)">
-              {{ 'Choose Service' }}
+              {{ 'Learn More' }}
             </button>
           </div>
 
@@ -47,6 +45,7 @@
       <div class="pricing-note">
         <p>* All services include free pickup and delivery within 10 miles</p>
         <p>* Bulk discounts available for orders over 20 items</p>
+        <p>* View detailed pricing and place orders in our mobile app</p>
         <p>* Contact us for custom pricing on special items</p>
       </div>
     </div>
@@ -55,133 +54,26 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { servicesData } from '../data/servicesData.js'
 
-const services = ref([
-  {
-    name: 'Free Pickup and Delivery',
-    description: 'Convenient service to your door',
-    features: [
-      'Free pickup from your home or office',
-      'Free delivery back to you',
-      'Flexible scheduling',
-      'Service within 10 miles',
-      'Text notifications',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Professional Dry Cleaning',
-    description: 'Expert care for your finest garments',
-    features: [
-      'Eco-friendly solvents',
-      'Professional pressing',
-      'Stain treatment',
-      'Fabric protection',
-      'Quality inspection',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Laundry',
-    description: 'Fresh and clean everyday clothes',
-    features: [
-      'Gentle washing',
-      'Fabric softener options',
-      'Stain removal',
-      'Proper folding',
-      'Quick turnaround',
-    ],
-    featured: true,
-  },
-  {
-    name: 'Wash Dry and Fold',
-    description: 'Complete laundry service',
-    features: [
-      'Washing and drying',
-      'Professional folding',
-      'Separated by type',
-      'Ready to wear',
-      'Bulk pricing available',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Press Only',
-    description: 'Perfect pressing for your clothes',
-    features: [
-      'Professional pressing',
-      'Crisp finishes',
-      'No cleaning needed',
-      'Quick service',
-      'Affordable pricing',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Alterations and Repairs',
-    description: 'Expert tailoring services',
-    features: [
-      'Hemming and tapering',
-      'Button replacement',
-      'Zipper repairs',
-      'Seam mending',
-      'Custom alterations',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Shoe Repair and Shine',
-    description: 'Restore your favorite footwear',
-    features: [
-      'Professional shoe shining',
-      'Sole and heel repair',
-      'Leather conditioning',
-      'Color restoration',
-      'Waterproofing',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Comforters, Blankets and Household Items',
-    description: 'Care for your home textiles',
-    features: [
-      'Large item cleaning',
-      'Comforter restoration',
-      'Blanket freshening',
-      'Curtain cleaning',
-      'Bedding care',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Leather and Suede',
-    description: 'Specialized care for leather goods',
-    features: [
-      'Leather cleaning',
-      'Suede restoration',
-      'Color touch-up',
-      'Conditioning treatment',
-      'Waterproofing',
-    ],
-    featured: false,
-  },
-  {
-    name: 'Wedding Gown Cleaning and Preservation',
-    description: 'Preserve your special memories',
-    features: [
-      'Expert wedding gown cleaning',
-      'Stain removal',
-      'Professional preservation',
-      'Acid-free packaging',
-      'Lifetime protection',
-    ],
-    featured: false,
-  },
-])
+const router = useRouter()
+
+// Map service data to the format expected by the template
+const services = ref(
+  servicesData.map((service) => ({
+    name: service.title,
+    description: service.subtitle,
+    slug: service.slug,
+    image: service.heroImage,
+    features: service.overview.features.slice(0, 3), // Show first 3 features
+    featured: service.slug === 'wash-fold-laundry', // Make wash & fold featured
+  })),
+)
 
 const selectService = (service) => {
-  // Emit event or handle service selection
-  console.log('Selected service:', service.name)
+  // Navigate to service detail page
+  router.push(`/service/${service.slug}`)
 }
 </script>
 
@@ -231,7 +123,7 @@ const selectService = (service) => {
 .pricing-card {
   background: var(--bg-primary);
   border-radius: 20px;
-  padding: 2.5rem;
+  padding: 0;
   box-shadow: 0 4px 6px var(--transparent-black);
   border: 2px solid transparent;
   transition: all 0.3s ease;
@@ -256,9 +148,27 @@ const selectService = (service) => {
   transform: scale(1.05) translateY(-8px);
 }
 
+.card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
 .card-header {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 2rem 2rem 1rem;
+  margin-bottom: 0;
 }
 
 .plan-name {
@@ -297,6 +207,7 @@ const selectService = (service) => {
 }
 
 .card-features {
+  padding: 0 2rem;
   margin-bottom: 2rem;
   flex: 1;
 }
@@ -324,6 +235,7 @@ const selectService = (service) => {
 
 .card-footer {
   text-align: center;
+  padding: 0 2rem 2rem;
 }
 
 .btn {

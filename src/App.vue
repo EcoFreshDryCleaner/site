@@ -1,46 +1,10 @@
 <script setup>
-import Navigation from './components/Navigation.vue'
-import HeroSection from './components/HeroSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import PricingSection from './components/PricingSection.vue'
-import TestimonialsSection from './components/TestimonialsSection.vue'
-import PromotionsSection from './components/PromotionsSection.vue'
-import ContactSection from './components/ContactSection.vue'
-import MobileAppSection from './components/MobileAppSection.vue'
-import PromoModal from './components/PromoModal.vue'
-import Footer from './components/Footer.vue'
-import Gallery from './components/Gallery.vue'
-
-const scrollToSection = (sectionId) => {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    const offsetTop = element.offsetTop - 70 // Account for fixed navigation
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth',
-    })
-  }
-}
+// App.vue now only serves as the root component with router-view
 </script>
 
 <template>
   <div id="app">
-    <Navigation @scrollToSection="scrollToSection" />
-
-    <main>
-      <HeroSection @scrollToSection="scrollToSection" />
-      <PromotionsSection @scrollToSection="scrollToSection" />
-      <AboutSection />
-      <!-- <Gallery /> -->
-      <!-- <PricingSection /> -->
-      <TestimonialsSection />
-      <ContactSection />
-      <MobileAppSection />
-    </main>
-
-    <PromoModal @scrollToSection="scrollToSection" />
-
-    <Footer />
+    <router-view />
   </div>
 </template>
 
@@ -74,9 +38,19 @@ main {
   padding: 0 2rem;
 }
 
-/* Smooth scrolling for the entire page */
+/* Disable browser's default smooth scrolling for hash links to prevent conflicts */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+/* Prevent browser from automatically scrolling to hash elements */
+:target {
+  scroll-margin-top: 0 !important;
+}
+
+/* Ensure all sections have consistent scroll positioning */
+section[id] {
+  scroll-margin-top: 0 !important;
 }
 
 /* Responsive design */
