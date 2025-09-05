@@ -67,9 +67,9 @@
               <span class="discount-price" v-if="promotion.discountPrice"
                 >${{ promotion.discountPrice }}</span
               >
-              <span class="discount-percentage" v-if="promotion.discountPercentage"
-                >{{ promotion.discountPercentage }} OFF</span
-              >
+            </div>
+            <div class="discount-percentage" v-if="promotion.discountPercentage">
+              {{ promotion.discountPercentage }} OFF
             </div>
             <div class="discount-code" v-if="promotion.discountCode">
               <span class="code-label">Use Code:</span>
@@ -96,8 +96,12 @@
               <span class="expiry-label">Expires:</span>
               <span class="expiry-date">{{ promotion.expiryDate }}</span>
             </div>
-            <button class="btn btn-primary" @click="claimOffer(promotion)" :disabled="claiming">
-              {{ claiming ? 'Claiming...' : 'Claim Now' }}
+            <button
+              class="btn btn-primary"
+              @click="claimOffer(promotion)"
+              :disabled="claiming.has(promotion.id)"
+            >
+              {{ claiming.has(promotion.id) ? 'Claiming...' : 'Claim Now' }}
             </button>
           </div>
 
@@ -138,7 +142,7 @@ import { getPromotions, trackPromotionClaim } from '../services/firestoreService
 const promotions = ref([])
 const loading = ref(true)
 const error = ref(false)
-const claiming = ref(false)
+const claiming = ref(new Set())
 const expandedTerms = ref([])
 
 const emit = defineEmits(['scrollToSection'])
@@ -186,7 +190,7 @@ const loadPromotions = async () => {
 
 const claimOffer = async (promotion) => {
   try {
-    claiming.value = true
+    claiming.value.add(promotion.id)
     console.log('Claiming offer:', promotion.title)
 
     // Track the claim in Firestore
@@ -198,7 +202,7 @@ const claimOffer = async (promotion) => {
     console.error('Error claiming offer:', err)
     // You could show a toast notification here
   } finally {
-    claiming.value = false
+    claiming.value.delete(promotion.id)
   }
 }
 
@@ -552,6 +556,8 @@ onMounted(() => {
   font-size: 0.9rem;
   font-weight: 600;
   box-shadow: 0 4px 15px var(--shadow-eco);
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 .discount-code {
