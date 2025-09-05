@@ -129,7 +129,7 @@
           <div class="form-header">
             <FontAwesomeIcon :icon="['fas', 'edit']" class="form-icon" />
             <h3>Send us a Message</h3>
-            <p>We'll get back to you within 24 hours</p>
+            <p>We'll get back to you within 48 hours</p>
           </div>
 
           <form

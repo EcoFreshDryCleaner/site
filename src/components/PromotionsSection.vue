@@ -96,13 +96,6 @@
               <span class="expiry-label">Expires:</span>
               <span class="expiry-date">{{ promotion.expiryDate }}</span>
             </div>
-            <button
-              class="btn btn-primary"
-              @click="claimOffer(promotion)"
-              :disabled="claiming.has(promotion.id)"
-            >
-              {{ claiming.has(promotion.id) ? 'Claiming...' : 'Claim Now' }}
-            </button>
           </div>
 
           <!-- Terms and Conditions Collapsible Section -->
@@ -137,12 +130,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { getPromotions, trackPromotionClaim } from '../services/firestoreService'
+import { getPromotions } from '../services/firestoreService'
 
 const promotions = ref([])
 const loading = ref(true)
 const error = ref(false)
-const claiming = ref(new Set())
 const expandedTerms = ref([])
 
 const emit = defineEmits(['scrollToSection'])
@@ -185,24 +177,6 @@ const loadPromotions = async () => {
     error.value = true
   } finally {
     loading.value = false
-  }
-}
-
-const claimOffer = async (promotion) => {
-  try {
-    claiming.value.add(promotion.id)
-    console.log('Claiming offer:', promotion.title)
-
-    // Track the claim in Firestore
-    await trackPromotionClaim(promotion.id)
-
-    // Handle offer claiming logic
-    scrollToSection('mobile-app')
-  } catch (err) {
-    console.error('Error claiming offer:', err)
-    // You could show a toast notification here
-  } finally {
-    claiming.value.delete(promotion.id)
   }
 }
 
