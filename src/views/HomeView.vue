@@ -38,6 +38,8 @@ import Footer from '../components/Footer.vue'
 const route = useRoute()
 
 const scrollToSection = (sectionId, debugSource = 'unknown') => {
+  if (import.meta.env.SSR) return
+
   const performScroll = () => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -62,6 +64,8 @@ const scrollToSection = (sectionId, debugSource = 'unknown') => {
   // For hash navigation, wait for the page to be fully rendered
   if (debugSource === 'hash-navigation') {
     const waitForStablePosition = (attempts = 0) => {
+      if (import.meta.env.SSR) return
+
       const element = document.getElementById(sectionId)
       if (!element) {
         return
@@ -94,6 +98,8 @@ const scrollToSection = (sectionId, debugSource = 'unknown') => {
 
 // Handle hash navigation when coming from other pages
 const handleHashNavigation = (event) => {
+  if (import.meta.env.SSR) return
+
   // Prevent browser's default hash scrolling behavior
   if (event) {
     event.preventDefault()
@@ -118,6 +124,8 @@ let preventDefaultHashScroll
 let handleInitialHash
 
 onMounted(() => {
+  if (import.meta.env.SSR) return
+
   // Prevent browser's default hash scrolling behavior globally
   preventDefaultHashScroll = (event) => {
     event.preventDefault()
@@ -152,6 +160,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  if (import.meta.env.SSR) return
+
   window.removeEventListener('hashchange', handleHashNavigation)
   if (handleInitialHash) {
     window.removeEventListener('load', handleInitialHash)

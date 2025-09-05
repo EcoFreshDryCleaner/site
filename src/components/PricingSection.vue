@@ -43,8 +43,8 @@
       </div>
 
       <div class="pricing-note">
-        <p>* All services include free pickup and delivery within 10 miles</p>
-        <p>* Bulk discounts available for orders over 20 items</p>
+        <!-- <p>* All services include free pickup and delivery within 10 miles</p>
+        <p>* Bulk discounts available for orders over 20 items</p> -->
         <p>* View detailed pricing and place orders in our mobile app</p>
         <p>* Contact us for custom pricing on special items</p>
       </div>

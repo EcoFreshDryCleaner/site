@@ -68,13 +68,19 @@ const shouldShowModal = () => {
   if (!modalPromotion.value || !modalPromotion.value.active) return false
 
   // Check if we should show on mobile
-  if (modalPromotion.value.modalConfig?.showOnMobile === false && window.innerWidth < 768)
+  if (
+    modalPromotion.value.modalConfig?.showOnMobile === false &&
+    !import.meta.env.SSR &&
+    window.innerWidth < 768
+  )
     return false
 
   // Check if already shown once
   if (modalPromotion.value.modalConfig?.showOnce) {
-    const hasShown = localStorage.getItem(`promo-shown-${modalPromotion.value.id}`)
-    if (hasShown) return false
+    if (!import.meta.env.SSR && window.localStorage) {
+      const hasShown = localStorage.getItem(`promo-shown-${modalPromotion.value.id}`)
+      if (hasShown) return false
+    }
   }
 
   return true
@@ -84,7 +90,9 @@ const showModal = () => {
   if (shouldShowModal()) {
     isVisible.value = true
     if (modalPromotion.value.modalConfig?.showOnce) {
-      localStorage.setItem(`promo-shown-${modalPromotion.value.id}`, 'true')
+      if (!import.meta.env.SSR && window.localStorage) {
+        localStorage.setItem(`promo-shown-${modalPromotion.value.id}`, 'true')
+      }
     }
   }
 }
@@ -107,7 +115,9 @@ const handlePrimaryAction = () => {
     const sectionId = modalPromotion.value.modalConfig.buttonLink.substring(1)
     emit('scrollToSection', sectionId)
   } else if (modalPromotion.value.modalConfig?.buttonLink) {
-    window.open(modalPromotion.value.modalConfig.buttonLink, '_blank')
+    if (!import.meta.env.SSR) {
+      window.open(modalPromotion.value.modalConfig.buttonLink, '_blank')
+    }
   }
   closeModal()
 }

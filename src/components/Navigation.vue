@@ -74,6 +74,8 @@ const toggleMenu = () => {
 }
 
 const handleScroll = () => {
+  if (import.meta.env.SSR) return
+
   isScrolled.value = window.scrollY > 50
 
   // Update active section based on scroll position
@@ -90,11 +92,15 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  if (!import.meta.env.SSR) {
+    window.addEventListener('scroll', handleScroll)
+  }
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  if (!import.meta.env.SSR) {
+    window.removeEventListener('scroll', handleScroll)
+  }
 })
 </script>
 

@@ -124,7 +124,9 @@ const scrollToSection = (sectionId) => {
 
 onMounted(() => {
   // Scroll to top when component mounts
-  window.scrollTo(0, 0)
+  if (!import.meta.env.SSR) {
+    window.scrollTo(0, 0)
+  }
 })
 </script>
 

@@ -194,7 +194,17 @@
         </div>
       </div>
 
-      <ServiceArea />
+      <ClientOnly>
+        <ServiceArea />
+        <template #placeholder>
+          <div class="service-area-placeholder">
+            <div class="placeholder-content">
+              <h3>Our Service Area</h3>
+              <p>Loading interactive map...</p>
+            </div>
+          </div>
+        </template>
+      </ClientOnly>
     </div>
   </section>
 </template>
@@ -204,7 +214,9 @@ import ServiceArea from './ServiceArea.vue'
 
 const openMap = () => {
   // Open map in new window or modal
-  window.open('https://maps.google.com', '_blank')
+  if (!import.meta.env.SSR) {
+    window.open('https://maps.google.com', '_blank')
+  }
 }
 </script>
 
@@ -942,5 +954,25 @@ const openMap = () => {
   .service-image {
     height: 150px;
   }
+}
+
+/* Service Area Placeholder */
+.service-area-placeholder {
+  padding: 4rem 0;
+  text-align: center;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+.placeholder-content h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.placeholder-content p {
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 </style>

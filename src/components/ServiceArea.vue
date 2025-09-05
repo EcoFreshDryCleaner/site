@@ -132,10 +132,12 @@ const initMap = () => {
 
     // Hide the close button after the info window is created
     google.maps.event.addListener(infoWindow, 'domready', () => {
-      const closeButtons = document.querySelectorAll('.gm-ui-hover-effect')
-      closeButtons.forEach((button) => {
-        button.style.display = 'none'
-      })
+      if (!import.meta.env.SSR) {
+        const closeButtons = document.querySelectorAll('.gm-ui-hover-effect')
+        closeButtons.forEach((button) => {
+          button.style.display = 'none'
+        })
+      }
     })
 
     // Add hover event listeners
@@ -150,6 +152,8 @@ const initMap = () => {
 }
 
 onMounted(() => {
+  if (import.meta.env.SSR) return
+
   // Wait for Google Maps to be fully loaded
   if (window.google && window.google.maps) {
     initMap()
