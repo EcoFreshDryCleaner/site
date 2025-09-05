@@ -16,7 +16,7 @@
           :key="service.name"
         >
           <div class="card-image">
-            <img :src="service.image" :alt="service.name" />
+            <img :src="service.image" :alt="service.name" loading="lazy" />
           </div>
           <div class="card-header">
             <h3 class="plan-name">{{ service.name }}</h3>

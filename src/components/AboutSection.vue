@@ -27,8 +27,9 @@
         <div class="gallery-grid">
           <div class="gallery-item large">
             <img
-              src="/src/assets/img/ecofresh-image-5.png"
+              src="/src/assets/img/services/dry-cleaning-1.jpg"
               alt="Professional dry cleaning facility"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <h4>Efficient Cleaning Process</h4>
@@ -36,14 +37,22 @@
             </div>
           </div>
           <div class="gallery-item large">
-            <img src="/src/assets/img/ecofresh-image-2.png" alt="Eco-friendly cleaning process" />
+            <img
+              src="/src/assets/img/services/leather-1.jpg"
+              alt="Eco-friendly cleaning process"
+              loading="lazy"
+            />
             <div class="gallery-overlay">
               <h4>Eco-Friendly Process</h4>
               <p>Biodegradable solutions for a cleaner planet</p>
             </div>
           </div>
           <div class="gallery-item large">
-            <img src="/src/assets/img/ecofresh-image-4.png" alt="Quality garment care" />
+            <img
+              src="/src/assets/img/services/outerwear-2.jpg"
+              alt="Quality garment care"
+              loading="lazy"
+            />
             <div class="gallery-overlay">
               <h4>Quality Garment Care</h4>
               <p>Expert attention to every detail</p>
@@ -101,9 +110,10 @@
         <div class="about-visual">
           <div class="about-image-container">
             <img
-              src="/src/assets/img/ecofresh-image-6.png"
+              src="/src/assets/img/services/delivery-1.jpg"
               alt="Eco-friendly dry cleaning process"
               class="about-main-image"
+              loading="lazy"
             />
             <div class="image-badge">
               <span class="badge-text">Eco-Certified</span>

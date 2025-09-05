@@ -63,9 +63,10 @@
       <div class="hero-visual">
         <div class="hero-image-container">
           <img
-            src="/src/assets/img/ecofresh-image-1.png"
+            src="/src/assets/img/hero.jpg"
             alt="Professional dry cleaning service"
             class="hero-main-image"
+            loading="lazy"
           />
           <div class="image-overlay">
             <div class="overlay-content">

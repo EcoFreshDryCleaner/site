@@ -3,12 +3,12 @@ export const servicesData = [
     slug: 'free-pickup-delivery',
     title: 'Free Pickup and Delivery',
     subtitle: 'Convenient service right to your door',
-    heroImage: new URL('@/assets/img/services/delivery-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/delivery-1.jpg', import.meta.url).href,
     overview: {
       title: 'Convenient Service to Your Door',
       description:
         'Experience the ultimate convenience with our free pickup and delivery service. We come to you, saving you time and hassle while ensuring your garments receive professional care.',
-      image: new URL('@/assets/img/services/delivery-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/delivery-2.jpg', import.meta.url).href,
       features: [
         'Free pickup from your home or office',
         'Flexible scheduling to fit your needs',
@@ -49,22 +49,18 @@ export const servicesData = [
       {
         title: 'Time Saving',
         description: 'No more trips to the dry cleaner - we handle everything for you.',
-        icon: new URL('@/assets/img/services/delivery-1.png', import.meta.url).href,
       },
       {
         title: 'Convenient',
         description: 'Schedule pickups and deliveries that fit your busy lifestyle.',
-        icon: new URL('@/assets/img/services/delivery-2.png', import.meta.url).href,
       },
       {
         title: 'Reliable',
         description: 'Consistent, on-time service you can count on every time.',
-        icon: new URL('@/assets/img/services/delivery-1.png', import.meta.url).href,
       },
       {
         title: 'Professional',
         description: 'Trained staff handle your garments with the utmost care.',
-        icon: new URL('@/assets/img/services/delivery-2.png', import.meta.url).href,
       },
     ],
   },
@@ -72,12 +68,12 @@ export const servicesData = [
     slug: 'wash-fold-laundry',
     title: 'Wash & Fold Laundry',
     subtitle: 'Fresh and clean everyday clothes',
-    heroImage: new URL('@/assets/img/services/wash-fold-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/wash-fold-1.jpg', import.meta.url).href,
     overview: {
       title: 'Complete Laundry Service',
       description:
         'Our wash and fold service takes the hassle out of laundry day. We handle everything from sorting to folding, delivering fresh, clean clothes ready to wear.',
-      image: new URL('@/assets/img/services/wash-fold-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/wash-fold-2.jpg', import.meta.url).href,
       features: [
         'Gentle washing with premium detergents',
         'Professional drying and folding',
@@ -113,22 +109,18 @@ export const servicesData = [
       {
         title: 'Time Saving',
         description: 'Free up hours of your week with our professional laundry service.',
-        icon: new URL('@/assets/img/services/wash-fold-1.png', import.meta.url).href,
       },
       {
         title: 'Gentle Care',
         description: 'Your clothes receive gentle treatment to maintain their quality.',
-        icon: new URL('@/assets/img/services/wash-fold-2.png', import.meta.url).href,
       },
       {
         title: 'Professional Results',
         description: 'Expert folding and organization for easy storage and wear.',
-        icon: new URL('@/assets/img/services/wash-fold-1.png', import.meta.url).href,
       },
       {
         title: 'Bulk Pricing',
         description: 'Special rates available for larger orders and regular customers.',
-        icon: new URL('@/assets/img/services/wash-fold-2.png', import.meta.url).href,
       },
     ],
   },
@@ -136,12 +128,12 @@ export const servicesData = [
     slug: 'shirt-laundry',
     title: 'Shirt Laundry',
     subtitle: 'The Perfect Shirt Laundry Service',
-    heroImage: new URL('@/assets/img/services/shirts-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/shirts-1.jpg', import.meta.url).href,
     overview: {
       title: 'Professional Shirt Care',
       description:
         'Specialized care for your dress shirts and business attire. Our shirt laundry service ensures crisp, professional results every time.',
-      image: new URL('@/assets/img/services/shirts-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/shirts-2.jpg', import.meta.url).href,
       features: [
         'Specialized shirt washing techniques',
         'Professional pressing and starching',
@@ -177,22 +169,18 @@ export const servicesData = [
       {
         title: 'Professional Results',
         description: 'Crisp, professional appearance that makes a great impression.',
-        icon: new URL('@/assets/img/services/shirts-1.png', import.meta.url).href,
       },
       {
         title: 'Fabric Care',
         description: 'Specialized techniques preserve your shirt quality and longevity.',
-        icon: new URL('@/assets/img/services/shirts-2.png', import.meta.url).href,
       },
       {
         title: 'Convenience',
         description: 'Hanger-ready shirts save you time getting ready for work.',
-        icon: new URL('@/assets/img/services/shirts-1.png', import.meta.url).href,
       },
       {
         title: 'Express Service',
         description: 'Quick turnaround for when you need shirts in a hurry.',
-        icon: new URL('@/assets/img/services/shirts-2.png', import.meta.url).href,
       },
     ],
   },
@@ -200,12 +188,12 @@ export const servicesData = [
     slug: 'dry-cleaning',
     title: 'Professional Dry Cleaning',
     subtitle: 'Expert care for your finest garments',
-    heroImage: new URL('@/assets/img/services/dry-cleaning-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/dry-cleaning-1.jpg', import.meta.url).href,
     overview: {
       title: 'Expert Care for Delicate Fabrics',
       description:
         'Our professional dry cleaning service uses eco-friendly solvents and state-of-the-art equipment to safely clean your most delicate and valuable garments.',
-      image: new URL('@/assets/img/services/dry-cleaning-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/dry-cleaning-2.jpg', import.meta.url).href,
       features: [
         'Eco-friendly GreenEarth cleaning',
         'Professional pressing and finishing',
@@ -243,22 +231,18 @@ export const servicesData = [
       {
         title: 'Eco-Friendly',
         description: 'GreenEarth cleaning is safe for your clothes and the environment.',
-        icon: new URL('@/assets/img/services/dry-cleaning-1.png', import.meta.url).href,
       },
       {
         title: 'Expert Care',
         description: 'Specialized knowledge for handling delicate and valuable garments.',
-        icon: new URL('@/assets/img/services/dry-cleaning-2.png', import.meta.url).href,
       },
       {
         title: 'Stain Removal',
         description: 'Professional stain treatment for the most challenging marks.',
-        icon: new URL('@/assets/img/services/dry-cleaning-1.png', import.meta.url).href,
       },
       {
         title: 'Fabric Protection',
         description: 'Treatments to help protect and extend the life of your garments.',
-        icon: new URL('@/assets/img/services/dry-cleaning-2.png', import.meta.url).href,
       },
     ],
   },
@@ -266,12 +250,12 @@ export const servicesData = [
     slug: 'wedding-dresses',
     title: 'Wedding Dress Cleaning & Preservation',
     subtitle: 'Preserve your special memories',
-    heroImage: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/wedding-2.jpg', import.meta.url).href,
     overview: {
       title: 'Expert Wedding Gown Care',
       description:
         'Specialized cleaning and preservation services for your most important dress. We understand the sentimental value and provide the utmost care.',
-      image: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/wedding-1.jpg', import.meta.url).href,
       features: [
         'Expert wedding gown cleaning',
         'Professional stain removal',
@@ -310,22 +294,18 @@ export const servicesData = [
       {
         title: 'Expert Care',
         description: 'Specialized knowledge in wedding gown fabrics and construction.',
-        icon: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
       },
       {
         title: 'Stain Removal',
         description: 'Professional treatment of wedding day stains and marks.',
-        icon: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
       },
       {
         title: 'Preservation',
         description: 'Acid-free packaging ensures your gown stays beautiful for generations.',
-        icon: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
       },
       {
         title: 'Memorial Quality',
         description: 'Beautiful presentation for passing down to future generations.',
-        icon: new URL('@/assets/img/services/wedding-2.png', import.meta.url).href,
       },
     ],
   },
@@ -333,12 +313,12 @@ export const servicesData = [
     slug: 'outerwear',
     title: 'Outerwear Cleaning',
     subtitle: 'Professional care for coats and jackets',
-    heroImage: new URL('@/assets/img/services/outerwear-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/outerwear-2.jpg', import.meta.url).href,
     overview: {
       title: 'Specialized Outerwear Care',
       description:
         'Professional cleaning for coats, jackets, and outerwear. We handle everything from wool coats to down jackets with specialized care.',
-      image: new URL('@/assets/img/services/outerwear-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/outerwear-1.jpg', import.meta.url).href,
       features: [
         'Wool and cashmere expertise',
         'Down jacket cleaning',
@@ -375,22 +355,18 @@ export const servicesData = [
       {
         title: 'Fabric Expertise',
         description: 'Specialized knowledge for wool, cashmere, down, and technical fabrics.',
-        icon: new URL('@/assets/img/services/outerwear-1.png', import.meta.url).href,
       },
       {
         title: 'Weather Protection',
         description: 'Professional waterproofing and protective treatments.',
-        icon: new URL('@/assets/img/services/outerwear-2.png', import.meta.url).href,
       },
       {
         title: 'Seasonal Care',
         description: 'Proper cleaning and storage preparation for seasonal items.',
-        icon: new URL('@/assets/img/services/outerwear-1.png', import.meta.url).href,
       },
       {
         title: 'Longevity',
         description: 'Expert care extends the life and performance of your outerwear.',
-        icon: new URL('@/assets/img/services/outerwear-2.png', import.meta.url).href,
       },
     ],
   },
@@ -398,12 +374,12 @@ export const servicesData = [
     slug: 'alterations',
     title: 'Alterations & Repairs',
     subtitle: 'Expert tailoring services',
-    heroImage: new URL('@/assets/img/services/alterations-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/alterations-1.jpg', import.meta.url).href,
     overview: {
       title: 'Professional Tailoring Services',
       description:
         'Expert alterations and repairs to make your clothes fit perfectly. From simple hemming to complex alterations, we handle it all.',
-      image: new URL('@/assets/img/services/alterations-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/alterations-2.jpg', import.meta.url).href,
       features: [
         'Hemming and tapering',
         'Button replacement and repair',
@@ -440,22 +416,18 @@ export const servicesData = [
       {
         title: 'Perfect Fit',
         description: 'Expert alterations ensure your clothes fit you perfectly.',
-        icon: new URL('@/assets/img/services/alterations-1.png', import.meta.url).href,
       },
       {
         title: 'Quality Craftsmanship',
         description: 'Professional techniques and attention to detail in every alteration.',
-        icon: new URL('@/assets/img/services/alterations-2.png', import.meta.url).href,
       },
       {
         title: 'Versatile Services',
         description: 'From simple repairs to complex alterations, we handle it all.',
-        icon: new URL('@/assets/img/services/alterations-1.png', import.meta.url).href,
       },
       {
         title: 'Rush Service',
         description: 'Quick turnaround available for urgent alterations and repairs.',
-        icon: new URL('@/assets/img/services/alterations-2.png', import.meta.url).href,
       },
     ],
   },
@@ -463,12 +435,12 @@ export const servicesData = [
     slug: 'shoes',
     title: 'Shoe Repair & Shine',
     subtitle: 'Restore your favorite footwear',
-    heroImage: new URL('@/assets/img/services/shoe-2.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/shoe-1.jpg', import.meta.url).href,
     overview: {
       title: 'Professional Shoe Care',
       description:
         'Expert shoe repair and shining services to keep your footwear looking and performing their best. From leather dress shoes to casual sneakers.',
-      image: new URL('@/assets/img/services/shoe-1.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/shoe-2.jpg', import.meta.url).href,
       features: [
         'Professional shoe shining',
         'Sole and heel repair',
@@ -504,22 +476,18 @@ export const servicesData = [
       {
         title: 'Professional Shine',
         description: 'Expert shining techniques for that mirror-like finish.',
-        icon: new URL('@/assets/img/services/shoe-1.png', import.meta.url).href,
       },
       {
         title: 'Quality Repairs',
         description: 'Professional repairs that extend the life of your footwear.',
-        icon: new URL('@/assets/img/services/shoe-2.png', import.meta.url).href,
       },
       {
         title: 'Leather Care',
         description: 'Specialized conditioning and protection for leather shoes.',
-        icon: new URL('@/assets/img/services/shoe-1.png', import.meta.url).href,
       },
       {
         title: 'Express Service',
         description: 'Quick shine service available for same-day results.',
-        icon: new URL('@/assets/img/services/shoe-2.png', import.meta.url).href,
       },
     ],
   },
@@ -527,12 +495,12 @@ export const servicesData = [
     slug: 'leather-products',
     title: 'Leather & Suede Care',
     subtitle: 'Specialized care for leather goods',
-    heroImage: new URL('@/assets/img/services/leather-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/leather-1.jpg', import.meta.url).href,
     overview: {
       title: 'Expert Leather and Suede Care',
       description:
         'Specialized cleaning and restoration services for leather and suede items. We handle everything from jackets to handbags with expert care.',
-      image: new URL('@/assets/img/services/leather-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/leather-2.jpg', import.meta.url).href,
       features: [
         'Leather cleaning and conditioning',
         'Suede restoration and cleaning',
@@ -570,22 +538,18 @@ export const servicesData = [
       {
         title: 'Expert Knowledge',
         description: 'Specialized expertise in leather and suede care techniques.',
-        icon: new URL('@/assets/img/services/leather-1.png', import.meta.url).href,
       },
       {
         title: 'Restoration',
         description: 'Professional restoration brings new life to worn leather items.',
-        icon: new URL('@/assets/img/services/leather-2.png', import.meta.url).href,
       },
       {
         title: 'Protection',
         description: 'Conditioning and waterproofing treatments protect your investment.',
-        icon: new URL('@/assets/img/services/leather-1.png', import.meta.url).href,
       },
       {
         title: 'Longevity',
         description: 'Proper care extends the life and beauty of your leather goods.',
-        icon: new URL('@/assets/img/services/leather-2.png', import.meta.url).href,
       },
     ],
   },
@@ -593,12 +557,12 @@ export const servicesData = [
     slug: 'bedding-household',
     title: 'Bedding & Household Items',
     subtitle: 'Care for your home textiles',
-    heroImage: new URL('@/assets/img/services/bedding-1.png', import.meta.url).href,
+    heroImage: new URL('@/assets/img/services/bedding-1.jpg', import.meta.url).href,
     overview: {
       title: 'Home Textile Care',
       description:
         "Professional cleaning for comforters, blankets, curtains, and other household textiles. We handle large items that don't fit in home washers.",
-      image: new URL('@/assets/img/services/bedding-2.png', import.meta.url).href,
+      image: new URL('@/assets/img/services/bedding-2.jpg', import.meta.url).href,
       features: [
         'Comforter and duvet cleaning',
         'Blanket and throw cleaning',
@@ -634,22 +598,18 @@ export const servicesData = [
       {
         title: 'Large Item Expertise',
         description: 'Specialized equipment and techniques for oversized household items.',
-        icon: new URL('@/assets/img/services/bedding-1.png', import.meta.url).href,
       },
       {
         title: 'Deep Cleaning',
         description: 'Professional cleaning removes allergens, dust mites, and odors.',
-        icon: new URL('@/assets/img/services/bedding-2.png', import.meta.url).href,
       },
       {
         title: 'Convenience',
         description: 'Handle items too large for home washing machines.',
-        icon: new URL('@/assets/img/services/bedding-1.png', import.meta.url).href,
       },
       {
         title: 'Seasonal Care',
         description: 'Proper cleaning and storage preparation for seasonal items.',
-        icon: new URL('@/assets/img/services/bedding-2.png', import.meta.url).href,
       },
     ],
   },
