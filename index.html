@@ -1,53 +1,552 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="EcoFresh Dry Cleaner - Professional eco-friendly dry cleaning services with free pickup and delivery. Schedule your pickup today!"
-    />
-    <meta
-      name="keywords"
-      content="dry cleaning, eco-friendly, pickup delivery, professional cleaning, sustainable"
-    />
-    <meta name="author" content="EcoFresh Dry Cleaner" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFresh Dry Cleaner - Coming Soon</title>
+    <meta name="description" content="EcoFresh Dry Cleaner - Professional eco-friendly dry cleaning services with free pickup and delivery. Coming soon!">
+    <!-- Fallback favicon using data URI -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23059669;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2310b981;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23grad)'/%3E%3Cg fill='white'%3E%3Cpath d='M16 8c-1.5 0-2.8.8-3.5 2L12 10.5c.4-.8 1.2-1.3 2.1-1.3.9 0 1.7.5 2.1 1.3L16.5 10c-.7-1.2-2-2-3.5-2z'/%3E%3Cpath d='M10 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3Cpath d='M16 20c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3Cpath d='M8 12c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1s1-.4 1-1v-2c0-.6-.4-1-1-1zm16 0c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1s1-.4 1-1v-2c0-.6-.4-1-1-1zm-8 8c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1s1-.4 1-1v-2c0-.6-.4-1-1-1z'/%3E%3C/g%3E%3C/svg%3E">
+    <style>
+        :root {
+            /* Primary Colors - Enhanced Eco Theme */
+            --primary-blue: #1e40af;
+            --primary-blue-dark: #1e3a8a;
+            --primary-blue-light: #3b82f6;
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ecofreshdrycleaner.com/" />
-    <meta property="og:title" content="EcoFresh Dry Cleaner - Eco-Friendly Dry Cleaning Services" />
-    <meta
-      property="og:description"
-      content="Professional eco-friendly dry cleaning services with free pickup and delivery. Schedule your pickup today!"
-    />
-    <meta property="og:image" content="/og-image.jpg" />
+            /* Eco Green Colors */
+            --eco-green: #059669;
+            --eco-green-light: #10b981;
+            --eco-green-dark: #047857;
+            --eco-mint: #34d399;
+            --eco-sage: #6ee7b7;
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ecofreshdrycleaner.com/" />
-    <meta
-      property="twitter:title"
-      content="EcoFresh Dry Cleaner - Eco-Friendly Dry Cleaning Services"
-    />
-    <meta
-      property="twitter:description"
-      content="Professional eco-friendly dry cleaning services with free pickup and delivery. Schedule your pickup today!"
-    />
-    <meta property="twitter:image" content="/og-image.jpg" />
+            /* Secondary Colors */
+            --secondary-teal: #0d9488;
+            --secondary-teal-light: #14b8a6;
+            --secondary-teal-dark: #0f766e;
 
-    <title>EcoFresh Dry Cleaner - Eco-Friendly Dry Cleaning Services</title>
+            /* Neutral Colors */
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --text-white: #ffffff;
 
-    <!-- Google Maps API -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr1r81Y8XAe06d8-2kCsSBW559qaGQc2o"
-      async
-      defer
-    ></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+            /* Background Colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-eco-light: #f0fdf4;
+            --bg-eco-lighter: #f7fee7;
+            --bg-dark: #0f172a;
+            --bg-dark-secondary: #1e293b;
+
+            /* Border Colors */
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-medium: #e2e8f0;
+            --border-dark: #1e293b;
+            --border-eco: #bbf7d0;
+
+            /* Gradient Colors */
+            --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--eco-green) 100%);
+            --gradient-hero: linear-gradient(135deg, var(--primary-blue) 0%, var(--eco-green) 50%, var(--secondary-teal) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--eco-green) 0%, var(--secondary-teal) 100%);
+            --gradient-eco: linear-gradient(135deg, var(--eco-green-light) 0%, var(--eco-mint) 100%);
+
+            /* Shadow Colors */
+            --shadow-primary: rgba(30, 64, 175, 0.25);
+            --shadow-eco: rgba(16, 185, 129, 0.25);
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-eco-lighter);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-primary);
+            box-shadow: 0 2px 10px var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .coming-soon-badge {
+            background: var(--gradient-eco);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px var(--shadow-eco);
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-eco);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px var(--shadow-eco);
+            transition: all 0.3s ease;
+            margin-bottom: 4rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-eco);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid var(--border-eco);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg-eco-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-eco);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px var(--shadow-medium);
+            border-color: var(--eco-green-light);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-eco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--eco-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Locations Section */
+        .locations-section {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid var(--border-eco);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--bg-eco-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-eco);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-eco);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px var(--shadow-medium);
+            border-color: var(--eco-green-light);
+        }
+
+        .location-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .location-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            border: 1px solid var(--border-eco);
+        }
+
+        .detail-icon {
+            font-size: 1rem;
+            color: var(--eco-green);
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+            width: 16px;
+        }
+
+        .detail-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: var(--text-white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-section {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .locations-section {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .contact-section,
+            .locations-section {
+                padding: 2rem;
+            }
+
+            .contact-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .coming-soon-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-section,
+            .locations-section {
+                padding: 1.5rem;
+            }
+
+            .contact-card,
+            .location-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">EcoFresh Dry Cleaner</div>
+                <div class="coming-soon-badge">Coming Soon</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1 class="hero-title">Website Coming Soon</h1>
+                <p class="hero-subtitle">Professional Eco-Friendly Dry Cleaning</p>
+                <p class="hero-description">
+                    We're working hard to bring you an amazing online experience. 
+                    In the meantime, you can reach out to us directly for all your 
+                    dry cleaning needs with free pickup and delivery.
+                </p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:hello@ecofreshdrycleaner.com">hello@ecofreshdrycleaner.com</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🚚</div>
+                        <h3>Service Area</h3>
+                        <p>Charlotte, NC & surrounding areas</p>
+                        <p><strong>Free pickup & delivery included</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Locations Section -->
+            <section class="locations-section">
+                <h2 class="section-title">Our Locations</h2>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <h3 class="location-name">Mathews Location</h3>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <span class="detail-icon">📍</span>
+                                <span class="detail-text">1115 A Mathews Mint Hill Rd<br>Mathews, NC 28105</span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">📞</span>
+                                <span class="detail-text"><a href="tel:+17948475992">(794) 847-5992</a></span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">🕒</span>
+                                <span class="detail-text">Mon-Fri: 7:00 AM - 6:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <h3 class="location-name">Mallard Creek Location</h3>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <span class="detail-icon">📍</span>
+                                <span class="detail-text">2712 W Mallard Creek Church Rd<br>Charlotte, NC 28262</span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">📞</span>
+                                <span class="detail-text"><a href="tel:+17047178180">(704) 717-8180</a></span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">🕒</span>
+                                <span class="detail-text">Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <h3 class="location-name">Piedmont Row Location</h3>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <span class="detail-icon">📍</span>
+                                <span class="detail-text">4625 Piedmont Row Dr #145A<br>Charlotte, NC 28210</span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">📞</span>
+                                <span class="detail-text"><a href="tel:+17045541788">(704) 554-1788</a></span>
+                            </div>
+                            <div class="location-detail">
+                                <span class="detail-icon">🕒</span>
+                                <span class="detail-text">Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EcoFresh Dry Cleaner. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>

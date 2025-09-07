@@ -1,9 +1,0 @@
-name = "ecofresh-drycleaner"
-compatibility_date = "2024-01-01"
-
-[env.production]
-name = "ecofresh-drycleaner"
-
-[[env.production.routes]]
-pattern = "ecofresh-drycleaner.pages.dev/*"
-zone_name = "pages.dev"
