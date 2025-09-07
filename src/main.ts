@@ -1,6 +1,6 @@
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
-import { routes } from './router'
+import { routes, scrollBehavior } from './router'
 import './styles/colors.css'
 
 // FontAwesome setup
@@ -16,7 +16,7 @@ library.add(fas, far, fab)
 
 export const createApp = ViteSSG(
   App,
-  { routes },
+  { routes, scrollBehavior },
   ({ app, router, routes, isClient, initialState }) => {
     // Register FontAwesome component globally
     app.component('FontAwesomeIcon', FontAwesomeIcon)

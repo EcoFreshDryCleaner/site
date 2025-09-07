@@ -27,9 +27,8 @@
         <div class="gallery-grid">
           <div class="gallery-item large">
             <img
-              src="/src/assets/img/services/dry-cleaning-1.jpg"
+              :src="optimizeImageUrl('https://cdn.ecofreshdrycleaner.com/dry-cleaning-1.jpg')"
               alt="Professional dry cleaning facility"
-              loading="lazy"
             />
             <div class="gallery-overlay">
               <h4>Efficient Cleaning Process</h4>
@@ -38,9 +37,8 @@
           </div>
           <div class="gallery-item large">
             <img
-              src="/src/assets/img/services/leather-1.jpg"
+              :src="optimizeImageUrl('https://cdn.ecofreshdrycleaner.com/leather-1.jpg')"
               alt="Eco-friendly cleaning process"
-              loading="lazy"
             />
             <div class="gallery-overlay">
               <h4>Eco-Friendly Process</h4>
@@ -49,9 +47,8 @@
           </div>
           <div class="gallery-item large">
             <img
-              src="/src/assets/img/services/outerwear-2.jpg"
+              :src="optimizeImageUrl('https://cdn.ecofreshdrycleaner.com/outerwear-2.jpg')"
               alt="Quality garment care"
-              loading="lazy"
             />
             <div class="gallery-overlay">
               <h4>Quality Garment Care</h4>
@@ -113,10 +110,9 @@
         <div class="about-visual">
           <div class="about-image-container">
             <img
-              src="/src/assets/img/services/delivery-1.jpg"
+              :src="optimizeImageUrl('https://cdn.ecofreshdrycleaner.com/delivery-1.jpg')"
               alt="Eco-friendly dry cleaning process"
               class="about-main-image"
-              loading="lazy"
             />
             <div class="image-badge">
               <span class="badge-text">Locally Owned</span>
@@ -171,7 +167,28 @@
 </template>
 
 <script setup>
-// Component logic can be added here if needed
+// Function to optimize images using Cloudflare transformations
+const optimizeImageUrl = (url) => {
+  if (!url) return url
+  
+  // Check if it's a Cloudflare CDN URL
+  if (url.includes('cdn.ecofreshdrycleaner.com')) {
+    // Extract the image path from the full URL
+    const urlObj = new URL(url)
+    const imagePath = urlObj.pathname
+    
+    // Apply Cloudflare image transformations using the correct format
+    // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
+    // - format=auto: Auto format selection (WebP/AVIF when supported)
+    // - width=600: Width optimized for gallery display
+    // - height=400: Height optimized for gallery display
+    // - quality=85: High quality with good compression
+    // - fit=cover: Maintain aspect ratio and cover the container
+    return `https://cdn.ecofreshdrycleaner.com/cdn-cgi/image/format=auto,width=600,height=400,quality=85,fit=cover${imagePath}`
+  }
+  
+  return url
+}
 </script>
 
 <style scoped>

@@ -38,19 +38,9 @@ main {
   padding: 0 2rem;
 }
 
-/* Disable browser's default smooth scrolling for hash links to prevent conflicts */
+/* Enable smooth scrolling for better UX */
 html {
-  scroll-behavior: auto;
-}
-
-/* Prevent browser from automatically scrolling to hash elements */
-:target {
-  scroll-margin-top: 0 !important;
-}
-
-/* Ensure all sections have consistent scroll positioning */
-section[id] {
-  scroll-margin-top: 0 !important;
+  scroll-behavior: smooth;
 }
 
 /* Responsive design */

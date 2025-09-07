@@ -29,7 +29,7 @@
           :key="service.name"
         >
           <div class="card-image">
-            <img :src="service.image" :alt="service.name" loading="lazy" />
+            <img :src="service.image" :alt="service.name" />
           </div>
           <div class="card-header">
             <h3 class="plan-name">{{ service.name }}</h3>
@@ -75,6 +75,29 @@ const services = ref([])
 const loading = ref(true)
 const error = ref(null)
 
+// Function to optimize images using Cloudflare transformations
+const optimizeImageUrl = (url) => {
+  if (!url) return url
+  
+  // Check if it's a Cloudflare CDN URL
+  if (url.includes('cdn.ecofreshdrycleaner.com')) {
+    // Extract the image path from the full URL
+    const urlObj = new URL(url)
+    const imagePath = urlObj.pathname
+    
+    // Apply Cloudflare image transformations using the correct format
+    // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
+    // - format=auto: Auto format selection (WebP/AVIF when supported)
+    // - width=400: Width optimized for card display
+    // - height=200: Height matches card-image height
+    // - quality=85: High quality with good compression
+    // - fit=cover: Maintain aspect ratio and cover the container
+    return `https://cdn.ecofreshdrycleaner.com/cdn-cgi/image/format=auto,width=400,height=200,quality=85,fit=cover${imagePath}`
+  }
+  
+  return url
+}
+
 // Fetch services from Firestore
 const fetchServices = async () => {
   try {
@@ -88,7 +111,7 @@ const fetchServices = async () => {
       name: service.title,
       description: service.subtitle,
       slug: service.slug,
-      image: service.heroImage, // Use CDN URL directly
+      image: optimizeImageUrl(service.heroImage), // Apply Cloudflare optimizations
       features: service.overview?.features?.slice(0, 3) || [], // Show first 3 features
       featured: service.featured || false,
     }))

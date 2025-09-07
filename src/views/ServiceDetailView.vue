@@ -3,28 +3,43 @@
     <!-- Navigation -->
     <Navigation @scrollToSection="scrollToSection" />
 
-    <!-- Hero Section -->
-    <section class="service-hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class="service-title">{{ service.title }}</h1>
-            <p class="service-subtitle">{{ service.subtitle }}</p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" @click="scrollToSection('mobile-app')">
-                Schedule Pickup
-              </button>
-              <button class="btn btn-secondary" @click="scrollToSection('contact')">
-                Contact Us
-              </button>
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Loading service details...</p>
+    </div>
+
+    <!-- Error State -->
+    <div v-else-if="error" class="error-state">
+      <h2>Service Not Found</h2>
+      <p>{{ error }}</p>
+      <button class="btn btn-primary" @click="$router.push('/')">Go Home</button>
+    </div>
+
+    <!-- Service Content -->
+    <template v-else-if="service">
+      <!-- Hero Section -->
+      <section class="service-hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1 class="service-title">{{ service.title }}</h1>
+              <p class="service-subtitle">{{ service.subtitle }}</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" @click="scrollToSection('mobile-app')">
+                  Schedule Pickup
+                </button>
+                <button class="btn btn-secondary" @click="scrollToSection('contact')">
+                  Contact Us
+                </button>
+              </div>
+            </div>
+            <div class="hero-image">
+              <img :src="service.heroImage" :alt="service.title" />
             </div>
           </div>
-          <div class="hero-image">
-            <img :src="service.heroImage" :alt="service.title" />
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- Service Overview -->
     <section class="service-overview">
@@ -95,8 +110,9 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <Footer />
+      <!-- Footer -->
+      <Footer />
+    </template>
   </div>
 </template>
 
@@ -105,15 +121,67 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Navigation from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
-import { servicesData } from '../data/servicesData.js'
+import { servicesService } from '../services/servicesService.js'
 
 const route = useRoute()
 const router = useRouter()
 const serviceSlug = computed(() => route.params.slug)
 
-const service = computed(() => {
-  return servicesData.find((s) => s.slug === serviceSlug.value) || servicesData[0]
-})
+const service = ref(null)
+const loading = ref(true)
+const error = ref(null)
+
+// Function to optimize images using Cloudflare transformations
+const optimizeImageUrl = (url) => {
+  if (!url) return url
+  
+  // Check if it's a Cloudflare CDN URL
+  if (url.includes('cdn.ecofreshdrycleaner.com')) {
+    // Extract the image path from the full URL
+    const urlObj = new URL(url)
+    const imagePath = urlObj.pathname
+    
+    // Apply Cloudflare image transformations using the correct format
+    // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
+    // - format=auto: Auto format selection (WebP/AVIF when supported)
+    // - width=800: Width optimized for hero display
+    // - height=600: Height optimized for hero display
+    // - quality=85: High quality with good compression
+    // - fit=cover: Maintain aspect ratio and cover the container
+    return `https://cdn.ecofreshdrycleaner.com/cdn-cgi/image/format=auto,width=800,height=600,quality=85,fit=cover${imagePath}`
+  }
+  
+  return url
+}
+
+// Fetch service from Firestore
+const fetchService = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    
+    const firestoreService = await servicesService.getServiceBySlug(serviceSlug.value)
+    
+    if (firestoreService) {
+      // Apply image optimizations to the service data
+      service.value = {
+        ...firestoreService,
+        heroImage: optimizeImageUrl(firestoreService.heroImage),
+        overview: {
+          ...firestoreService.overview,
+          image: optimizeImageUrl(firestoreService.overview?.image)
+        }
+      }
+    } else {
+      error.value = 'Service not found'
+    }
+  } catch (err) {
+    console.error('Error fetching service:', err)
+    error.value = 'Failed to load service. Please try again later.'
+  } finally {
+    loading.value = false
+  }
+}
 
 const scrollToSection = (sectionId) => {
   if (sectionId === 'mobile-app' || sectionId === 'contact') {
@@ -122,11 +190,9 @@ const scrollToSection = (sectionId) => {
   }
 }
 
-onMounted(() => {
-  // Scroll to top when component mounts
-  if (!import.meta.env.SSR) {
-    window.scrollTo(0, 0)
-  }
+onMounted(async () => {
+  // Fetch service data
+  await fetchService()
 })
 </script>
 
@@ -423,6 +489,44 @@ onMounted(() => {
 .service-cta .btn-secondary:hover {
   background: white;
   color: var(--primary-blue);
+}
+
+/* Loading and Error States */
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--bg-secondary);
+  border-top: 4px solid var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-state h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.error-state p {
+  margin-bottom: 2rem;
+  color: var(--text-error, #e74c3c);
 }
 
 /* Responsive Design */

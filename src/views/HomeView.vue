@@ -37,122 +37,42 @@ import Footer from '../components/Footer.vue'
 
 const route = useRoute()
 
-const scrollToSection = (sectionId, debugSource = 'unknown') => {
+const scrollToSection = (sectionId) => {
   if (import.meta.env.SSR) return
 
-  const performScroll = () => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const elementTop = element.offsetTop
-      const offsetTop = elementTop - 70 // Account for fixed navigation
+  const element = document.getElementById(sectionId)
+  if (element) {
+    const elementTop = element.offsetTop
+    const offsetTop = elementTop - 70 // Account for fixed navigation
 
-      // Temporarily enable smooth scrolling for this scroll operation
-      document.documentElement.style.scrollBehavior = 'smooth'
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth',
-      })
-
-      // Reset scroll behavior after a short delay
-      setTimeout(() => {
-        document.documentElement.style.scrollBehavior = 'auto'
-      }, 1000)
-    }
-  }
-
-  // For hash navigation, wait for the page to be fully rendered
-  if (debugSource === 'hash-navigation') {
-    const waitForStablePosition = (attempts = 0) => {
-      if (import.meta.env.SSR) return
-
-      const element = document.getElementById(sectionId)
-      if (!element) {
-        return
-      }
-
-      const currentPosition = element.offsetTop
-
-      // If this is the first check, store the position and check again
-      if (attempts === 0) {
-        setTimeout(() => waitForStablePosition(1), 50)
-        return
-      }
-
-      // If position is stable (same as previous check) or we've tried enough times
-      if (attempts >= 10 || (attempts > 1 && currentPosition === element.offsetTop)) {
-        performScroll()
-      } else {
-        // Position still changing, wait a bit more
-        setTimeout(() => waitForStablePosition(attempts + 1), 50)
-      }
-    }
-
-    // Start checking position stability
-    waitForStablePosition()
-  } else {
-    // For click navigation, scroll immediately
-    performScroll()
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth',
+    })
   }
 }
 
 // Handle hash navigation when coming from other pages
-const handleHashNavigation = (event) => {
+const handleHashNavigation = () => {
   if (import.meta.env.SSR) return
-
-  // Prevent browser's default hash scrolling behavior
-  if (event) {
-    event.preventDefault()
-  }
 
   if (route.hash) {
     // Remove the # from the hash
     const sectionId = route.hash.substring(1)
-
-    // Immediately scroll to top to prevent browser's default hash scroll
-    window.scrollTo(0, 0)
-
-    // Then scroll to the target section after a delay
+    
+    // Wait for the page to be fully rendered before scrolling
     setTimeout(() => {
-      scrollToSection(sectionId, 'hash-navigation')
-    }, 200)
+      scrollToSection(sectionId)
+    }, 100)
   }
 }
-
-// Store the preventDefault function reference for cleanup
-let preventDefaultHashScroll
-let handleInitialHash
 
 onMounted(() => {
   if (import.meta.env.SSR) return
 
-  // Prevent browser's default hash scrolling behavior globally
-  preventDefaultHashScroll = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-    return false
-  }
-
-  // Add event listeners to prevent default hash scrolling
-  window.addEventListener('hashchange', preventDefaultHashScroll, true)
-  document.addEventListener('hashchange', preventDefaultHashScroll, true)
-
-  // Handle initial hash if present - wait for page to be fully loaded
-  handleInitialHash = () => {
-    if (route.hash) {
-      // Wait a bit more for all resources to load
-      setTimeout(() => {
-        handleHashNavigation()
-      }, 100)
-    }
-  }
-
-  // Check if page is already loaded
-  if (document.readyState === 'complete') {
-    handleInitialHash()
-  } else {
-    // Wait for page to be fully loaded
-    window.addEventListener('load', handleInitialHash)
+  // Handle initial hash if present
+  if (route.hash) {
+    handleHashNavigation()
   }
 
   // Listen for hash changes (when user navigates directly to URLs with hashes)
@@ -163,13 +83,6 @@ onUnmounted(() => {
   if (import.meta.env.SSR) return
 
   window.removeEventListener('hashchange', handleHashNavigation)
-  if (handleInitialHash) {
-    window.removeEventListener('load', handleInitialHash)
-  }
-  if (preventDefaultHashScroll) {
-    window.removeEventListener('hashchange', preventDefaultHashScroll, true)
-    document.removeEventListener('hashchange', preventDefaultHashScroll, true)
-  }
 })
 </script>
 
@@ -203,24 +116,9 @@ main {
   padding: 0 2rem;
 }
 
-/* Disable browser's default smooth scrolling for hash links to prevent conflicts */
+/* Enable smooth scrolling for better UX */
 html {
-  scroll-behavior: auto;
-}
-
-/* Re-enable smooth scrolling only for programmatic scrolling */
-.smooth-scroll {
   scroll-behavior: smooth;
-}
-
-/* Prevent browser from automatically scrolling to hash elements */
-:target {
-  scroll-margin-top: 0 !important;
-}
-
-/* Ensure all sections have consistent scroll positioning */
-section[id] {
-  scroll-margin-top: 0 !important;
 }
 
 /* Responsive design */
