@@ -123,6 +123,8 @@ import Navigation from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
 import { servicesService } from '../services/servicesService.js'
 
+const OPTIMIZE_IMAGES = false
+
 const route = useRoute()
 const router = useRouter()
 const serviceSlug = computed(() => route.params.slug)
@@ -133,7 +135,7 @@ const error = ref(null)
 
 // Function to optimize images using Cloudflare transformations
 const optimizeImageUrl = (url) => {
-  if (!url) return url
+  if (!url || !OPTIMIZE_IMAGES) return url
   
   // Check if it's a Cloudflare CDN URL
   if (url.includes('cdn.ecofreshdrycleaner.com')) {
