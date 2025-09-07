@@ -50,7 +50,7 @@ const menuItems = [
   { id: 'promotions', label: 'Offers', href: '#promotions' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'pricing', label: 'Services', href: '#pricing' },
-  { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
+  // { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
   { id: 'contact', label: 'Contact', href: '#contact' },
   { id: 'mobile-app', label: 'App', href: '#mobile-app' },
 ]

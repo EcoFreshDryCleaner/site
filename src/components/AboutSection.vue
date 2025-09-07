@@ -68,12 +68,12 @@
               <FontAwesomeIcon :icon="['fas', 'leaf']" />
             </div>
             <div class="item-content">
-              <h3>Eco-Friendly Solutions</h3>
+              <h3>Your Neighborhood Dry Cleaner</h3>
               <p>
-                At EcoFresh Drycleaners, with 20 plus years of service we believe fresh clothes
-                shouldn't cost the earth. Our eco-friendly cleaning uses gentle, biodegradable
-                solutions and energy-smart technology to keep your garments—and our planet—looking
-                their best.
+                For over 25 years, EcoFresh Drycleaners has been more than just a business—we're
+                your neighbors, your friends, and your trusted partners in keeping your wardrobe
+                fresh. As a family-owned local business with three convenient locations, we've built
+                lasting relationships with our community, treating every customer like family.
               </p>
             </div>
           </div>
@@ -83,12 +83,13 @@
               <FontAwesomeIcon :icon="['fas', 'heart']" />
             </div>
             <div class="item-content">
-              <h3>Care & Precision</h3>
+              <h3>Personal Care & Attention</h3>
               <p>
-                Whether it's your favorite shirt or your most treasured suit, we treat every piece
-                with care, precision, and a whole lot of love for the environment. Every detail—down
-                to the final press—is executed with precision, ensuring your wardrobe remains as
-                timeless as your style.
+                We understand that behind every garment is a story—your first job interview suit,
+                your wedding dress, your child's school uniform. That's why we treat each piece with
+                the same care and attention we'd give our own family's clothes. Our experienced team
+                has been perfecting their craft for decades, ensuring your most precious garments
+                receive the gentle, expert care they deserve.
               </p>
             </div>
           </div>
@@ -98,10 +99,12 @@
               <FontAwesomeIcon :icon="['fas', 'truck']" />
             </div>
             <div class="item-content">
-              <h3>Convenient Service</h3>
+              <h3>Community-Focused Convenience</h3>
               <p>
-                Free pickup and delivery service makes it easy to keep your wardrobe fresh without
-                leaving your home or office.
+                Our free pickup and delivery service isn't just about convenience—it's about being
+                there for our community. Whether you're a busy parent, a working professional, or a
+                senior who values the personal touch, we bring our trusted service right to your
+                doorstep, just like we've been doing for over two decades.
               </p>
             </div>
           </div>
@@ -116,7 +119,7 @@
               loading="lazy"
             />
             <div class="image-badge">
-              <span class="badge-text">Eco-Certified</span>
+              <span class="badge-text">Locally Owned</span>
             </div>
           </div>
 
@@ -125,15 +128,15 @@
               <div class="stat-icon">
                 <FontAwesomeIcon :icon="['fas', 'leaf']" />
               </div>
-              <div class="stat-number">20+</div>
-              <div class="stat-label">Years Experience</div>
+              <div class="stat-number">25+</div>
+              <div class="stat-label">Years Serving You</div>
             </div>
             <div class="stat-card">
               <div class="stat-icon">
                 <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
               </div>
               <div class="stat-number">3</div>
-              <div class="stat-label">Locations</div>
+              <div class="stat-label">Family Locations</div>
             </div>
           </div>
         </div>

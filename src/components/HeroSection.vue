@@ -14,7 +14,7 @@
       <div class="hero-text">
         <div class="hero-badge">
           <FontAwesomeIcon :icon="['fas', 'leaf']" class="badge-icon" />
-          <span>Eco-Friendly Since 2003</span>
+          <span>Eco-Friendly Since 2000</span>
         </div>
 
         <h1 class="hero-title">
@@ -78,11 +78,11 @@
 
         <div class="floating-card card-1">
           <div class="card-icon">
-            <FontAwesomeIcon :icon="['fas', 'leaf']" />
+            <FontAwesomeIcon :icon="['fas', 'home']" />
           </div>
           <div class="card-text">
-            <strong>Eco-Certified</strong>
-            <span>Green Business</span>
+            <strong>Local Business</strong>
+            <span>Community Trusted</span>
           </div>
         </div>
 
@@ -91,7 +91,7 @@
             <FontAwesomeIcon :icon="['fas', 'star']" />
           </div>
           <div class="card-text">
-            <strong>20+ Years</strong>
+            <strong>25+ Years</strong>
             <span>Experience</span>
           </div>
         </div>

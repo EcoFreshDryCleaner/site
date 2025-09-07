@@ -10,7 +10,7 @@
       <AboutSection />
       <!-- <Gallery /> -->
       <PricingSection />
-      <TestimonialsSection />
+      <!-- <TestimonialsSection /> -->
       <ContactSection />
       <MobileAppSection />
     </main>
