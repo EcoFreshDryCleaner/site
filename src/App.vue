@@ -38,10 +38,6 @@ main {
   padding: 0 2rem;
 }
 
-/* Enable smooth scrolling for better UX */
-html {
-  scroll-behavior: smooth;
-}
 
 /* Responsive design */
 @media (max-width: 768px) {

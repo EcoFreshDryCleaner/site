@@ -137,7 +137,7 @@ const loading = ref(true)
 const error = ref(false)
 const expandedTerms = ref([])
 
-const emit = defineEmits(['scrollToSection'])
+const emit = defineEmits([])
 
 // Helper function to convert FontAwesome string to array format
 const getIconArray = (iconString) => {
@@ -189,9 +189,6 @@ const toggleTerms = (promotionId) => {
   }
 }
 
-const scrollToSection = (sectionId) => {
-  emit('scrollToSection', sectionId)
-}
 
 onMounted(() => {
   loadPromotions()

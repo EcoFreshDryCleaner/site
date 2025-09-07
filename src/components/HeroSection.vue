@@ -28,11 +28,11 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" @click="scrollToSection('promotions')">
+          <button class="btn btn-primary">
             <FontAwesomeIcon :icon="['fas', 'gift']" class="btn-icon" />
             View Promotions
           </button>
-          <button class="btn btn-secondary" @click="scrollToSection('mobile-app')">
+          <button class="btn btn-secondary">
             <FontAwesomeIcon :icon="['fas', 'mobile-alt']" class="btn-icon" />
             Schedule Pickup
           </button>
@@ -101,11 +101,6 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['scrollToSection'])
-
-const scrollToSection = (sectionId) => {
-  emit('scrollToSection', sectionId)
-}
 </script>
 
 <style scoped>

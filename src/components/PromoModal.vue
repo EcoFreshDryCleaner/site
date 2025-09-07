@@ -49,7 +49,7 @@ const isVisible = ref(false)
 const loading = ref(false)
 const modalPromotion = ref(null)
 
-const emit = defineEmits(['scrollToSection'])
+const emit = defineEmits([])
 
 const loadModalPromotion = async () => {
   try {
@@ -108,13 +108,7 @@ const handleOverlayClick = () => {
 }
 
 const handlePrimaryAction = () => {
-  if (
-    modalPromotion.value.modalConfig?.buttonLink &&
-    modalPromotion.value.modalConfig.buttonLink.startsWith('#')
-  ) {
-    const sectionId = modalPromotion.value.modalConfig.buttonLink.substring(1)
-    emit('scrollToSection', sectionId)
-  } else if (modalPromotion.value.modalConfig?.buttonLink) {
+  if (modalPromotion.value.modalConfig?.buttonLink) {
     if (!import.meta.env.SSR) {
       window.open(modalPromotion.value.modalConfig.buttonLink, '_blank')
     }

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navigation" :class="{ scrolled: isScrolled }">
+  <nav class="navigation">
     <div class="nav-container">
       <div class="nav-brand">
         <h2 class="brand-name">EcoFresh</h2>
@@ -12,15 +12,14 @@
           :key="item.id"
           :href="item.href"
           class="nav-link"
-          @click.prevent="scrollToSection(item.id)"
-          :class="{ active: activeSection === item.id }"
+          @click.prevent="navigateToSection(item.id)"
         >
           {{ item.label }}
         </a>
       </div>
 
       <div class="nav-actions">
-        <button class="btn btn-primary" @click="scrollToSection('mobile-app')">
+        <button class="btn btn-primary" @click="navigateToSection('mobile-app')">
           Schedule Pickup
         </button>
 
@@ -35,15 +34,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
 
-const isScrolled = ref(false)
 const isMenuOpen = ref(false)
-const activeSection = ref('')
 
 const menuItems = [
   { id: 'hero', label: 'Home', href: '#hero' },
@@ -55,53 +52,15 @@ const menuItems = [
   { id: 'mobile-app', label: 'App', href: '#mobile-app' },
 ]
 
-const emit = defineEmits(['scrollToSection'])
-
-const scrollToSection = (sectionId) => {
-  // Check if we're on the home page
-  if (route.name === 'home') {
-    // On home page, use existing scroll behavior
-    emit('scrollToSection', sectionId, 'navigation-click')
-  } else {
-    // On other pages, navigate to home with section hash
-    router.push({ name: 'home', hash: `#${sectionId}` })
-  }
+const navigateToSection = (sectionId) => {
+  // Navigate to home page with section hash
+  router.push({ name: 'home', hash: `#${sectionId}` })
   isMenuOpen.value = false
 }
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
-
-const handleScroll = () => {
-  if (import.meta.env.SSR) return
-
-  isScrolled.value = window.scrollY > 50
-
-  // Update active section based on scroll position
-  const sections = menuItems.map((item) => item.id)
-  const scrollPosition = window.scrollY + 100
-
-  for (let i = sections.length - 1; i >= 0; i--) {
-    const section = document.getElementById(sections[i])
-    if (section && section.offsetTop <= scrollPosition) {
-      activeSection.value = sections[i]
-      break
-    }
-  }
-}
-
-onMounted(() => {
-  if (!import.meta.env.SSR) {
-    window.addEventListener('scroll', handleScroll)
-  }
-})
-
-onUnmounted(() => {
-  if (!import.meta.env.SSR) {
-    window.removeEventListener('scroll', handleScroll)
-  }
-})
 </script>
 
 <style scoped>
@@ -117,10 +76,6 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-.navigation.scrolled {
-  background: var(--overlay-light);
-  box-shadow: 0 2px 20px var(--shadow-light);
-}
 
 .nav-container {
   max-width: 1200px;
@@ -174,10 +129,6 @@ onUnmounted(() => {
   color: var(--primary-blue);
 }
 
-.nav-link.active {
-  color: var(--primary-blue);
-}
-
 .nav-link::after {
   content: '';
   position: absolute;
@@ -195,12 +146,6 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   opacity: 0.5;
-}
-
-.nav-link.active::after {
-  left: 0;
-  right: 0;
-  opacity: 1;
 }
 
 .nav-actions {

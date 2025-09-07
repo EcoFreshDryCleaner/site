@@ -1,7 +1,7 @@
 <template>
   <div class="service-detail">
     <!-- Navigation -->
-    <Navigation @scrollToSection="scrollToSection" />
+    <Navigation />
 
     <!-- Loading State -->
     <div v-if="loading" class="loading-state">
@@ -26,10 +26,10 @@
               <h1 class="service-title">{{ service.title }}</h1>
               <p class="service-subtitle">{{ service.subtitle }}</p>
               <div class="hero-actions">
-                <button class="btn btn-primary" @click="scrollToSection('mobile-app')">
+                <button class="btn btn-primary">
                   Schedule Pickup
                 </button>
-                <button class="btn btn-secondary" @click="scrollToSection('contact')">
+                <button class="btn btn-secondary">
                   Contact Us
                 </button>
               </div>
@@ -101,10 +101,10 @@
           <h2>Ready to Experience Professional {{ service.title }}?</h2>
           <p>Schedule your pickup today and let us take care of your garments with expert care.</p>
           <div class="cta-actions">
-            <button class="btn btn-primary" @click="scrollToSection('mobile-app')">
+            <button class="btn btn-primary">
               Schedule Pickup
             </button>
-            <button class="btn btn-secondary" @click="scrollToSection('contact')">Get Quote</button>
+            <button class="btn btn-secondary">Get Quote</button>
           </div>
         </div>
       </div>
@@ -185,12 +185,6 @@ const fetchService = async () => {
   }
 }
 
-const scrollToSection = (sectionId) => {
-  if (sectionId === 'mobile-app' || sectionId === 'contact') {
-    // Navigate to home page and scroll to section
-    router.push({ name: 'home', hash: `#${sectionId}` })
-  }
-}
 
 onMounted(async () => {
   // Fetch service data

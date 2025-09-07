@@ -1,12 +1,10 @@
 <template>
   <div id="home">
-    <Navigation @scrollToSection="(sectionId, source) => scrollToSection(sectionId, source)" />
+    <Navigation />
 
     <main>
-      <HeroSection @scrollToSection="(sectionId) => scrollToSection(sectionId, 'hero-section')" />
-      <PromotionsSection
-        @scrollToSection="(sectionId) => scrollToSection(sectionId, 'promotions-section')"
-      />
+      <HeroSection />
+      <PromotionsSection />
       <AboutSection />
       <!-- <Gallery /> -->
       <PricingSection />
@@ -15,15 +13,13 @@
       <MobileAppSection />
     </main>
 
-    <PromoModal @scrollToSection="(sectionId) => scrollToSection(sectionId, 'promo-modal')" />
+    <PromoModal />
 
     <Footer />
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
 import Navigation from '../components/Navigation.vue'
 import HeroSection from '../components/HeroSection.vue'
 import AboutSection from '../components/AboutSection.vue'
@@ -34,56 +30,6 @@ import ContactSection from '../components/ContactSection.vue'
 import MobileAppSection from '../components/MobileAppSection.vue'
 import PromoModal from '../components/PromoModal.vue'
 import Footer from '../components/Footer.vue'
-
-const route = useRoute()
-
-const scrollToSection = (sectionId) => {
-  if (import.meta.env.SSR) return
-
-  const element = document.getElementById(sectionId)
-  if (element) {
-    const elementTop = element.offsetTop
-    const offsetTop = elementTop - 70 // Account for fixed navigation
-
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth',
-    })
-  }
-}
-
-// Handle hash navigation when coming from other pages
-const handleHashNavigation = () => {
-  if (import.meta.env.SSR) return
-
-  if (route.hash) {
-    // Remove the # from the hash
-    const sectionId = route.hash.substring(1)
-    
-    // Wait for the page to be fully rendered before scrolling
-    setTimeout(() => {
-      scrollToSection(sectionId)
-    }, 100)
-  }
-}
-
-onMounted(() => {
-  if (import.meta.env.SSR) return
-
-  // Handle initial hash if present
-  if (route.hash) {
-    handleHashNavigation()
-  }
-
-  // Listen for hash changes (when user navigates directly to URLs with hashes)
-  window.addEventListener('hashchange', handleHashNavigation)
-})
-
-onUnmounted(() => {
-  if (import.meta.env.SSR) return
-
-  window.removeEventListener('hashchange', handleHashNavigation)
-})
 </script>
 
 <style>
