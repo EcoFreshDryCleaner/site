@@ -8,7 +8,20 @@
         </p>
       </div>
 
-      <div class="pricing-grid">
+      <!-- Loading State -->
+      <div v-if="loading" class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Loading services...</p>
+      </div>
+
+      <!-- Error State -->
+      <div v-else-if="error" class="error-state">
+        <p>{{ error }}</p>
+        <button class="btn btn-primary" @click="fetchServices">Try Again</button>
+      </div>
+
+      <!-- Services Grid -->
+      <div v-else class="pricing-grid">
         <div
           class="pricing-card"
           :class="{ featured: service.featured }"
@@ -53,28 +66,49 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { servicesData } from '../data/servicesData.js'
+import { servicesService } from '../services/servicesService.js'
 
 const router = useRouter()
+const services = ref([])
+const loading = ref(true)
+const error = ref(null)
 
-// Map service data to the format expected by the template
-const services = ref(
-  servicesData.map((service) => ({
-    name: service.title,
-    description: service.subtitle,
-    slug: service.slug,
-    image: service.heroImage,
-    features: service.overview.features.slice(0, 3), // Show first 3 features
-    featured: service.slug === 'wash-fold-laundry', // Make wash & fold featured
-  })),
-)
+// Fetch services from Firestore
+const fetchServices = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    
+    const firestoreServices = await servicesService.getAllServices()
+    
+    // Map Firestore data to the format expected by the template
+    services.value = firestoreServices.map((service) => ({
+      name: service.title,
+      description: service.subtitle,
+      slug: service.slug,
+      image: service.heroImage, // Use CDN URL directly
+      features: service.overview?.features?.slice(0, 3) || [], // Show first 3 features
+      featured: service.featured || false,
+    }))
+  } catch (err) {
+    console.error('Error fetching services:', err)
+    error.value = 'Failed to load services. Please try again later.'
+  } finally {
+    loading.value = false
+  }
+}
 
 const selectService = (service) => {
   // Navigate to service detail page
   router.push(`/service/${service.slug}`)
 }
+
+// Fetch services when component mounts
+onMounted(() => {
+  fetchServices()
+})
 </script>
 
 <style scoped>
@@ -281,6 +315,34 @@ const selectService = (service) => {
 
 .pricing-note p {
   margin: 0.25rem 0;
+}
+
+/* Loading and Error States */
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--bg-secondary);
+  border-top: 4px solid var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-state p {
+  margin-bottom: 1rem;
+  color: var(--text-error, #e74c3c);
 }
 
 @media (max-width: 768px) {
