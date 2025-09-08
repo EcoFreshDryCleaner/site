@@ -26,10 +26,10 @@
               <h1 class="service-title">{{ service.title }}</h1>
               <p class="service-subtitle">{{ service.subtitle }}</p>
               <div class="hero-actions">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" @click="handleSchedulePickup">
                   Schedule Pickup
                 </button>
-                <button class="btn btn-secondary">
+                <button class="btn btn-secondary" @click="handleContactUs">
                   Contact Us
                 </button>
               </div>
@@ -101,10 +101,10 @@
           <h2>Ready to Experience Professional {{ service.title }}?</h2>
           <p>Schedule your pickup today and let us take care of your garments with expert care.</p>
           <div class="cta-actions">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" @click="handleSchedulePickup">
               Schedule Pickup
             </button>
-            <button class="btn btn-secondary">Get Quote</button>
+            <button class="btn btn-secondary" @click="handleGetQuote">Get Quote</button>
           </div>
         </div>
       </div>
@@ -123,10 +123,28 @@ import Navigation from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
 import { servicesService } from '../services/servicesService.js'
 
+const router = useRouter()
+
+const scrollToSection = (sectionId) => {
+  // Navigate to home page with section hash
+  router.push({ name: 'home', hash: `#${sectionId}` })
+}
+
+const handleSchedulePickup = () => {
+  scrollToSection('mobile-app')
+}
+
+const handleContactUs = () => {
+  scrollToSection('contact')
+}
+
+const handleGetQuote = () => {
+  scrollToSection('contact')
+}
+
 const OPTIMIZE_IMAGES = false
 
 const route = useRoute()
-const router = useRouter()
 const serviceSlug = computed(() => route.params.slug)
 
 const service = ref(null)

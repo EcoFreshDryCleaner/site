@@ -43,7 +43,7 @@ const route = useRoute()
 const isMenuOpen = ref(false)
 
 const menuItems = [
-  { id: 'hero', label: 'Home', href: '#hero' },
+  { id: '', label: 'Home', href: '' },
   { id: 'promotions', label: 'Offers', href: '#promotions' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'pricing', label: 'Services', href: '#pricing' },
@@ -53,6 +53,14 @@ const menuItems = [
 ]
 
 const navigateToSection = (sectionId) => {
+  // Handle Home navigation (scroll to top)
+  if (!sectionId || sectionId === '') {
+    router.push({ name: 'home' })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    isMenuOpen.value = false
+    return
+  }
+  
   // Navigate to home page with section hash
   router.push({ name: 'home', hash: `#${sectionId}` })
   isMenuOpen.value = false

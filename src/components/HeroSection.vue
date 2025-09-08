@@ -28,11 +28,11 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" @click="handleViewPromotions">
             <FontAwesomeIcon :icon="['fas', 'gift']" class="btn-icon" />
             View Promotions
           </button>
-          <button class="btn btn-secondary">
+          <button class="btn btn-secondary" @click="handleSchedulePickup">
             <FontAwesomeIcon :icon="['fas', 'mobile-alt']" class="btn-icon" />
             Schedule Pickup
           </button>
@@ -101,6 +101,22 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const scrollToSection = (sectionId) => {
+  // Navigate to home page with section hash
+  router.push({ name: 'home', hash: `#${sectionId}` })
+}
+
+const handleViewPromotions = () => {
+  scrollToSection('promotions')
+}
+
+const handleSchedulePickup = () => {
+  scrollToSection('mobile-app')
+}
 </script>
 
 <style scoped>
