@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
 import Navigation from '../components/Navigation.vue'
 import HeroSection from '../components/HeroSection.vue'
 import AboutSection from '../components/AboutSection.vue'
@@ -30,6 +31,55 @@ import ContactSection from '../components/ContactSection.vue'
 import MobileAppSection from '../components/MobileAppSection.vue'
 import PromoModal from '../components/PromoModal.vue'
 import Footer from '../components/Footer.vue'
+
+// SEO Meta Tags
+useHead({
+  title: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services',
+  meta: [
+    {
+      name: 'description',
+      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery. Serving your area with quality and convenience.'
+    },
+    {
+      name: 'keywords',
+      content: 'dry cleaning, eco-friendly, professional cleaning, garment care, pickup delivery, laundry services'
+    },
+    {
+      property: 'og:title',
+      content: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services'
+    },
+    {
+      property: 'og:description',
+      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://ecofreshdrycleaner.com'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:title',
+      content: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery.'
+    }
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://ecofreshdrycleaner.com'
+    }
+  ]
+})
 </script>
 
 <style>

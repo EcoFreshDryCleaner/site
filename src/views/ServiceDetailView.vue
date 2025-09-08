@@ -117,11 +117,13 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useHead } from '@unhead/vue'
 import Navigation from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
 import { servicesService } from '../services/servicesService.js'
+import { servicesData } from '../data/servicesData.js'
 
 const router = useRouter()
 
@@ -174,13 +176,28 @@ const optimizeImageUrl = (url) => {
   return url
 }
 
-// Fetch service from Firestore
+// Fetch service from Firestore or local data
 const fetchService = async () => {
+  console.log('🔍 fetchService called - SSR:', import.meta.env.SSR, 'Service Slug:', serviceSlug.value)
+  
   try {
     loading.value = true
     error.value = null
     
-    const firestoreService = await servicesService.getServiceBySlug(serviceSlug.value)
+    let firestoreService = null
+    
+    if (import.meta.env.SSR) {
+      // During SSG build, use local data
+      console.log('📦 Using local services data for SSG build')
+      console.log('📊 Available services:', servicesData.map(s => s.slug))
+      firestoreService = servicesData.find(s => s.slug === serviceSlug.value)
+      console.log('🎯 Found service:', firestoreService ? firestoreService.title : 'NOT FOUND')
+    } else {
+      // During runtime, fetch from Firestore
+      console.log('🌐 Fetching service from Firestore')
+      firestoreService = await servicesService.getServiceBySlug(serviceSlug.value)
+      console.log('🎯 Firestore service:', firestoreService ? firestoreService.title : 'NOT FOUND')
+    }
     
     if (firestoreService) {
       // Apply image optimizations to the service data
@@ -192,17 +209,99 @@ const fetchService = async () => {
           image: optimizeImageUrl(firestoreService.overview?.image)
         }
       }
+      console.log('✅ Service data set:', service.value.title)
     } else {
       error.value = 'Service not found'
+      console.log('❌ Service not found for slug:', serviceSlug.value)
     }
   } catch (err) {
     console.error('Error fetching service:', err)
     error.value = 'Failed to load service. Please try again later.'
   } finally {
     loading.value = false
+    console.log('🏁 fetchService completed')
   }
 }
 
+// SEO Meta Tags - Use data from servicesData.js for SSG or watch service ref for runtime
+const setupSEO = (serviceData) => {
+  if (serviceData) {
+    useHead({
+      title: `${serviceData.title} - EcoFresh Dry Cleaner`,
+      meta: [
+        {
+          name: 'description',
+          content: serviceData.subtitle || `Professional ${serviceData.title} service with eco-friendly solutions. Expert care for your garments.`
+        },
+        {
+          name: 'keywords',
+          content: `${serviceData.title}, dry cleaning, eco-friendly, professional cleaning, garment care, ${serviceData.title.toLowerCase()} service`
+        },
+        {
+          property: 'og:title',
+          content: `${serviceData.title} - EcoFresh Dry Cleaner`
+        },
+        {
+          property: 'og:description',
+          content: serviceData.subtitle || `Professional ${serviceData.title} service with eco-friendly solutions.`
+        },
+        {
+          property: 'og:type',
+          content: 'website'
+        },
+        {
+          property: 'og:url',
+          content: `https://ecofreshdrycleaner.com/service/${serviceData.slug}`
+        },
+        {
+          property: 'og:image',
+          content: serviceData.heroImage
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          name: 'twitter:title',
+          content: `${serviceData.title} - EcoFresh Dry Cleaner`
+        },
+        {
+          name: 'twitter:description',
+          content: serviceData.subtitle || `Professional ${serviceData.title} service with eco-friendly solutions.`
+        },
+        {
+          name: 'twitter:image',
+          content: serviceData.heroImage
+        }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://ecofreshdrycleaner.com/service/${serviceData.slug}`
+        }
+      ]
+    })
+  }
+}
+
+// During SSG build, set up SEO immediately with data from servicesData.js
+if (import.meta.env.SSR) {
+  console.log('🚀 SSG Build - Setting up service data and SEO')
+  const serviceData = servicesData.find(s => s.slug === serviceSlug.value)
+  if (serviceData) {
+    console.log('📋 SSG - Found service data:', serviceData.title)
+    setupSEO(serviceData)
+    // Also fetch the service data for the component
+    fetchService()
+  } else {
+    console.log('❌ SSG - Service not found in servicesData for slug:', serviceSlug.value)
+  }
+} else {
+  // During runtime, watch the service ref for changes
+  watch(service, (newService) => {
+    setupSEO(newService)
+  }, { immediate: true })
+}
 
 onMounted(async () => {
   // Fetch service data

@@ -69,6 +69,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { servicesService } from '../services/servicesService.js'
+import { servicesData } from '../data/servicesData.js'
 
 const OPTIMIZE_IMAGES = false
 
@@ -100,15 +101,28 @@ const optimizeImageUrl = (url) => {
   return url
 }
 
-// Fetch services from Firestore
+// Fetch services from Firestore or local data
 const fetchServices = async () => {
+  console.log('🔍 fetchServices called - SSR:', import.meta.env.SSR)
+  
   try {
     loading.value = true
     error.value = null
     
-    const firestoreServices = await servicesService.getAllServices()
+    let firestoreServices = []
     
-    // Map Firestore data to the format expected by the template
+    if (import.meta.env.SSR) {
+      // During SSG build, use local data
+      console.log('📦 Using local services data for SSG build')
+      console.log('📊 Available services:', servicesData.map(s => s.slug))
+      firestoreServices = servicesData
+    } else {
+      // During runtime, fetch from Firestore
+      console.log('🌐 Fetching services from Firestore')
+      firestoreServices = await servicesService.getAllServices()
+    }
+    
+    // Map data to the format expected by the template
     services.value = firestoreServices.map((service) => ({
       name: service.title,
       description: service.subtitle,
@@ -117,11 +131,14 @@ const fetchServices = async () => {
       features: service.overview?.features?.slice(0, 3) || [], // Show first 3 features
       featured: service.featured || false,
     }))
+    
+    console.log('✅ Services data set:', services.value.length, 'services')
   } catch (err) {
     console.error('Error fetching services:', err)
     error.value = 'Failed to load services. Please try again later.'
   } finally {
     loading.value = false
+    console.log('🏁 fetchServices completed')
   }
 }
 
@@ -130,7 +147,13 @@ const selectService = (service) => {
   router.push(`/service/${service.slug}`)
 }
 
-// Fetch services when component mounts
+// During SSG build, fetch services immediately
+if (import.meta.env.SSR) {
+  console.log('🚀 SSG Build - Fetching services for PricingSection')
+  fetchServices()
+}
+
+// Fetch services when component mounts (runtime)
 onMounted(() => {
   fetchServices()
 })

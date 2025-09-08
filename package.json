@@ -8,11 +8,15 @@
   },
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run populate:data",
     "build": "vite-ssg build",
     "build:spa": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
+    "populate:data": "node scripts/populate-all-data.js",
+    "populate:services": "node scripts/populate-services.js",
+    "populate:promotions": "node scripts/populate-promotions.js",
     "seed:promotions": "node scripts/seed-promotions.js",
     "seed:promotions:clear": "node scripts/seed-promotions.js --clear",
     "seed:promotions:help": "node scripts/seed-promotions.js --help"
@@ -23,14 +27,12 @@
     "@fortawesome/free-regular-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@fortawesome/vue-fontawesome": "^3.1.1",
-    "@unhead/vue": "^2.0.14",
     "firebase": "^12.1.0",
-    "vite-ssg": "^28.1.0",
-    "vue": "^3.5.18",
-    "vue-router": "^4.5.1"
+    "vue": "^3.5.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
+    "@unhead/vue": "^2.0.14",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/eslint-config-prettier": "^10.2.0",
     "eslint": "^9.31.0",
@@ -39,6 +41,9 @@
     "globals": "^16.3.0",
     "prettier": "3.6.2",
     "vite": "^7.0.6",
-    "vite-plugin-vue-devtools": "^8.0.0"
+    "vite-plugin-sitemap": "^0.8.2",
+    "vite-plugin-vue-devtools": "^8.0.0",
+    "vite-ssg": "^28.1.0",
+    "vue-router": "^4.5.1"
   }
 }

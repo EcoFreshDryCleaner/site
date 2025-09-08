@@ -3,10 +3,27 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import Sitemap from 'vite-plugin-sitemap'
+
+// Import services data to generate routes
+import { servicesData } from './src/data/servicesData.js'
+
+// Generate dynamic routes from services data
+const dynamicRoutes = [
+  '/',
+  ...servicesData.map((service) => `/service/${service.slug}`)
+]
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools()],
+  plugins: [
+    vue(), 
+    vueDevTools(),
+    Sitemap({
+      hostname: 'https://ecofreshdrycleaner.com',
+      dynamicRoutes: dynamicRoutes
+    })
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

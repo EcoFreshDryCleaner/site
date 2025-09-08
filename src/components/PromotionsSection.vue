@@ -131,6 +131,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getPromotions } from '../services/firestoreService'
+import { promotionsData } from '../data/promotionsData.js'
 
 const promotions = ref([])
 const loading = ref(true)
@@ -166,17 +167,34 @@ const getIconArray = (iconString) => {
 }
 
 const loadPromotions = async () => {
+  console.log('🔍 loadPromotions called - SSR:', import.meta.env.SSR)
+  
   try {
     loading.value = true
     error.value = false
-    const data = await getPromotions()
+    
+    let data = []
+    
+    if (import.meta.env.SSR) {
+      // During SSG build, use local data
+      console.log('📦 Using local promotions data for SSG build')
+      console.log('📊 Available promotions:', promotionsData.length)
+      data = promotionsData
+    } else {
+      // During runtime, fetch from Firestore
+      console.log('🌐 Fetching promotions from Firestore')
+      data = await getPromotions()
+    }
+    
     // Filter to only show active promotions
     promotions.value = data.filter((promotion) => promotion.active === true)
+    console.log('✅ Promotions data set:', promotions.value.length, 'active promotions')
   } catch (err) {
     console.error('Error loading promotions:', err)
     error.value = true
   } finally {
     loading.value = false
+    console.log('🏁 loadPromotions completed')
   }
 }
 
@@ -190,6 +208,13 @@ const toggleTerms = (promotionId) => {
 }
 
 
+// During SSG build, load promotions immediately
+if (import.meta.env.SSR) {
+  console.log('🚀 SSG Build - Loading promotions for PromotionsSection')
+  loadPromotions()
+}
+
+// Load promotions when component mounts (runtime)
 onMounted(() => {
   loadPromotions()
 })
