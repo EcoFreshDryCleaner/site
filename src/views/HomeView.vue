@@ -34,23 +34,23 @@ import Footer from '../components/Footer.vue'
 
 // SEO Meta Tags
 useHead({
-  title: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services',
+  title: 'EcoFresh Dry Cleaner - Charlotte, NC Professional Dry Cleaning Services',
   meta: [
     {
       name: 'description',
-      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery. Serving your area with quality and convenience.'
+      content: 'Professional dry cleaning services in Charlotte, NC with eco-friendly solutions. Expert care for your garments with pickup and delivery. Serving Charlotte, Mathews, Mallard Creek, and surrounding areas with quality and convenience.'
     },
     {
       name: 'keywords',
-      content: 'dry cleaning, eco-friendly, professional cleaning, garment care, pickup delivery, laundry services'
+      content: 'dry cleaning Charlotte NC, eco-friendly dry cleaning, Charlotte dry cleaner, pickup delivery Charlotte, professional cleaning Charlotte, garment care Charlotte, laundry services Charlotte, Mathews dry cleaning, Mallard Creek dry cleaning, Piedmont Row dry cleaning'
     },
     {
       property: 'og:title',
-      content: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services'
+      content: 'EcoFresh Dry Cleaner - Charlotte, NC Professional Dry Cleaning Services'
     },
     {
       property: 'og:description',
-      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery.'
+      content: 'Professional dry cleaning services in Charlotte, NC with eco-friendly solutions. Expert care for your garments with pickup and delivery. Serving Charlotte, Mathews, and surrounding areas.'
     },
     {
       property: 'og:type',
@@ -66,11 +66,11 @@ useHead({
     },
     {
       name: 'twitter:title',
-      content: 'EcoFresh Dry Cleaner - Professional Dry Cleaning Services'
+      content: 'EcoFresh Dry Cleaner - Charlotte, NC Professional Dry Cleaning Services'
     },
     {
       name: 'twitter:description',
-      content: 'Professional dry cleaning services with eco-friendly solutions. Expert care for your garments with pickup and delivery.'
+      content: 'Professional dry cleaning services in Charlotte, NC with eco-friendly solutions. Expert care for your garments with pickup and delivery. Serving Charlotte, Mathews, and surrounding areas.'
     }
   ],
   link: [

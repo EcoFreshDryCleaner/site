@@ -23,8 +23,8 @@
         </h1>
 
         <p class="hero-subtitle">
-          Professional dry cleaning services that care for your clothes and the environment. Using
-          eco-friendly solvents and sustainable practices for a cleaner tomorrow.
+          Professional dry cleaning services in Charlotte, NC that care for your clothes and the environment. Using
+          eco-friendly solvents and sustainable practices for a cleaner tomorrow. Serving Charlotte, Mathews, and surrounding areas.
         </p>
 
         <div class="hero-actions">
@@ -81,7 +81,7 @@
             <FontAwesomeIcon :icon="['fas', 'home']" />
           </div>
           <div class="card-text">
-            <strong>Local Business</strong>
+            <strong>Charlotte Local</strong>
             <span>Community Trusted</span>
           </div>
         </div>

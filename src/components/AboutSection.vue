@@ -65,12 +65,12 @@
               <FontAwesomeIcon :icon="['fas', 'leaf']" />
             </div>
             <div class="item-content">
-              <h3>Your Neighborhood Dry Cleaner</h3>
+              <h3>Your Charlotte Neighborhood Dry Cleaner</h3>
               <p>
                 For over 25 years, EcoFresh Drycleaners has been more than just a business—we're
                 your neighbors, your friends, and your trusted partners in keeping your wardrobe
-                fresh. As a family-owned local business with three convenient locations, we've built
-                lasting relationships with our community, treating every customer like family.
+                fresh. As a family-owned local business with three convenient Charlotte area locations, we've built
+                lasting relationships with our Charlotte community, treating every customer like family.
               </p>
             </div>
           </div>
@@ -96,12 +96,12 @@
               <FontAwesomeIcon :icon="['fas', 'truck']" />
             </div>
             <div class="item-content">
-              <h3>Community-Focused Convenience</h3>
+              <h3>Charlotte Community-Focused Convenience</h3>
               <p>
-                Our free pickup and delivery service isn't just about convenience—it's about being
-                there for our community. Whether you're a busy parent, a working professional, or a
+                Our free pickup and delivery service throughout Charlotte isn't just about convenience—it's about being
+                there for our Charlotte community. Whether you're a busy parent, a working professional, or a
                 senior who values the personal touch, we bring our trusted service right to your
-                doorstep, just like we've been doing for over two decades.
+                Charlotte doorstep, just like we've been doing for over two decades.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@
               class="about-main-image"
             />
             <div class="image-badge">
-              <span class="badge-text">Locally Owned</span>
+              <span class="badge-text">Charlotte Locally Owned</span>
             </div>
           </div>
 
