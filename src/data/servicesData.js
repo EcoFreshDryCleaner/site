@@ -1,15 +1,14 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-09-08T05:15:28.562Z
+// Generated on: 2025-09-09T03:44:35.450Z
 // Source: Firestore services collection
 
 export const servicesData = [
   {
     "id": "NY0lNgNDvxsfoBoqvQVc",
-    "active": true,
-    "order": 1,
+    "featured": false,
     "price": 0,
     "icon": "car-outline",
-    "updatedAt": {
+    "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227429,
       "nanoseconds": 541000000
@@ -20,30 +19,30 @@ export const servicesData = [
         "title": "Schedule Your Pickup"
       },
       {
-        "title": "We Come to You",
-        "description": "Our professional team arrives at your location to collect your garments with care."
+        "description": "Our professional team arrives at your location to collect your garments with care.",
+        "title": "We Come to You"
       },
       {
-        "title": "Professional Processing",
-        "description": "Your items are processed using our state-of-the-art equipment and eco-friendly methods."
+        "description": "Your items are processed using our state-of-the-art equipment and eco-friendly methods.",
+        "title": "Professional Processing"
       },
       {
-        "description": "Each item is carefully inspected to ensure the highest quality standards are met.",
-        "title": "Quality Inspection"
+        "title": "Quality Inspection",
+        "description": "Each item is carefully inspected to ensure the highest quality standards are met."
       },
       {
         "description": "Your clean garments are delivered back to you at your preferred time and location.",
         "title": "Secure Delivery"
       }
     ],
-    "title": "Free Pickup and Delivery",
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/delivery-1.jpg",
-    "featured": false,
-    "createdAt": {
+    "updatedAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227429,
       "nanoseconds": 541000000
     },
+    "subtitle": "Convenient service right to your door",
+    "active": true,
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/delivery-1.jpg",
     "overview": {
       "image": "https://cdn.ecofreshdrycleaner.com/delivery-2.jpg",
       "description": "Experience the ultimate convenience with our free pickup and delivery service. We come to you, saving you time and hassle while ensuring your garments receive professional care.",
@@ -57,34 +56,29 @@ export const servicesData = [
       ],
       "title": "Convenient Service to Your Door"
     },
-    "slug": "free-pickup-delivery",
-    "subtitle": "Convenient service right to your door"
+    "order": 1,
+    "title": "Free Pickup and Delivery",
+    "slug": "free-pickup-delivery"
   },
   {
     "id": "1nSjopXsKXdpUaXrC5kl",
-    "active": true,
-    "slug": "wash-fold-laundry",
-    "order": 2,
-    "updatedAt": {
+    "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227429,
       "nanoseconds": 975000000
     },
-    "subtitle": "Fresh and clean everyday clothes",
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/wash-fold-1.jpg",
-    "featured": true,
     "process": [
       {
-        "description": "We carefully sort your laundry by color, fabric type, and care requirements.",
-        "title": "Sorting & Inspection"
+        "title": "Sorting & Inspection",
+        "description": "We carefully sort your laundry by color, fabric type, and care requirements."
       },
       {
-        "title": "Gentle Washing",
-        "description": "Your clothes are washed using gentle cycles and premium detergents."
+        "description": "Your clothes are washed using gentle cycles and premium detergents.",
+        "title": "Gentle Washing"
       },
       {
-        "description": "Items are dried at appropriate temperatures to prevent shrinkage and damage.",
-        "title": "Professional Drying"
+        "title": "Professional Drying",
+        "description": "Items are dried at appropriate temperatures to prevent shrinkage and damage."
       },
       {
         "title": "Expert Folding",
@@ -95,9 +89,13 @@ export const servicesData = [
         "description": "Final inspection ensures everything meets our high standards."
       }
     ],
+    "active": true,
     "price": 12.99,
+    "featured": true,
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/wash-fold-1.jpg",
     "overview": {
-      "title": "Complete Laundry Service",
+      "description": "Our wash and fold service takes the hassle out of laundry day. We handle everything from sorting to folding, delivering fresh, clean clothes ready to wear.",
+      "image": "https://cdn.ecofreshdrycleaner.com/wash-fold-2.jpg",
       "features": [
         "Gentle washing with premium detergents",
         "Professional drying and folding",
@@ -106,25 +104,59 @@ export const servicesData = [
         "Stain removal treatment",
         "Quick turnaround time"
       ],
-      "image": "https://cdn.ecofreshdrycleaner.com/wash-fold-2.jpg",
-      "description": "Our wash and fold service takes the hassle out of laundry day. We handle everything from sorting to folding, delivering fresh, clean clothes ready to wear."
+      "title": "Complete Laundry Service"
     },
-    "icon": "refresh-outline",
-    "createdAt": {
+    "updatedAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227429,
       "nanoseconds": 975000000
     },
-    "title": "Wash & Fold Laundry"
+    "slug": "wash-fold-laundry",
+    "title": "Wash & Fold Laundry",
+    "order": 2,
+    "subtitle": "Fresh and clean everyday clothes",
+    "icon": "refresh-outline"
   },
   {
     "id": "Al0JEl5UEAkmmKbHM9Sk",
-    "title": "Shirt Laundry",
-    "icon": "shirt-outline",
     "featured": false,
     "order": 3,
-    "subtitle": "The Perfect Shirt Laundry Service",
     "heroImage": "https://cdn.ecofreshdrycleaner.com/shirts-1.jpg",
+    "process": [
+      {
+        "title": "Pre-treatment",
+        "description": "Collars and cuffs receive special attention to remove oils and stains."
+      },
+      {
+        "title": "Gentle Washing",
+        "description": "Shirts are washed using specialized techniques to preserve fabric integrity."
+      },
+      {
+        "description": "Each shirt is carefully pressed to achieve crisp, professional results.",
+        "title": "Professional Pressing"
+      },
+      {
+        "description": "Buttons, seams, and overall appearance are checked for perfection.",
+        "title": "Quality Inspection"
+      },
+      {
+        "title": "Hanger Ready",
+        "description": "Shirts are presented on hangers, ready to wear immediately."
+      }
+    ],
+    "active": true,
+    "subtitle": "The Perfect Shirt Laundry Service",
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 207000000
+    },
+    "price": 8.99,
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 207000000
+    },
     "overview": {
       "description": "Specialized care for your dress shirts and business attire. Our shirt laundry service ensures crisp, professional results every time.",
       "features": [
@@ -138,80 +170,54 @@ export const servicesData = [
       "image": "https://cdn.ecofreshdrycleaner.com/shirts-2.jpg",
       "title": "Professional Shirt Care"
     },
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 207000000
-    },
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 207000000
-    },
-    "process": [
-      {
-        "title": "Pre-treatment",
-        "description": "Collars and cuffs receive special attention to remove oils and stains."
-      },
-      {
-        "description": "Shirts are washed using specialized techniques to preserve fabric integrity.",
-        "title": "Gentle Washing"
-      },
-      {
-        "description": "Each shirt is carefully pressed to achieve crisp, professional results.",
-        "title": "Professional Pressing"
-      },
-      {
-        "title": "Quality Inspection",
-        "description": "Buttons, seams, and overall appearance are checked for perfection."
-      },
-      {
-        "description": "Shirts are presented on hangers, ready to wear immediately.",
-        "title": "Hanger Ready"
-      }
-    ],
+    "icon": "shirt-outline",
     "slug": "shirt-laundry",
-    "active": true,
-    "price": 8.99
+    "title": "Shirt Laundry"
   },
   {
     "id": "uhI7JSoWDlHI50gDoGLg",
+    "active": true,
+    "order": 4,
     "subtitle": "Expert care for your finest garments",
-    "icon": "shirt-outline",
-    "price": 15.99,
     "slug": "dry-cleaning",
+    "title": "Professional Dry Cleaning",
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/dry-cleaning-1.jpg",
+    "icon": "shirt-outline",
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 437000000
+    },
+    "featured": false,
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 437000000
+    },
     "process": [
       {
-        "description": "Each item is carefully inspected for stains, damage, and special care requirements.",
-        "title": "Garment Inspection"
+        "title": "Garment Inspection",
+        "description": "Each item is carefully inspected for stains, damage, and special care requirements."
       },
       {
-        "title": "Pre-treatment",
-        "description": "Stains and problem areas receive specialized treatment before cleaning."
+        "description": "Stains and problem areas receive specialized treatment before cleaning.",
+        "title": "Pre-treatment"
       },
       {
-        "title": "Eco-Friendly Cleaning",
-        "description": "Items are cleaned using our GreenEarth solvent system, safe for fabrics and environment."
+        "description": "Items are cleaned using our GreenEarth solvent system, safe for fabrics and environment.",
+        "title": "Eco-Friendly Cleaning"
       },
       {
-        "title": "Professional Finishing",
-        "description": "Garments are pressed and finished to restore their original appearance."
+        "description": "Garments are pressed and finished to restore their original appearance.",
+        "title": "Professional Finishing"
       },
       {
         "title": "Final Inspection",
         "description": "Quality check ensures every item meets our high standards before return."
       }
     ],
-    "featured": false,
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/dry-cleaning-1.jpg",
-    "active": true,
-    "title": "Professional Dry Cleaning",
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 437000000
-    },
     "overview": {
+      "image": "https://cdn.ecofreshdrycleaner.com/dry-cleaning-2.jpg",
       "features": [
         "Eco-friendly GreenEarth cleaning",
         "Professional pressing and finishing",
@@ -220,24 +226,27 @@ export const servicesData = [
         "Quality inspection process",
         "Delicate fabric expertise"
       ],
-      "image": "https://cdn.ecofreshdrycleaner.com/dry-cleaning-2.jpg",
       "title": "Expert Care for Delicate Fabrics",
       "description": "Our professional dry cleaning service uses eco-friendly solvents and state-of-the-art equipment to safely clean your most delicate and valuable garments."
     },
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 437000000
-    },
-    "order": 4
+    "price": 15.99
   },
   {
     "id": "0fKCfmSCHtySEt5gCL3n",
+    "slug": "wedding-dresses",
     "order": 5,
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/wedding-2.jpg",
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 670000000
+    },
+    "title": "Wedding Dress Cleaning & Preservation",
+    "featured": false,
     "process": [
       {
-        "title": "Detailed Inspection",
-        "description": "Comprehensive examination of fabric, embellishments, and any stains or damage."
+        "description": "Comprehensive examination of fabric, embellishments, and any stains or damage.",
+        "title": "Detailed Inspection"
       },
       {
         "description": "Gentle cleaning process designed specifically for wedding gown fabrics and details.",
@@ -252,16 +261,13 @@ export const servicesData = [
         "title": "Preservation Process"
       },
       {
-        "description": "Beautiful presentation box for safe, long-term storage of your memories.",
-        "title": "Memorial Presentation"
+        "title": "Memorial Presentation",
+        "description": "Beautiful presentation box for safe, long-term storage of your memories."
       }
     ],
-    "subtitle": "Preserve your special memories",
-    "slug": "wedding-dresses",
-    "active": true,
-    "icon": "heart-outline",
+    "price": 89.99,
     "overview": {
-      "image": "https://cdn.ecofreshdrycleaner.com/wedding-1.jpg",
+      "title": "Expert Wedding Gown Care",
       "description": "Specialized cleaning and preservation services for your most important dress. We understand the sentimental value and provide the utmost care.",
       "features": [
         "Expert wedding gown cleaning",
@@ -271,29 +277,30 @@ export const servicesData = [
         "Specialized fabric care",
         "Memorial box presentation"
       ],
-      "title": "Expert Wedding Gown Care"
+      "image": "https://cdn.ecofreshdrycleaner.com/wedding-1.jpg"
     },
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/wedding-2.jpg",
-    "featured": false,
+    "subtitle": "Preserve your special memories",
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227430,
       "nanoseconds": 670000000
     },
-    "price": 89.99,
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 670000000
-    },
-    "title": "Wedding Dress Cleaning & Preservation"
+    "icon": "heart-outline",
+    "active": true
   },
   {
     "id": "czwxTwNZvOIbTiIYOUVa",
+    "slug": "outerwear",
+    "subtitle": "Professional care for coats and jackets",
     "order": 6,
-    "price": 19.99,
-    "title": "Outerwear Cleaning",
+    "featured": false,
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 949000000
+    },
     "overview": {
+      "title": "Specialized Outerwear Care",
       "features": [
         "Wool and cashmere expertise",
         "Down jacket cleaning",
@@ -302,79 +309,45 @@ export const servicesData = [
         "Professional pressing",
         "Seasonal storage preparation"
       ],
-      "title": "Specialized Outerwear Care",
       "description": "Professional cleaning for coats, jackets, and outerwear. We handle everything from wool coats to down jackets with specialized care.",
       "image": "https://cdn.ecofreshdrycleaner.com/outerwear-1.jpg"
     },
-    "featured": false,
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 949000000
-    },
-    "active": true,
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/outerwear-2.jpg",
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227430,
-      "nanoseconds": 949000000
-    },
-    "icon": "snow-outline",
-    "slug": "outerwear",
-    "subtitle": "Professional care for coats and jackets",
+    "title": "Outerwear Cleaning",
     "process": [
       {
         "title": "Fabric Assessment",
         "description": "Careful evaluation of fabric type and construction to determine best cleaning method."
       },
       {
-        "title": "Specialized Cleaning",
-        "description": "Appropriate cleaning method based on fabric type and care requirements."
+        "description": "Appropriate cleaning method based on fabric type and care requirements.",
+        "title": "Specialized Cleaning"
       },
       {
         "title": "Stain Treatment",
         "description": "Professional removal of outdoor stains, salt, and weather-related marks."
       },
       {
-        "description": "Proper pressing and shaping to maintain garment structure and appearance.",
-        "title": "Professional Finishing"
+        "title": "Professional Finishing",
+        "description": "Proper pressing and shaping to maintain garment structure and appearance."
       },
       {
-        "description": "Waterproofing and protective treatments as needed for weather protection.",
-        "title": "Protective Treatment"
+        "title": "Protective Treatment",
+        "description": "Waterproofing and protective treatments as needed for weather protection."
       }
-    ]
+    ],
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227430,
+      "nanoseconds": 949000000
+    },
+    "active": true,
+    "icon": "snow-outline",
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/outerwear-2.jpg",
+    "price": 19.99
   },
   {
     "id": "VDPdoHlcRtOtNXLxU9CH",
-    "active": true,
-    "title": "Alterations & Repairs",
-    "icon": "cut-outline",
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/alterations-1.jpg",
-    "featured": false,
-    "overview": {
-      "features": [
-        "Hemming and tapering",
-        "Button replacement and repair",
-        "Zipper repairs and replacement",
-        "Seam mending and reinforcement",
-        "Custom alterations",
-        "Rush service available"
-      ],
-      "image": "https://cdn.ecofreshdrycleaner.com/alterations-2.jpg",
-      "title": "Professional Tailoring Services",
-      "description": "Expert alterations and repairs to make your clothes fit perfectly. From simple hemming to complex alterations, we handle it all."
-    },
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227431,
-      "nanoseconds": 184000000
-    },
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227431,
-      "nanoseconds": 184000000
-    },
+    "price": 12.99,
     "process": [
       {
         "title": "Consultation",
@@ -389,23 +362,83 @@ export const servicesData = [
         "title": "Expert Craftsmanship"
       },
       {
-        "description": "Thorough inspection to ensure alterations meet our high standards.",
-        "title": "Quality Check"
+        "title": "Quality Check",
+        "description": "Thorough inspection to ensure alterations meet our high standards."
       },
       {
-        "description": "Final fitting to ensure perfect results and customer satisfaction.",
-        "title": "Final Fitting"
+        "title": "Final Fitting",
+        "description": "Final fitting to ensure perfect results and customer satisfaction."
       }
     ],
-    "price": 12.99,
-    "order": 7,
+    "icon": "cut-outline",
+    "overview": {
+      "title": "Professional Tailoring Services",
+      "image": "https://cdn.ecofreshdrycleaner.com/alterations-2.jpg",
+      "description": "Expert alterations and repairs to make your clothes fit perfectly. From simple hemming to complex alterations, we handle it all.",
+      "features": [
+        "Hemming and tapering",
+        "Button replacement and repair",
+        "Zipper repairs and replacement",
+        "Seam mending and reinforcement",
+        "Custom alterations",
+        "Rush service available"
+      ]
+    },
+    "slug": "alterations",
     "subtitle": "Expert tailoring services",
-    "slug": "alterations"
+    "order": 7,
+    "title": "Alterations & Repairs",
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/alterations-1.jpg",
+    "featured": false,
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227431,
+      "nanoseconds": 184000000
+    },
+    "active": true,
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227431,
+      "nanoseconds": 184000000
+    }
   },
   {
     "id": "iFnFGPaP7vEiqsnhs2XF",
     "icon": "footsteps-outline",
+    "title": "Shoe Repair & Shine",
+    "price": 9.99,
+    "subtitle": "Restore your favorite footwear",
+    "process": [
+      {
+        "title": "Assessment",
+        "description": "Thorough evaluation of shoe condition and repair needs."
+      },
+      {
+        "title": "Cleaning & Preparation",
+        "description": "Deep cleaning and preparation for repair or shine service."
+      },
+      {
+        "title": "Repair Work",
+        "description": "Professional repairs including sole replacement, heel repair, and stitching."
+      },
+      {
+        "description": "Expert shining and polishing for that professional finish.",
+        "title": "Shine & Polish"
+      },
+      {
+        "description": "Conditioning and waterproofing treatments for long-lasting protection.",
+        "title": "Protective Treatment"
+      }
+    ],
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227431,
+      "nanoseconds": 448000000
+    },
     "overview": {
+      "title": "Professional Shoe Care",
+      "description": "Expert shoe repair and shining services to keep your footwear looking and performing their best. From leather dress shoes to casual sneakers.",
+      "image": "https://cdn.ecofreshdrycleaner.com/shoe-2.jpg",
       "features": [
         "Professional shoe shining",
         "Sole and heel repair",
@@ -413,94 +446,22 @@ export const servicesData = [
         "Color restoration",
         "Waterproofing treatment",
         "Express shine service"
-      ],
-      "image": "https://cdn.ecofreshdrycleaner.com/shoe-2.jpg",
-      "title": "Professional Shoe Care",
-      "description": "Expert shoe repair and shining services to keep your footwear looking and performing their best. From leather dress shoes to casual sneakers."
+      ]
     },
-    "price": 9.99,
-    "process": [
-      {
-        "description": "Thorough evaluation of shoe condition and repair needs.",
-        "title": "Assessment"
-      },
-      {
-        "title": "Cleaning & Preparation",
-        "description": "Deep cleaning and preparation for repair or shine service."
-      },
-      {
-        "description": "Professional repairs including sole replacement, heel repair, and stitching.",
-        "title": "Repair Work"
-      },
-      {
-        "description": "Expert shining and polishing for that professional finish.",
-        "title": "Shine & Polish"
-      },
-      {
-        "title": "Protective Treatment",
-        "description": "Conditioning and waterproofing treatments for long-lasting protection."
-      }
-    ],
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/shoe-1.jpg",
+    "active": true,
+    "featured": false,
     "slug": "shoes",
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/shoe-1.jpg",
     "updatedAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227431,
       "nanoseconds": 448000000
     },
-    "active": true,
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227431,
-      "nanoseconds": 448000000
-    },
-    "featured": false,
-    "order": 8,
-    "title": "Shoe Repair & Shine",
-    "subtitle": "Restore your favorite footwear"
+    "order": 8
   },
   {
     "id": "EqVCFrztID85VvUp3rlh",
-    "updatedAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227431,
-      "nanoseconds": 679000000
-    },
-    "slug": "leather-products",
-    "createdAt": {
-      "type": "firestore/timestamp/1.0",
-      "seconds": 1757227431,
-      "nanoseconds": 679000000
-    },
-    "icon": "bag-outline",
-    "process": [
-      {
-        "description": "Careful evaluation of leather type, condition, and specific care requirements.",
-        "title": "Leather Assessment"
-      },
-      {
-        "title": "Specialized Cleaning",
-        "description": "Gentle cleaning process designed specifically for leather and suede materials."
-      },
-      {
-        "title": "Conditioning Treatment",
-        "description": "Professional conditioning to restore suppleness and prevent cracking."
-      },
-      {
-        "description": "Touch-up and color restoration for faded or damaged areas.",
-        "title": "Color Restoration"
-      },
-      {
-        "description": "Waterproofing and protective treatments for long-lasting care.",
-        "title": "Protective Finishing"
-      }
-    ],
-    "subtitle": "Specialized care for leather goods",
-    "order": 9,
-    "title": "Leather & Suede Care",
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/leather-1.jpg",
     "overview": {
-      "title": "Expert Leather and Suede Care",
       "image": "https://cdn.ecofreshdrycleaner.com/leather-2.jpg",
       "features": [
         "Leather cleaning and conditioning",
@@ -510,57 +471,95 @@ export const servicesData = [
         "Odor removal",
         "Professional finishing"
       ],
-      "description": "Specialized cleaning and restoration services for leather and suede items. We handle everything from jackets to handbags with expert care."
+      "description": "Specialized cleaning and restoration services for leather and suede items. We handle everything from jackets to handbags with expert care.",
+      "title": "Expert Leather and Suede Care"
     },
-    "featured": false,
+    "active": true,
+    "process": [
+      {
+        "description": "Careful evaluation of leather type, condition, and specific care requirements.",
+        "title": "Leather Assessment"
+      },
+      {
+        "description": "Gentle cleaning process designed specifically for leather and suede materials.",
+        "title": "Specialized Cleaning"
+      },
+      {
+        "description": "Professional conditioning to restore suppleness and prevent cracking.",
+        "title": "Conditioning Treatment"
+      },
+      {
+        "description": "Touch-up and color restoration for faded or damaged areas.",
+        "title": "Color Restoration"
+      },
+      {
+        "title": "Protective Finishing",
+        "description": "Waterproofing and protective treatments for long-lasting care."
+      }
+    ],
     "price": 24.99,
-    "active": true
+    "updatedAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227431,
+      "nanoseconds": 679000000
+    },
+    "createdAt": {
+      "type": "firestore/timestamp/1.0",
+      "seconds": 1757227431,
+      "nanoseconds": 679000000
+    },
+    "icon": "bag-outline",
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/leather-1.jpg",
+    "featured": false,
+    "title": "Leather & Suede Care",
+    "subtitle": "Specialized care for leather goods",
+    "order": 9,
+    "slug": "leather-products"
   },
   {
     "id": "hFbR9G3ZtANJj2scLRxe",
+    "order": 10,
+    "process": [
+      {
+        "description": "Evaluation of item size and cleaning requirements for proper handling.",
+        "title": "Size Assessment"
+      },
+      {
+        "title": "Pre-treatment",
+        "description": "Specialized treatment for stains and soiled areas before cleaning."
+      },
+      {
+        "title": "Large Item Cleaning",
+        "description": "Professional cleaning using equipment designed for large household items."
+      },
+      {
+        "description": "Complete drying process to prevent mildew and ensure freshness.",
+        "title": "Thorough Drying"
+      },
+      {
+        "description": "Proper packaging for storage or immediate use in your home.",
+        "title": "Packaging & Storage"
+      }
+    ],
+    "subtitle": "Care for your home textiles",
     "updatedAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227431,
       "nanoseconds": 913000000
     },
-    "order": 10,
-    "title": "Bedding & Household Items",
-    "process": [
-      {
-        "title": "Size Assessment",
-        "description": "Evaluation of item size and cleaning requirements for proper handling."
-      },
-      {
-        "description": "Specialized treatment for stains and soiled areas before cleaning.",
-        "title": "Pre-treatment"
-      },
-      {
-        "description": "Professional cleaning using equipment designed for large household items.",
-        "title": "Large Item Cleaning"
-      },
-      {
-        "title": "Thorough Drying",
-        "description": "Complete drying process to prevent mildew and ensure freshness."
-      },
-      {
-        "title": "Packaging & Storage",
-        "description": "Proper packaging for storage or immediate use in your home."
-      }
-    ],
-    "subtitle": "Care for your home textiles",
-    "featured": false,
-    "price": 29.99,
-    "slug": "bedding-household",
-    "heroImage": "https://cdn.ecofreshdrycleaner.com/bedding-1.jpg",
+    "active": true,
     "createdAt": {
       "type": "firestore/timestamp/1.0",
       "seconds": 1757227431,
       "nanoseconds": 913000000
     },
+    "featured": false,
     "icon": "bed-outline",
-    "active": true,
+    "heroImage": "https://cdn.ecofreshdrycleaner.com/bedding-1.jpg",
+    "price": 29.99,
     "overview": {
-      "title": "Home Textile Care",
+      "image": "https://cdn.ecofreshdrycleaner.com/bedding-2.jpg",
+      "description": "Professional cleaning for comforters, blankets, curtains, and other household textiles. We handle large items that don't fit in home washers.",
       "features": [
         "Comforter and duvet cleaning",
         "Blanket and throw cleaning",
@@ -569,9 +568,10 @@ export const servicesData = [
         "Large item handling",
         "Seasonal storage preparation"
       ],
-      "description": "Professional cleaning for comforters, blankets, curtains, and other household textiles. We handle large items that don't fit in home washers.",
-      "image": "https://cdn.ecofreshdrycleaner.com/bedding-2.jpg"
-    }
+      "title": "Home Textile Care"
+    },
+    "slug": "bedding-household",
+    "title": "Bedding & Household Items"
   }
 ]
 

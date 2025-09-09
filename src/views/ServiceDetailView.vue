@@ -117,7 +117,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import Navigation from '../components/Navigation.vue'
@@ -223,7 +223,7 @@ const fetchService = async () => {
   }
 }
 
-// SEO Meta Tags - Use data from servicesData.js for SSG or watch service ref for runtime
+// SEO Meta Tags - Use data from servicesData.js for SSG
 const setupSEO = (serviceData) => {
   if (serviceData) {
     useHead({
@@ -296,11 +296,6 @@ if (import.meta.env.SSR) {
   } else {
     console.log('❌ SSG - Service not found in servicesData for slug:', serviceSlug.value)
   }
-} else {
-  // During runtime, watch the service ref for changes
-  watch(service, (newService) => {
-    setupSEO(newService)
-  }, { immediate: true })
 }
 
 onMounted(async () => {
