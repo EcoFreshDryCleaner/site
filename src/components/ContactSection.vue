@@ -133,11 +133,12 @@
           </div>
 
           <form
-            action="https://formkeep.com/f/6563620d882d"
-            accept-charset="UTF-8"
-            enctype="multipart/form-data"
-            class="form"
-            method="POST"
+        action="https://forms.tanuj.xyz/ecofresh/submit"
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+              target="_self"
+              class="form"
+              accept-charset="utf-8"
           >
             <div class="form-group">
               <label for="name">Full Name *</label>
@@ -168,11 +169,15 @@
 
             <div class="form-group">
               <label for="service">Service Type</label>
-              <select id="service" name="service">
-                <option value="">Select a service</option>
-                <option value="basic">Basic Clean</option>
-                <option value="premium">Premium Care</option>
-                <option value="luxury">Luxury Service</option>
+              <select id="service" name="service" :disabled="isLoadingServices">
+                <option value="">{{ isLoadingServices ? 'Loading services...' : 'Select a service' }}</option>
+                <option 
+                  v-for="service in services" 
+                  :key="service.id" 
+                  :value="service.slug"
+                >
+                  {{ service.name || service.title || service.slug }}
+                </option>
               </select>
             </div>
 
@@ -210,7 +215,28 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import ServiceArea from './ServiceArea.vue'
+import { servicesService } from '../services/servicesService.js'
+
+// Reactive data
+const services = ref([])
+const isLoadingServices = ref(true)
+
+// Fetch services on component mount
+onMounted(async () => {
+  try {
+    const fetchedServices = await servicesService.getAllServices()
+    console.log('Fetched services:', fetchedServices) // Debug log
+    services.value = fetchedServices
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    // Fallback to empty array if fetch fails
+    services.value = []
+  } finally {
+    isLoadingServices.value = false
+  }
+})
 
 const openMap = () => {
   // Open map in new window or modal
@@ -644,6 +670,23 @@ const openMap = () => {
   font-size: 1rem;
   transition: all 0.3s ease;
   background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.form-group select option {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  padding: 0.5rem;
+}
+
+/* Additional styling for better browser compatibility */
+.form-group select {
+  color: var(--text-primary) !important;
+}
+
+.form-group select:focus option {
+  background: var(--bg-eco-light) !important;
+  color: var(--text-primary) !important;
 }
 
 .form-group input:focus,

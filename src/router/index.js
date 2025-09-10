@@ -1,5 +1,6 @@
 import ServiceDetailView from '../views/ServiceDetailView.vue'
 import HomeView from '../views/HomeView.vue'
+import ThankYouView from '../views/ThankYouView.vue'
 
 // Track if page has loaded to avoid repeated delays
 let pageHasLoaded = false
@@ -15,6 +16,11 @@ export const routes = [
     name: 'service-detail',
     component: ServiceDetailView,
     props: true,
+  },
+  {
+    path: '/thank-you',
+    name: 'thank-you',
+    component: ThankYouView,
   },
 ]
 
