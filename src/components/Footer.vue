@@ -12,20 +12,20 @@
         <div class="footer-section">
           <h4 class="footer-heading">Services</h4>
           <ul class="footer-links">
-            <li><a href="#pricing">Basic Clean</a></li>
-            <li><a href="#pricing">Premium Care</a></li>
-            <li><a href="#pricing">Luxury Service</a></li>
-            <li><a href="#mobile-app">Mobile App</a></li>
+            <li><a href="/#pricing">Basic Clean</a></li>
+            <li><a href="/#pricing">Premium Care</a></li>
+            <li><a href="/#pricing">Luxury Service</a></li>
+            <li><a href="/#mobile-app">Mobile App</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h4 class="footer-heading">Company</h4>
           <ul class="footer-links">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
-            <li><a href="#promotions">Offers</a></li>
+            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/#testimonials">Reviews</a></li>
+            <li><a href="/#promotions">Offers</a></li>
           </ul>
         </div>
 
