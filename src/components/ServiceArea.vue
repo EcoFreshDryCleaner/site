@@ -223,22 +223,9 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  #map {
-    height: 400px;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  #map {
-    height: 300px;
-  }
-
   .service-area-section {
-    padding: 4rem 0;
+    display: none;
   }
 }
+
 </style>

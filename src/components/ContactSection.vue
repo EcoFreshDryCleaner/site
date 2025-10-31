@@ -248,7 +248,7 @@ const openMap = () => {
 
 <style scoped>
 .contact {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: var(--bg-eco-lighter);
   position: relative;
   overflow: hidden;
@@ -352,7 +352,7 @@ const openMap = () => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .header-badge {
@@ -397,6 +397,7 @@ const openMap = () => {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   margin-bottom: 4rem;
+  align-items: center;
 }
 
 .contact-info {
@@ -600,7 +601,7 @@ const openMap = () => {
 
 .contact-form {
   background: var(--bg-primary);
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 24px;
   box-shadow: 0 8px 25px var(--shadow-light);
   border: 1px solid var(--border-eco);
@@ -621,7 +622,7 @@ const openMap = () => {
 
 .form-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-icon {
@@ -646,7 +647,7 @@ const openMap = () => {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .form-group {
@@ -673,20 +674,46 @@ const openMap = () => {
   color: var(--text-primary);
 }
 
+/* Modern Select/Dropdown Styling */
+.form-group select {
+  color: var(--text-primary) !important;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2347a86a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  padding-right: 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.form-group select:hover {
+  border-color: var(--eco-green-light);
+  background-color: var(--bg-eco-lighter);
+}
+
 .form-group select option {
   background: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
 }
 
-/* Additional styling for better browser compatibility */
-.form-group select {
-  color: var(--text-primary) !important;
+.form-group select option:hover,
+.form-group select option:checked,
+.form-group select option:focus {
+  background: var(--gradient-eco) !important;
+  color: white !important;
 }
 
-.form-group select:focus option {
-  background: var(--bg-eco-light) !important;
-  color: var(--text-primary) !important;
+.form-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--bg-eco-lighter);
+}
+
+.form-group select:disabled option {
+  color: var(--text-muted) !important;
 }
 
 .form-group input:focus,
