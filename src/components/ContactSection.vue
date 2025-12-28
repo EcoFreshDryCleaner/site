@@ -133,12 +133,14 @@
           </div>
 
           <form
+        ref="contactForm"
         action="https://forms.tanuj.xyz/ecofresh/submit"
               method="post"
               enctype="application/x-www-form-urlencoded"
               target="_self"
               class="form"
               accept-charset="utf-8"
+              @submit="handleFormSubmit"
           >
             <div class="form-group">
               <label for="name">Full Name *</label>
@@ -191,6 +193,25 @@
               ></textarea>
             </div>
 
+            <ClientOnly>
+              <div class="form-group recaptcha-group">
+                <div class="recaptcha-container">
+                  <div 
+                    class="g-recaptcha" 
+                    :data-sitekey="recaptchaSiteKey"
+                    data-action="CONTACT_FORM"
+                    data-callback="onRecaptchaSuccess"
+                  ></div>
+                </div>
+                <span v-if="recaptchaError" class="field-error">{{ recaptchaError }}</span>
+              </div>
+              <template #placeholder>
+                <div class="recaptcha-placeholder">
+                  <p>Loading security verification...</p>
+                </div>
+              </template>
+            </ClientOnly>
+
             <button type="submit" class="btn btn-primary">
               <FontAwesomeIcon :icon="['fas', 'paper-plane']" class="btn-icon" />
               Send Message
@@ -222,6 +243,18 @@ import { servicesService } from '../services/servicesService.js'
 // Reactive data
 const services = ref([])
 const isLoadingServices = ref(true)
+const contactForm = ref(null)
+const recaptchaError = ref('')
+
+// reCAPTCHA site key from environment variable
+// Set VITE_RECAPTCHA_SITE_KEY in your .env file or build configuration
+const recaptchaSiteKey = ref(import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LebETksAAAAAOUVZTqZty4g-c4HDjBushb0dcai')
+
+// Callback when reCAPTCHA is successfully completed
+// This needs to be exposed globally for reCAPTCHA to call it
+const onRecaptchaSuccess = () => {
+  recaptchaError.value = ''
+}
 
 // Fetch services on component mount
 onMounted(async () => {
@@ -236,13 +269,63 @@ onMounted(async () => {
   } finally {
     isLoadingServices.value = false
   }
+
+  // Expose callback to window for reCAPTCHA
+  if (!import.meta.env.SSR) {
+    window.onRecaptchaSuccess = onRecaptchaSuccess
+  }
+
+  // Load reCAPTCHA script if site key is available
+  if (recaptchaSiteKey.value && !import.meta.env.SSR) {
+    // Check if script is already loaded
+    if (!document.querySelector('script[src*="recaptcha"]')) {
+      const script = document.createElement('script')
+      script.src = 'https://www.google.com/recaptcha/enterprise.js'
+      script.async = true
+      script.defer = true
+      document.head.appendChild(script)
+    }
+  }
 })
 
-const openMap = () => {
-  // Open map in new window or modal
-  if (!import.meta.env.SSR) {
-    window.open('https://maps.google.com', '_blank')
+// Handle form submission with reCAPTCHA validation
+const handleFormSubmit = (event) => {
+  console.log('🔵 Form submit handler called')
+  recaptchaError.value = ''
+  
+  if (!contactForm.value) {
+    console.error('❌ Contact form ref is null')
+    event.preventDefault()
+    return false
   }
+
+  console.log('✅ Contact form ref found')
+
+  // Check if reCAPTCHA is completed
+  const recaptchaResponse = contactForm.value.querySelector('textarea[name="g-recaptcha-response"]')
+  console.log('🔍 reCAPTCHA response element:', recaptchaResponse)
+  console.log('🔍 reCAPTCHA response value:', recaptchaResponse?.value)
+  console.log('🔍 reCAPTCHA response value length:', recaptchaResponse?.value?.length)
+  
+  if (!recaptchaResponse || !recaptchaResponse.value) {
+    console.warn('⚠️ reCAPTCHA not completed, preventing submission')
+    event.preventDefault()
+    recaptchaError.value = 'Please complete the "I\'m not a robot" verification.'
+    
+    // Scroll to reCAPTCHA if error
+    const recaptchaContainer = contactForm.value.querySelector('.recaptcha-container')
+    if (recaptchaContainer) {
+      console.log('📍 Scrolling to reCAPTCHA container')
+      recaptchaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+    return false
+  }
+
+  console.log('✅ reCAPTCHA validated successfully')
+  console.log('📤 Allowing form to submit normally')
+  // If reCAPTCHA is valid, allow the form to submit normally
+  // Don't call preventDefault(), so the form will submit
+  return true
 }
 </script>
 
@@ -728,6 +811,44 @@ const openMap = () => {
 .form-group textarea {
   resize: vertical;
   min-height: 100px;
+}
+
+.recaptcha-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 0.5rem;
+}
+
+.recaptcha-container {
+  display: flex;
+  justify-content: center;
+}
+
+.recaptcha-group :deep(.g-recaptcha) {
+  display: flex;
+  justify-content: center;
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+}
+
+.recaptcha-placeholder {
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn {
