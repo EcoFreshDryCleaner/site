@@ -57,7 +57,7 @@
                     </div>
                     <div class="phone">
                       <FontAwesomeIcon :icon="['fas', 'phone']" class="detail-icon" />
-                      <span>(794) 847-5992</span>
+                      <span>(704) 847-5992</span>
                     </div>
                     <div class="hours">
                       <FontAwesomeIcon :icon="['fas', 'clock']" class="detail-icon" />

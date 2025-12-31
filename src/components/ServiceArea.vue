@@ -26,7 +26,7 @@ const initMap = () => {
       lat: 35.0168,
       lng: -80.7236,
       address: '1115 A Mathews Mint Hill Rd, Mathews, NC 28105',
-      phone: '(794) 847-5992',
+      phone: '(704) 847-5992',
     },
     {
       name: 'EcoFresh - Mallard Creek',
