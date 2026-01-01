@@ -27,5 +27,10 @@ export const createApp = ViteSSG(
 export async function includedRoutes(paths, routes) {
   const { servicesData } = await import('./data/servicesData')
 
-  return ['/', ...servicesData.map((service) => `/service/${service.slug}`)]
+  return [
+    '/',
+    '/privacy-policy',
+    '/thank-you',
+    ...servicesData.map((service) => `/service/${service.slug}`)
+  ]
 }

@@ -11,6 +11,8 @@ import { servicesData } from './src/data/servicesData.js'
 // Generate dynamic routes from services data
 const dynamicRoutes = [
   '/',
+  '/privacy-policy',
+  '/thank-you',
   ...servicesData.map((service) => `/service/${service.slug}`)
 ]
 

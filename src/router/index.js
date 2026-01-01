@@ -1,6 +1,7 @@
 import ServiceDetailView from '../views/ServiceDetailView.vue'
 import HomeView from '../views/HomeView.vue'
 import ThankYouView from '../views/ThankYouView.vue'
+import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 // Track if page has loaded to avoid repeated delays
@@ -22,6 +23,11 @@ export const routes = [
     path: '/thank-you',
     name: 'thank-you',
     component: ThankYouView,
+  },
+  {
+    path: '/privacy-policy',
+    name: 'privacy-policy',
+    component: PrivacyPolicyView,
   },
   {
     path: '/:pathMatch(.*)*',

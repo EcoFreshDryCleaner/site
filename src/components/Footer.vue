@@ -26,6 +26,7 @@
             <li><a href="/#contact">Contact</a></li>
             <li><a href="/#testimonials">Reviews</a></li>
             <li><a href="/#promotions">Offers</a></li>
+            <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
           </ul>
         </div>
 
@@ -66,6 +67,9 @@
 
       <div class="footer-bottom">
         <p>&copy; 2025 EcoFresh Dry Cleaner. All rights reserved.</p>
+        <div class="footer-legal">
+          <router-link to="/privacy-policy">Privacy Policy</router-link>
+        </div>
       </div>
     </div>
   </footer>
