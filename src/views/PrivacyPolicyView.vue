@@ -172,9 +172,10 @@
               You can access and update your personal information at any time through the app's profile settings.
             </p>
 
-            <h3>Delete Account</h3>
+            <h3>Delete Account and Data</h3>
             <p>
-              You can request deletion of your account and associated data by contacting us at 
+              You can delete your account and associated data through the settings page of the mobile app, 
+              or by contacting us at 
               <a href="mailto:hello@ecofreshdrycleaner.com">hello@ecofreshdrycleaner.com</a>.
             </p>
 
