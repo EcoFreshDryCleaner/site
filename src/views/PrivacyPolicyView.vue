@@ -6,7 +6,7 @@
       <div class="container">
         <div class="privacy-content">
           <h1 class="page-title">Privacy Policy</h1>
-          <p class="last-updated">Last Updated: January 2025</p>
+          <p class="last-updated">Last Updated: January 2026</p>
 
           <section class="policy-section">
             <h2>Introduction</h2>
@@ -42,6 +42,19 @@
             <p>
               This information is used solely for authentication and account management purposes. 
               We do not access or store your Google account password.
+            </p>
+
+            <h3>Phone Number Information</h3>
+            <p>We collect and use your phone number in the following ways:</p>
+            <ul>
+              <li><strong>Account creation and sign-in</strong>: You may register or sign in using your phone number (via SMS verification). The number is stored to identify your account and is subject to the same security and privacy practices as other account data.</li>
+              <li><strong>Profile and contact</strong>: You may add or update a phone number in your profile. We use it to contact you about orders and, if you opt in, to send order-related SMS notifications.</li>
+              <li><strong>Uniqueness</strong>: Each phone number may be associated with only one account. We use this to prevent duplicate accounts and to deliver notifications to the correct person.</li>
+            </ul>
+            <p>
+              Phone numbers are stored and processed with the help of our authentication and messaging providers (e.g., Firebase/Google and Twilio). 
+              If you opt in to SMS notifications, we send messages only for order-related updates (e.g., order received, status changes). 
+              You can opt out of SMS at any time in the app's notification settings. Standard message and data rates may apply.
             </p>
 
             <h3>Location Information</h3>
@@ -85,7 +98,7 @@
               <li>Provide, maintain, and improve our services</li>
               <li>Process and fulfill your orders</li>
               <li>Communicate with you about your orders, account, and our services</li>
-              <li>Send you push notifications about order status updates</li>
+              <li>Send you push notifications and, if you opt in, SMS messages about order status updates</li>
               <li>Respond to your inquiries and provide customer support</li>
               <li>Verify your identity and prevent fraud</li>
               <li>Comply with legal obligations</li>
@@ -100,7 +113,8 @@
             <h3>Service Providers</h3>
             <p>We may share your information with third-party service providers who perform services on our behalf:</p>
             <ul>
-              <li><strong>Firebase (Google)</strong>: For authentication, data storage, and cloud functions</li>
+              <li><strong>Firebase (Google)</strong>: For authentication (including phone number sign-in), data storage, and cloud functions</li>
+              <li><strong>Twilio</strong>: For sending SMS notifications (e.g., order confirmations) when you have opted in</li>
               <li><strong>Square</strong>: For payment processing</li>
               <li><strong>Google Maps</strong>: For address validation and location services</li>
               <li><strong>Expo</strong>: For push notification delivery</li>
@@ -164,10 +178,11 @@
               <a href="mailto:hello@ecofreshdrycleaner.com">hello@ecofreshdrycleaner.com</a>.
             </p>
 
-            <h3>Push Notifications</h3>
+            <h3>Push and SMS Notifications</h3>
             <p>
               You can opt out of push notifications at any time through your device settings or the app's 
-              notification settings.
+              notification settings. You can also turn off SMS notifications in the app's notification 
+              settings; we will only send order-related text messages if you have opted in.
             </p>
 
             <h3>Location Information</h3>
@@ -196,7 +211,8 @@
             </p>
             <p>Key third-party services we use include:</p>
             <ul>
-              <li><strong>Google</strong>: For authentication (Google Sign-In) and Firebase services</li>
+              <li><strong>Google</strong>: For authentication (Google Sign-In and phone number sign-in) and Firebase services</li>
+              <li><strong>Twilio</strong>: For sending SMS when you opt in to text notifications</li>
               <li><strong>Square</strong>: For payment processing</li>
               <li><strong>Expo</strong>: For app development and push notification services</li>
             </ul>
