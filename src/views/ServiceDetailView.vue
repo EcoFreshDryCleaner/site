@@ -334,10 +334,6 @@ onMounted(async () => {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .service-subtitle {
@@ -356,8 +352,8 @@ onMounted(async () => {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px var(--shadow-light);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow-light);
 }
 
 /* Service Overview */
@@ -448,7 +444,7 @@ onMounted(async () => {
 .step-number {
   width: 50px;
   height: 50px;
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -500,7 +496,7 @@ onMounted(async () => {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -528,7 +524,7 @@ onMounted(async () => {
 /* CTA Section */
 .service-cta {
   padding: 6rem 0;
-  background: var(--gradient-hero);
+  background: var(--primary-blue);
   color: white;
   text-align: center;
 }
@@ -553,27 +549,25 @@ onMounted(async () => {
 
 /* Buttons */
 .btn {
-  padding: 1rem 2rem;
+  padding: 0.85rem 1.75rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-primary-hover);
+  background: var(--primary-blue-dark);
 }
 
 .btn-secondary {
@@ -585,7 +579,6 @@ onMounted(async () => {
 .btn-secondary:hover {
   background: var(--primary-blue);
   color: var(--text-white);
-  transform: translateY(-2px);
 }
 
 .service-cta .btn-secondary {

@@ -78,78 +78,44 @@
 </template>
 
 <script setup>
-// No props or logic needed for this component
 </script>
 
 <style scoped>
-/* Footer styles */
 .footer {
   background: var(--bg-dark);
   color: var(--text-white);
-  padding: 4rem 0 2rem;
+  padding: 3rem 0 1.5rem;
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .footer-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .footer-title {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.25rem;
+  color: var(--text-white);
 }
 
 .footer-description {
   color: var(--text-light);
   line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background: var(--transparent-white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.social-link svg {
-  font-size: 1.2rem;
-}
-
-.social-link:hover {
-  background: var(--primary-blue);
-  transform: translateY(-2px);
 }
 
 .footer-heading {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--border-medium);
 }
 
@@ -157,17 +123,17 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .footer-links a {
   color: var(--text-light);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: var(--primary-blue);
+  color: var(--primary-blue-light);
 }
 
 .contact-info p {
@@ -184,32 +150,25 @@
 }
 
 .footer-locations {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 100%;
 }
 
 .location-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.6rem;
+  padding: 0.6rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.location-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
 }
 
 .location-item svg {
-  color: var(--primary-blue);
-  font-size: 1rem;
+  color: var(--primary-blue-light);
+  font-size: 0.9rem;
   margin-top: 0.125rem;
   flex-shrink: 0;
 }
@@ -217,13 +176,13 @@
 .location-details {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .location-details strong {
-  color: var(--primary-blue);
+  color: var(--primary-blue-light);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .location-details span {
@@ -233,54 +192,48 @@
 }
 
 .location-details .hours {
-  color: var(--primary-blue);
+  color: var(--primary-blue-light);
   font-size: 0.75rem;
   font-weight: 500;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 
 .footer-bottom {
   border-top: 1px solid var(--border-dark);
-  padding-top: 2rem;
-  margin-top: 2rem;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .footer-bottom p {
   color: var(--text-light);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .footer-legal {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .footer-legal a {
   color: var(--text-light);
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
 }
 
 .footer-legal a:hover {
-  color: var(--primary-blue);
+  color: var(--primary-blue-light);
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .footer-bottom {

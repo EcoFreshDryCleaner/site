@@ -143,13 +143,13 @@ onMounted(async () => {
 
 .promo-modal {
   background: white;
-  border-radius: 20px;
+  border-radius: 12px;
   max-width: 500px;
   width: 100%;
   max-height: 90vh;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 .close-btn {
@@ -218,13 +218,13 @@ onMounted(async () => {
 }
 
 .promo-btn {
-  padding: 1rem 2rem;
+  padding: 0.85rem 1.75rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
@@ -233,18 +233,15 @@ onMounted(async () => {
 .promo-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  transform: none !important;
 }
 
 .promo-btn.primary {
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .promo-btn.primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-primary-hover);
+  background: var(--primary-blue-dark);
 }
 
 .promo-btn.secondary {
@@ -256,7 +253,6 @@ onMounted(async () => {
 .promo-btn.secondary:hover {
   background: var(--primary-blue);
   color: var(--text-white);
-  transform: translateY(-2px);
 }
 
 /* Modal transition animations */

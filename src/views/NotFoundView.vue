@@ -125,7 +125,7 @@ const goBack = () => {
 
 .not-found-content {
   background: var(--bg-primary);
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 3rem 2rem;
   box-shadow: 0 20px 40px var(--shadow-light);
   border: 1px solid var(--border-light);
@@ -140,12 +140,11 @@ const goBack = () => {
   width: 120px;
   height: 120px;
   margin: 0 auto;
-  background: var(--gradient-eco);
+  background: var(--eco-green);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px var(--shadow-eco);
 }
 
 .icon {
@@ -162,10 +161,7 @@ const goBack = () => {
 .error-code {
   font-size: 6rem;
   font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue);
   margin: 0 0 1rem 0;
   line-height: 1;
 }
@@ -210,14 +206,12 @@ const goBack = () => {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px var(--shadow-primary-hover);
+  background: var(--primary-blue-dark);
 }
 
 .btn-secondary {

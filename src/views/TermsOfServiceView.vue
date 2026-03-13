@@ -183,32 +183,18 @@ onMounted(() => {
 .terms-content {
   background: var(--bg-primary);
   padding: 4rem 3rem;
-  border-radius: 24px;
+  border-radius: 12px;
   box-shadow: 0 20px 40px var(--shadow-light);
   border: 1px solid var(--border-eco);
   position: relative;
   overflow: hidden;
 }
 
-.terms-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--gradient-eco);
-}
-
 .page-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .last-updated {

@@ -1,5 +1,5 @@
 :root {
-  /* Primary Colors - Enhanced Eco Theme */
+  /* Primary Colors */
   --primary-blue: #1e40af;
   --primary-blue-dark: #1e3a8a;
   --primary-blue-light: #3b82f6;
@@ -23,7 +23,7 @@
   --text-light: #94a3b8;
   --text-white: #ffffff;
 
-  /* Background Colors - Enhanced with Eco Theme */
+  /* Background Colors */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-eco-light: #f0fdf4;
@@ -43,29 +43,16 @@
   --accent-orange: #f97316;
   --accent-red: #ef4444;
 
-  /* Gradient Colors - Enhanced Eco Theme */
-  --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--eco-green) 100%);
-  --gradient-hero: linear-gradient(
-    135deg,
-    var(--primary-blue) 0%,
-    var(--eco-green) 50%,
-    var(--secondary-teal) 100%
-  );
-  --gradient-secondary: linear-gradient(135deg, var(--eco-green) 0%, var(--secondary-teal) 100%);
-  --gradient-eco: linear-gradient(135deg, var(--eco-green-light) 0%, var(--eco-mint) 100%);
-  --gradient-ocean: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-teal) 100%);
-
   /* Shadow Colors */
-  --shadow-primary: rgba(30, 64, 175, 0.25);
-  --shadow-primary-hover: rgba(30, 64, 175, 0.35);
-  --shadow-eco: rgba(16, 185, 129, 0.25);
-  --shadow-light: rgba(0, 0, 0, 0.08);
-  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-primary: rgba(30, 64, 175, 0.15);
+  --shadow-primary-hover: rgba(30, 64, 175, 0.22);
+  --shadow-eco: rgba(16, 185, 129, 0.15);
+  --shadow-light: rgba(0, 0, 0, 0.06);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
 
   /* Overlay Colors */
-  --overlay-light: rgba(255, 255, 255, 0.95);
+  --overlay-light: rgba(255, 255, 255, 0.98);
   --overlay-dark: rgba(0, 0, 0, 0.5);
-  --overlay-eco: rgba(16, 185, 129, 0.1);
 
   /* Status Colors */
   --success: #10b981;
@@ -76,10 +63,4 @@
   /* Transparent Colors */
   --transparent-white: rgba(255, 255, 255, 0.1);
   --transparent-black: rgba(0, 0, 0, 0.05);
-  --transparent-eco: rgba(16, 185, 129, 0.1);
-
-  /* Pattern and Texture Colors */
-  --pattern-light: rgba(16, 185, 129, 0.05);
-  --pattern-medium: rgba(16, 185, 129, 0.1);
-  --pattern-dark: rgba(16, 185, 129, 0.15);
 }

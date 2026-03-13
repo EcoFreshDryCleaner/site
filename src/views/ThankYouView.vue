@@ -1,15 +1,5 @@
 <template>
   <div class="thank-you-page">
-    <!-- Background Pattern -->
-    <div class="thank-you-bg-pattern">
-      <div class="pattern-dot dot-1"></div>
-      <div class="pattern-dot dot-2"></div>
-      <div class="pattern-dot dot-3"></div>
-      <div class="pattern-dot dot-4"></div>
-      <div class="pattern-wave wave-1"></div>
-      <div class="pattern-wave wave-2"></div>
-    </div>
-
     <div class="container">
       <div class="thank-you-content">
         <!-- Success Icon -->
@@ -99,92 +89,6 @@ onMounted(() => {
   padding: 2rem 0;
 }
 
-/* Background Pattern */
-.thank-you-bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.pattern-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--pattern-medium);
-  border-radius: 50%;
-  animation: float-dot 8s ease-in-out infinite;
-}
-
-.dot-1 {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.dot-2 {
-  top: 25%;
-  right: 15%;
-  animation-delay: 2s;
-}
-
-.dot-3 {
-  bottom: 20%;
-  left: 20%;
-  animation-delay: 4s;
-}
-
-.dot-4 {
-  bottom: 10%;
-  right: 25%;
-  animation-delay: 6s;
-}
-
-.pattern-wave {
-  position: absolute;
-  width: 120px;
-  height: 3px;
-  background: var(--pattern-light);
-  border-radius: 2px;
-  animation: wave 6s ease-in-out infinite;
-}
-
-.wave-1 {
-  top: 35%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.wave-2 {
-  bottom: 30%;
-  right: 10%;
-  animation-delay: 3s;
-}
-
-@keyframes float-dot {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.3);
-    opacity: 1;
-  }
-}
-
-@keyframes wave {
-  0%, 100% {
-    transform: scaleX(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scaleX(1.8);
-    opacity: 0.7;
-  }
-}
-
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -197,21 +101,9 @@ onMounted(() => {
   text-align: center;
   background: var(--bg-primary);
   padding: 4rem 3rem;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px var(--shadow-light);
-  border: 1px solid var(--border-eco);
-  position: relative;
-  overflow: hidden;
-}
-
-.thank-you-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--gradient-eco);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  border: 1px solid var(--border-medium);
 }
 
 /* Success Icon */
@@ -246,10 +138,6 @@ onMounted(() => {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   animation: fade-in-up 0.6s ease-out 0.2s both;
 }
 
@@ -306,35 +194,10 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   background: var(--bg-eco-light);
-  border-radius: 16px;
-  border: 1px solid var(--border-eco);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.step-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-eco);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.step-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px var(--shadow-medium);
-  border-color: var(--eco-green-light);
-}
-
-.step-item:hover::before {
-  transform: scaleX(1);
+  border-radius: 10px;
+  border: 1px solid var(--border-medium);
 }
 
 .step-icon {
@@ -374,13 +237,13 @@ onMounted(() => {
 }
 
 .btn {
-  padding: 1rem 2rem;
+  padding: 0.85rem 1.75rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -389,18 +252,16 @@ onMounted(() => {
 }
 
 .btn-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .btn-primary {
-  background: var(--gradient-eco);
+  background: var(--eco-green);
   color: white;
-  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-eco);
+  background: var(--eco-green-dark);
 }
 
 .btn-secondary {

@@ -19,7 +19,6 @@ const mapRef = ref(null)
 let map = null
 
 const initMap = () => {
-  // Define EcoFresh locations with exact coordinates
   const locations = [
     {
       name: 'EcoFresh - Mathews',
@@ -44,14 +43,12 @@ const initMap = () => {
     },
   ]
 
-  // Calculate center point between all three locations
   const centerLat = (35.0168 + 35.3071 + 35.1271) / 3
   const centerLng = (-80.7236 + -80.7431 + -80.8431) / 3
 
-  // Create a circle with 20-mile radius (approximately 0.29 degrees)
-  const radiusInDegrees = 20 / 69 // 1 degree ≈ 69 miles
+  const radiusInDegrees = 20 / 69
   const circlePoints = []
-  const numPoints = 64 // Number of points to create smooth circle
+  const numPoints = 64
 
   for (let i = 0; i < numPoints; i++) {
     const angle = (i / numPoints) * 2 * Math.PI
@@ -61,24 +58,23 @@ const initMap = () => {
     circlePoints.push({ lat, lng })
   }
 
-  // Close the circle
   circlePoints.push(circlePoints[0])
 
   const serviceAreaBoundaries = circlePoints
 
   map = new google.maps.Map(mapRef.value, {
-    center: { lat: centerLat, lng: centerLng }, // Centered on calculated center point
+    center: { lat: centerLat, lng: centerLng },
     zoom: 10,
     styles: [
       {
         featureType: 'all',
         elementType: 'geometry',
-        stylers: [{ color: 'var(--bg-secondary)' }],
+        stylers: [{ color: '#f8fafc' }],
       },
       {
         featureType: 'water',
         elementType: 'geometry',
-        stylers: [{ color: 'var(--border-medium)' }],
+        stylers: [{ color: '#e2e8f0' }],
       },
       {
         featureType: 'poi',
@@ -88,20 +84,17 @@ const initMap = () => {
     ],
   })
 
-  // Create a polygon for the service area
   const serviceAreaPolygon = new google.maps.Polygon({
     paths: serviceAreaBoundaries,
-    strokeColor: 'var(--primary-blue)',
+    strokeColor: '#1e40af',
     strokeOpacity: 0.8,
-    strokeWeight: 3,
-    fillColor: 'var(--primary-blue)',
-    fillOpacity: 0.1,
+    strokeWeight: 2,
+    fillColor: '#1e40af',
+    fillOpacity: 0.08,
     map: map,
   })
 
-  // Add markers and labels for each location
   locations.forEach((location) => {
-    // Create marker
     const marker = new google.maps.Marker({
       position: { lat: location.lat, lng: location.lng },
       map: map,
@@ -109,18 +102,17 @@ const initMap = () => {
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
-        fillColor: 'var(--primary-blue)',
+        fillColor: '#1e40af',
         fillOpacity: 1,
-        strokeColor: 'var(--text-white)',
+        strokeColor: '#ffffff',
         strokeWeight: 2,
       },
     })
 
-    // Create info window for the location details
     const infoWindow = new google.maps.InfoWindow({
       content: `
         <div style="padding: 10px; max-width: 250px;">
-          <div style="color: var(--primary-blue); font-weight: 600; margin-bottom: 5px;">${location.name}</div>
+          <div style="color: #1e40af; font-weight: 600; margin-bottom: 5px;">${location.name}</div>
           <div style="font-size: 12px; color: #666; margin-bottom: 3px;">${location.address}</div>
           <div style="font-size: 12px; color: #666;">${location.phone}</div>
         </div>
@@ -130,7 +122,6 @@ const initMap = () => {
       closeButton: false,
     })
 
-    // Hide the close button after the info window is created
     google.maps.event.addListener(infoWindow, 'domready', () => {
       if (!import.meta.env.SSR) {
         const closeButtons = document.querySelectorAll('.gm-ui-hover-effect')
@@ -140,7 +131,6 @@ const initMap = () => {
       }
     })
 
-    // Add hover event listeners
     marker.addListener('mouseover', () => {
       infoWindow.open(map, marker)
     })
@@ -154,11 +144,9 @@ const initMap = () => {
 onMounted(() => {
   if (import.meta.env.SSR) return
 
-  // Wait for Google Maps to be fully loaded
   if (window.google && window.google.maps) {
     initMap()
   } else {
-    // If Google Maps isn't loaded yet, wait for it
     window.initMap = initMap
     const checkGoogleMaps = setInterval(() => {
       if (window.google && window.google.maps) {
@@ -172,7 +160,7 @@ onMounted(() => {
 
 <style scoped>
 .service-area-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: var(--bg-primary);
 }
 
@@ -184,22 +172,18 @@ onMounted(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.75rem;
 }
 
 .section-header p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -214,12 +198,10 @@ onMounted(() => {
 #map {
   width: 100%;
   max-width: 800px;
-  height: 500px;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px var(--transparent-black);
+  height: 450px;
+  border-radius: 10px;
+  border: 1px solid var(--border-medium);
   background-color: var(--bg-secondary);
-  position: relative;
-  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -227,5 +209,4 @@ onMounted(() => {
     display: none;
   }
 }
-
 </style>

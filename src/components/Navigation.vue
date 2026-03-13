@@ -47,13 +47,11 @@ const menuItems = [
   { id: 'promotions', label: 'Offers', href: '#promotions' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'pricing', label: 'Services', href: '#pricing' },
-  // { id: 'testimonials', label: 'Reviews', href: '#testimonials' },
   { id: 'contact', label: 'Contact', href: '#contact' },
   { id: 'mobile-app', label: 'App', href: '#mobile-app' },
 ]
 
 const navigateToSection = (sectionId) => {
-  // Handle Home navigation (scroll to top)
   if (!sectionId || sectionId === '') {
     router.push({ name: 'home' })
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -61,7 +59,6 @@ const navigateToSection = (sectionId) => {
     return
   }
   
-  // Navigate to home page with section hash
   router.push({ name: 'home', hash: `#${sectionId}` })
   isMenuOpen.value = false
 }
@@ -78,12 +75,10 @@ const toggleMenu = () => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--overlay-light);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
-  transition: all 0.3s ease;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-medium);
+  transition: box-shadow 0.2s ease;
 }
-
 
 .nav-container {
   max-width: 1200px;
@@ -105,10 +100,7 @@ const toggleMenu = () => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-blue);
 }
 
 .brand-tagline {
@@ -128,32 +120,12 @@ const toggleMenu = () => {
   color: var(--text-secondary);
   font-weight: 500;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: color 0.2s ease;
   padding: 0.5rem 0;
 }
 
 .nav-link:hover {
   color: var(--primary-blue);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  height: 2px;
-  background: var(--gradient-hero);
-  border-radius: 1px;
-  transition: all 0.3s ease;
-  opacity: 0;
-}
-
-.nav-link:hover::after {
-  left: 0;
-  right: 0;
-  opacity: 0.5;
 }
 
 .nav-actions {
@@ -163,27 +135,25 @@ const toggleMenu = () => {
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-primary-hover);
+  background: var(--primary-blue-dark);
 }
 
 .menu-toggle {
@@ -222,12 +192,11 @@ const toggleMenu = () => {
     top: 70px;
     left: 0;
     right: 0;
-    background: var(--overlay-light);
-    backdrop-filter: blur(10px);
+    background: var(--bg-primary);
     flex-direction: column;
     gap: 0;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border-light);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-medium);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;

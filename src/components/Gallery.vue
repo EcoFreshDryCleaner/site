@@ -282,14 +282,13 @@ const openLightbox = (image) => {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--gradient-eco);
+  background: var(--eco-green);
   color: white;
-  border-radius: 50px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
   font-weight: 500;
-  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .badge-icon {
@@ -301,10 +300,7 @@ const openLightbox = (image) => {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
 .section-subtitle {
@@ -331,11 +327,11 @@ const openLightbox = (image) => {
   padding: 0.75rem 1.5rem;
   background: var(--bg-primary);
   border: 2px solid var(--border-eco);
-  border-radius: 50px;
+  border-radius: 6px;
   color: var(--text-secondary);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .category-btn:hover {
@@ -346,10 +342,9 @@ const openLightbox = (image) => {
 }
 
 .category-btn.active {
-  background: var(--gradient-eco);
+  background: var(--eco-green);
   color: white;
   border-color: var(--eco-green);
-  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .category-icon {
@@ -447,7 +442,7 @@ const openLightbox = (image) => {
 .before-after-section {
   background: var(--bg-primary);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 4px 20px var(--shadow-light);
   border: 1px solid var(--border-eco);
   text-align: center;
@@ -458,10 +453,7 @@ const openLightbox = (image) => {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
 .before-after-grid {
@@ -517,13 +509,12 @@ const openLightbox = (image) => {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  background: var(--gradient-eco);
+  background: var(--eco-green);
   color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 10px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px var(--shadow-eco);
 }
 
 .comparison-item h4 {

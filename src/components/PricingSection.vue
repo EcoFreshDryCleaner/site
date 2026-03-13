@@ -56,8 +56,6 @@
       </div>
 
       <div class="pricing-note">
-        <!-- <p>* All services include free pickup and delivery within 10 miles</p>
-        <p>* Bulk discounts available for orders over 20 items</p> -->
         <p>* View detailed pricing and place orders in our mobile app</p>
         <p>* Contact us for custom pricing on special items</p>
       </div>
@@ -78,30 +76,18 @@ const services = ref([])
 const loading = ref(true)
 const error = ref(null)
 
-// Function to optimize images using Cloudflare transformations
 const optimizeImageUrl = (url) => {
   if (!url || !OPTIMIZE_IMAGES) return url
   
-  // Check if it's a Cloudflare CDN URL
   if (url.includes('cdn.ecofreshdrycleaner.com')) {
-    // Extract the image path from the full URL
     const urlObj = new URL(url)
     const imagePath = urlObj.pathname
-    
-    // Apply Cloudflare image transformations using the correct format
-    // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
-    // - format=auto: Auto format selection (WebP/AVIF when supported)
-    // - width=400: Width optimized for card display
-    // - height=200: Height matches card-image height
-    // - quality=85: High quality with good compression
-    // - fit=cover: Maintain aspect ratio and cover the container
     return `https://cdn.ecofreshdrycleaner.com/cdn-cgi/image/format=auto,width=400,height=200,quality=85,fit=cover${imagePath}`
   }
   
   return url
 }
 
-// Fetch services from Firestore or local data
 const fetchServices = async () => {
   console.log('🔍 fetchServices called - SSR:', import.meta.env.SSR)
   
@@ -112,23 +98,20 @@ const fetchServices = async () => {
     let firestoreServices = []
     
     if (import.meta.env.SSR) {
-      // During SSG build, use local data
       console.log('📦 Using local services data for SSG build')
       console.log('📊 Available services:', servicesData.map(s => s.slug))
       firestoreServices = servicesData
     } else {
-      // During runtime, fetch from Firestore
       console.log('🌐 Fetching services from Firestore')
       firestoreServices = await servicesService.getAllServices()
     }
     
-    // Map data to the format expected by the template
     services.value = firestoreServices.map((service) => ({
       name: service.title,
       description: service.subtitle,
       slug: service.slug,
-      image: optimizeImageUrl(service.heroImage), // Apply Cloudflare optimizations
-      features: service.overview?.features?.slice(0, 3) || [], // Show first 3 features
+      image: optimizeImageUrl(service.heroImage),
+      features: service.overview?.features?.slice(0, 3) || [],
       featured: service.featured || false,
     }))
     
@@ -143,17 +126,14 @@ const fetchServices = async () => {
 }
 
 const selectService = (service) => {
-  // Navigate to service detail page
   router.push(`/service/${service.slug}`)
 }
 
-// During SSG build, fetch services immediately
 if (import.meta.env.SSR) {
   console.log('🚀 SSG Build - Fetching services for PricingSection')
   fetchServices()
 }
 
-// Fetch services when component mounts (runtime)
 onMounted(() => {
   fetchServices()
 })
@@ -161,7 +141,7 @@ onMounted(() => {
 
 <style scoped>
 .pricing {
-  padding: 6rem 0;
+  padding: 5rem 0;
   background: white;
 }
 
@@ -173,22 +153,18 @@ onMounted(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.75rem;
 }
 
 .section-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -198,17 +174,16 @@ onMounted(() => {
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .pricing-card {
   background: var(--bg-primary);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0;
-  box-shadow: 0 4px 6px var(--transparent-black);
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-medium);
+  transition: box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -216,18 +191,12 @@ onMounted(() => {
 }
 
 .pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px var(--shadow-light);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 .pricing-card.featured {
   border-color: var(--primary-blue);
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px var(--shadow-primary);
-}
-
-.pricing-card.featured:hover {
-  transform: scale(1.05) translateY(-8px);
+  border-width: 2px;
 }
 
 .card-image {
@@ -240,46 +209,18 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.pricing-card:hover .card-image img {
-  transform: scale(1.05);
 }
 
 .card-header {
   text-align: center;
-  padding: 2rem 2rem 1rem;
-  margin-bottom: 0;
+  padding: 1.5rem 1.5rem 1rem;
 }
 
 .plan-name {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.plan-price {
-  margin-bottom: 1rem;
-}
-
-.currency {
-  font-size: 1.5rem;
-  color: var(--primary-blue);
-  font-weight: 600;
-}
-
-.amount {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-  line-height: 1;
-}
-
-.period {
-  font-size: 1rem;
-  color: var(--text-muted);
+  margin-bottom: 0.5rem;
 }
 
 .plan-description {
@@ -289,8 +230,8 @@ onMounted(() => {
 }
 
 .card-features {
-  padding: 0 2rem;
-  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
   flex: 1;
 }
 
@@ -304,54 +245,52 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   color: var(--text-secondary);
   font-size: 0.95rem;
 }
 
 .check-icon {
-  color: var(--accent-green);
+  color: var(--eco-green);
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .card-footer {
   text-align: center;
-  padding: 0 2rem 2rem;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .btn {
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   width: 100%;
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-primary-hover);
+  background: var(--primary-blue-dark);
 }
 
 .featured-badge {
   position: absolute;
   top: 0;
   right: 0;
-  background: var(--gradient-primary);
+  background: var(--primary-blue);
   color: var(--text-white);
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 600;
-  border-radius: 0 20px 0 20px;
+  border-radius: 0 10px 0 10px;
 }
 
 .pricing-note {
@@ -369,15 +308,15 @@ onMounted(() => {
 .loading-state,
 .error-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   color: var(--text-muted);
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--bg-secondary);
-  border-top: 4px solid var(--primary-blue);
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--bg-secondary);
+  border-top: 3px solid var(--primary-blue);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
@@ -390,26 +329,18 @@ onMounted(() => {
 
 .error-state p {
   margin-bottom: 1rem;
-  color: var(--text-error, #e74c3c);
+  color: var(--error);
 }
 
 @media (max-width: 768px) {
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
-    margin: 0 auto 3rem auto;
-  }
-
-  .pricing-card.featured {
-    transform: none;
-  }
-
-  .pricing-card.featured:hover {
-    transform: translateY(-8px);
+    margin: 0 auto 2rem auto;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
 </style>

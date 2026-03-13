@@ -1,27 +1,14 @@
 <template>
   <section id="about" class="about">
-    <!-- Background Pattern -->
-    <div class="about-bg-pattern">
-      <div class="pattern-dot dot-1"></div>
-      <div class="pattern-dot dot-2"></div>
-      <div class="pattern-dot dot-3"></div>
-      <div class="pattern-dot dot-4"></div>
-      <div class="pattern-dot dot-5"></div>
-    </div>
-
     <div class="container">
       <div class="section-header">
-        <div class="header-badge">
-          <FontAwesomeIcon :icon="['fas', 'leaf']" class="badge-icon" />
-          <span>Our Story</span>
-        </div>
         <h2 class="section-title">About Our Eco-Friendly Service</h2>
         <p class="section-subtitle">
           We're committed to providing professional dry cleaning while protecting our environment
         </p>
       </div>
 
-      <!-- Visual Gallery Section - Moved to top -->
+      <!-- Visual Gallery Section -->
       <div class="visual-gallery">
         <h3 class="gallery-title">Our Commitment to Excellence</h3>
         <div class="gallery-grid">
@@ -121,16 +108,10 @@
 
           <div class="about-stats">
             <div class="stat-card">
-              <div class="stat-icon">
-                <FontAwesomeIcon :icon="['fas', 'leaf']" />
-              </div>
               <div class="stat-number">25+</div>
               <div class="stat-label">Years Serving You</div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">
-                <FontAwesomeIcon :icon="['fas', 'map-marker-alt']" />
-              </div>
               <div class="stat-number">3</div>
               <div class="stat-label">Family Locations</div>
             </div>
@@ -138,7 +119,7 @@
         </div>
       </div>
 
-      <!-- Additional Eco Features -->
+      <!-- Eco Features -->
       <div class="eco-features">
         <div class="eco-feature">
           <div class="eco-icon">
@@ -167,23 +148,12 @@
 </template>
 
 <script setup>
-// Function to optimize images using Cloudflare transformations
 const optimizeImageUrl = (url) => {
   if (!url) return url
   
-  // Check if it's a Cloudflare CDN URL
   if (url.includes('cdn.ecofreshdrycleaner.com')) {
-    // Extract the image path from the full URL
     const urlObj = new URL(url)
     const imagePath = urlObj.pathname
-    
-    // Apply Cloudflare image transformations using the correct format
-    // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
-    // - format=auto: Auto format selection (WebP/AVIF when supported)
-    // - width=600: Width optimized for gallery display
-    // - height=400: Height optimized for gallery display
-    // - quality=85: High quality with good compression
-    // - fit=cover: Maintain aspect ratio and cover the container
     return `https://cdn.ecofreshdrycleaner.com/cdn-cgi/image/format=auto,width=600,height=400,quality=85,fit=cover${imagePath}`
   }
   
@@ -193,117 +163,30 @@ const optimizeImageUrl = (url) => {
 
 <style scoped>
 .about {
-  padding: 6rem 0;
+  padding: 5rem 0;
   background: var(--bg-eco-light);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Background Pattern */
-.about-bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.pattern-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--pattern-medium);
-  border-radius: 50%;
-  animation: float-dot 8s ease-in-out infinite;
-}
-
-.dot-1 {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.dot-2 {
-  top: 25%;
-  right: 15%;
-  animation-delay: 2s;
-}
-
-.dot-3 {
-  bottom: 30%;
-  left: 20%;
-  animation-delay: 4s;
-}
-
-.dot-4 {
-  bottom: 20%;
-  right: 25%;
-  animation-delay: 6s;
-}
-
-.dot-5 {
-  top: 60%;
-  left: 50%;
-  animation-delay: 1s;
-}
-
-@keyframes float-dot {
-  0%,
-  100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-15px) scale(1.2);
-    opacity: 1;
-  }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
-}
-
-.header-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--gradient-eco);
-  color: white;
-  border-radius: 50px;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 4px 15px var(--shadow-eco);
-}
-
-.badge-icon {
-  font-size: 1.2rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.75rem;
 }
 
 .section-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -313,75 +196,52 @@ const optimizeImageUrl = (url) => {
 .about-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: start;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .about-text {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .about-item {
   display: flex;
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 1.25rem;
+  padding: 1.5rem;
   background: var(--bg-primary);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-eco);
-  position: relative;
-  overflow: hidden;
-}
-
-.about-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-eco);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  border-radius: 10px;
+  border: 1px solid var(--border-medium);
+  transition: box-shadow 0.2s ease;
 }
 
 .about-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px var(--shadow-medium);
-  border-color: var(--eco-green-light);
-}
-
-.about-item:hover::before {
-  opacity: 1;
+  box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .item-icon {
-  font-size: 2.5rem;
   flex-shrink: 0;
-  width: 70px;
-  height: 70px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-eco);
-  border-radius: 16px;
-  color: white;
-  box-shadow: 0 4px 15px var(--shadow-eco);
+  background: var(--bg-eco-light);
+  border-radius: 10px;
+  color: var(--eco-green);
 }
 
 .item-icon svg {
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 .item-content h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .item-content p {
@@ -394,38 +254,31 @@ const optimizeImageUrl = (url) => {
 .about-visual {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .about-image-container {
   position: relative;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .about-main-image {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.about-image-container:hover .about-main-image {
-  transform: scale(1.05);
 }
 
 .image-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--gradient-eco);
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--eco-green);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
-  box-shadow: 0 4px 15px var(--shadow-eco);
 }
 
 .about-stats {
@@ -436,32 +289,17 @@ const optimizeImageUrl = (url) => {
 
 .stat-card {
   background: var(--bg-primary);
-  padding: 1.5rem;
-  border-radius: 16px;
+  padding: 1.25rem;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 4px 15px var(--shadow-light);
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-eco);
-}
-
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px var(--shadow-medium);
-  border-color: var(--eco-green-light);
-}
-
-.stat-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: var(--eco-green);
+  border: 1px solid var(--border-medium);
 }
 
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
   color: var(--eco-green);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .stat-label {
@@ -473,57 +311,30 @@ const optimizeImageUrl = (url) => {
 /* Eco Features Section */
 .eco-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .eco-feature {
   background: var(--bg-primary);
-  padding: 2rem;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-eco);
-  position: relative;
-  overflow: hidden;
-}
-
-.eco-feature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-eco);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.eco-feature:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px var(--shadow-medium);
-  border-color: var(--eco-green-light);
-}
-
-.eco-feature:hover::before {
-  opacity: 1;
+  border: 1px solid var(--border-medium);
 }
 
 .eco-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
   color: var(--eco-green);
 }
 
 .eco-feature h4 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .eco-feature p {
@@ -534,49 +345,36 @@ const optimizeImageUrl = (url) => {
 
 /* Visual Gallery Section */
 .visual-gallery {
-  margin-top: 4rem;
-  padding: 2rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
   background: var(--bg-primary);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  border: 1px solid var(--border-eco);
+  border-radius: 10px;
+  border: 1px solid var(--border-medium);
 }
 
 .gallery-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 1.5rem;
 }
 
 .gallery-item {
   position: relative;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 8px 25px var(--shadow-medium);
-  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .gallery-item.large {
-  min-height: 350px;
-}
-
-.gallery-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px var(--shadow-medium);
+  min-height: 300px;
 }
 
 .gallery-item img {
@@ -587,7 +385,7 @@ const optimizeImageUrl = (url) => {
 }
 
 .gallery-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .gallery-overlay {
@@ -595,9 +393,9 @@ const optimizeImageUrl = (url) => {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
   color: white;
-  padding: 2rem 1.5rem 1.5rem;
+  padding: 1.5rem 1rem 1rem;
   transform: translateY(100%);
   transition: transform 0.3s ease;
 }
@@ -607,14 +405,14 @@ const optimizeImageUrl = (url) => {
 }
 
 .gallery-overlay h4 {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: white;
 }
 
 .gallery-overlay p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   opacity: 0.9;
   line-height: 1.4;
   margin: 0;
@@ -623,18 +421,17 @@ const optimizeImageUrl = (url) => {
 @media (max-width: 1024px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .about-stats {
@@ -656,11 +453,10 @@ const optimizeImageUrl = (url) => {
 
   .gallery-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 
   .gallery-item.large {
-    min-height: 300px;
+    min-height: 250px;
   }
 }
 
@@ -670,36 +466,7 @@ const optimizeImageUrl = (url) => {
   }
 
   .about-item {
-    padding: 1.5rem;
-  }
-
-  .item-icon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .item-icon svg {
-    font-size: 1.5rem;
-  }
-
-  .gallery-grid {
-    gap: 1rem;
-  }
-
-  .gallery-item.large {
-    min-height: 250px;
-  }
-
-  .gallery-overlay {
-    padding: 1.5rem 1rem 1rem;
-  }
-
-  .gallery-overlay h4 {
-    font-size: 1.2rem;
-  }
-
-  .gallery-overlay p {
-    font-size: 0.9rem;
+    padding: 1.25rem;
   }
 }
 </style>
