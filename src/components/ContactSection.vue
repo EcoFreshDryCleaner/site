@@ -119,7 +119,7 @@
 
           <form
             ref="contactForm"
-            action="https://development-form-relay.tanujsiripurapu.workers.dev/ecofresh/submit"
+            action="https://forms.tanuj.xyz/ecofresh/submit"
             method="post"
             enctype="application/x-www-form-urlencoded"
             target="_self"
@@ -158,9 +158,9 @@
               <label for="service">Service Type</label>
               <select id="service" name="service" :disabled="isLoadingServices">
                 <option value="">{{ isLoadingServices ? 'Loading services...' : 'Select a service' }}</option>
-                <option 
-                  v-for="service in services" 
-                  :key="service.id" 
+                <option
+                  v-for="service in services"
+                  :key="service.id"
                   :value="service.slug"
                 >
                   {{ service.name || service.title || service.slug }}
@@ -302,7 +302,7 @@ onBeforeUnmount(() => {
 const handleFormSubmit = (event) => {
   console.log('🔵 Form submit handler called')
   verificationError.value = ''
-  
+
   if (!contactForm.value) {
     console.error('❌ Contact form ref is null')
     event.preventDefault()
