@@ -118,14 +118,14 @@
           </div>
 
           <form
-        ref="contactForm"
-        action="https://forms.tanuj.xyz/ecofresh/submit"
-              method="post"
-              enctype="application/x-www-form-urlencoded"
-              target="_self"
-              class="form"
-              accept-charset="utf-8"
-              @submit="handleFormSubmit"
+            ref="contactForm"
+            action="https://development-form-relay.tanujsiripurapu.workers.dev/ecofresh/submit"
+            method="post"
+            enctype="application/x-www-form-urlencoded"
+            target="_self"
+            class="form"
+            accept-charset="utf-8"
+            @submit="handleFormSubmit"
           >
             <div class="form-group">
               <label for="name">Full Name *</label>
@@ -178,24 +178,10 @@
               ></textarea>
             </div>
 
-            <ClientOnly>
-              <div class="form-group recaptcha-group">
-                <div class="recaptcha-container">
-                  <div 
-                    class="g-recaptcha" 
-                    :data-sitekey="recaptchaSiteKey"
-                    data-action="CONTACT_FORM"
-                    data-callback="onRecaptchaSuccess"
-                  ></div>
-                </div>
-                <span v-if="recaptchaError" class="field-error">{{ recaptchaError }}</span>
-              </div>
-              <template #placeholder>
-                <div class="recaptcha-placeholder">
-                  <p>Loading security verification...</p>
-                </div>
-              </template>
-            </ClientOnly>
+            <div v-if="siteKey" class="form-group">
+              <div id="turnstile-container" class="turnstile-container" />
+              <span v-if="verificationError" class="field-error">{{ verificationError }}</span>
+            </div>
 
             <button type="submit" class="btn btn-primary">
               <FontAwesomeIcon :icon="['fas', 'paper-plane']" class="btn-icon" />
@@ -221,19 +207,37 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import ServiceArea from './ServiceArea.vue'
 import { servicesService } from '../services/servicesService.js'
 
 const services = ref([])
 const isLoadingServices = ref(true)
 const contactForm = ref(null)
-const recaptchaError = ref('')
 
-const recaptchaSiteKey = ref(import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LebETksAAAAAOUVZTqZty4g-c4HDjBushb0dcai')
+const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
+const turnstileToken = ref('')
+let widgetId
+const turnstileReady = ref(false)
+const turnstileLoadFailed = ref(false)
+const verificationError = ref('')
 
-const onRecaptchaSuccess = () => {
-  recaptchaError.value = ''
+function loadTurnstileScript() {
+  if (window.turnstile) return Promise.resolve()
+  return new Promise((resolve, reject) => {
+    const prev = window.onTurnstileLoad
+    window.onTurnstileLoad = () => {
+      prev?.()
+      resolve()
+    }
+    const s = document.createElement('script')
+    s.src =
+      'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad'
+    s.async = true
+    s.defer = true
+    s.onerror = () => reject(new Error('Turnstile script failed to load'))
+    document.head.appendChild(s)
+  })
 }
 
 onMounted(async () => {
@@ -248,24 +252,56 @@ onMounted(async () => {
     isLoadingServices.value = false
   }
 
-  if (!import.meta.env.SSR) {
-    window.onRecaptchaSuccess = onRecaptchaSuccess
+  if (typeof window === 'undefined') return
+
+  if (!siteKey) {
+    console.warn(
+      '[ContactSection] VITE_TURNSTILE_SITE_KEY is not set; Turnstile verification is disabled.',
+    )
+    turnstileReady.value = true
+    return
   }
 
-  if (recaptchaSiteKey.value && !import.meta.env.SSR) {
-    if (!document.querySelector('script[src*="recaptcha"]')) {
-      const script = document.createElement('script')
-      script.src = 'https://www.google.com/recaptcha/enterprise.js'
-      script.async = true
-      script.defer = true
-      document.head.appendChild(script)
+  try {
+    await loadTurnstileScript()
+    const container = document.getElementById('turnstile-container')
+    if (container && window.turnstile) {
+      widgetId = window.turnstile.render(container, {
+        sitekey: siteKey,
+        appearance: 'always',
+        size: 'flexible',
+        callback: (token) => {
+          turnstileToken.value = token
+          verificationError.value = ''
+        },
+        'expired-callback': () => {
+          turnstileToken.value = ''
+        },
+        'error-callback': () => {
+          turnstileToken.value = ''
+          verificationError.value =
+            'Verification failed. Please refresh the page or try again.'
+        },
+      })
     }
+    turnstileReady.value = true
+  } catch (e) {
+    console.error(e)
+    turnstileLoadFailed.value = true
+    verificationError.value =
+      'Verification widget could not load. Please refresh the page or call us.'
+  }
+})
+
+onBeforeUnmount(() => {
+  if (window.turnstile && widgetId !== undefined) {
+    window.turnstile.remove(widgetId)
   }
 })
 
 const handleFormSubmit = (event) => {
   console.log('🔵 Form submit handler called')
-  recaptchaError.value = ''
+  verificationError.value = ''
   
   if (!contactForm.value) {
     console.error('❌ Contact form ref is null')
@@ -275,25 +311,33 @@ const handleFormSubmit = (event) => {
 
   console.log('✅ Contact form ref found')
 
-  const recaptchaResponse = contactForm.value.querySelector('textarea[name="g-recaptcha-response"]')
-  console.log('🔍 reCAPTCHA response element:', recaptchaResponse)
-  console.log('🔍 reCAPTCHA response value:', recaptchaResponse?.value)
-  console.log('🔍 reCAPTCHA response value length:', recaptchaResponse?.value?.length)
-  
-  if (!recaptchaResponse || !recaptchaResponse.value) {
-    console.warn('⚠️ reCAPTCHA not completed, preventing submission')
-    event.preventDefault()
-    recaptchaError.value = 'Please complete the "I\'m not a robot" verification.'
-    
-    const recaptchaContainer = contactForm.value.querySelector('.recaptcha-container')
-    if (recaptchaContainer) {
-      console.log('📍 Scrolling to reCAPTCHA container')
-      recaptchaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  if (siteKey) {
+    if (!turnstileToken.value) {
+      console.warn('⚠️ Turnstile not completed, preventing submission')
+      event.preventDefault()
+      verificationError.value = 'Please complete the verification challenge.'
+
+      const container = contactForm.value.querySelector('.turnstile-container')
+      if (container) {
+        console.log('📍 Scrolling to Turnstile container')
+        container.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      return false
     }
-    return false
+
+    let hidden = contactForm.value.querySelector(
+      'input[name="cf-turnstile-response"]',
+    )
+    if (!hidden) {
+      hidden = document.createElement('input')
+      hidden.type = 'hidden'
+      hidden.name = 'cf-turnstile-response'
+      contactForm.value.appendChild(hidden)
+    }
+    hidden.value = turnstileToken.value
   }
 
-  console.log('✅ reCAPTCHA validated successfully')
+  console.log('✅ Verification validated successfully')
   console.log('📤 Allowing form to submit normally')
   return true
 }
